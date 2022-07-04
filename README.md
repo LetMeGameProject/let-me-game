@@ -1,70 +1,55 @@
-# Getting Started with Create React App
+Projeto Final (Frontend)- Let me Game.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A Let me Game é uma aplicação Web que permite em poucos cliques encontrar alguém para jogar junto com você os seus jogos favoritos. 
 
-## Available Scripts
+Na página inicial será possível selecionar qualquer jogo, a aplicação irá mostrar todas as pessoas que estão disponíveis para jogar o jogo naquele momento, sendo ela uma lista com ranqueamento por melhores avaliações de comportamento. Este ranqueamento é um sistema de avaliação entre os próprios usuários, onde a própria comunidade contribui para um ambiente respeitoso e agradável, exaltando a reputação das pessoas mais amigáveis e rebaixando a reputação de usuários com conduta considerada tóxica. Em ambos os casos será apresentada uma lista dos últimos feedbacks recebidos de cada usuário.
 
-In the project directory, you can run:
+Também será possível iniciar uma conversa particular com qualquer pessoa do chat, basta clicar no avatar e em enviar mensagem. Nesta feature, o usuário pode mandar Links, Screenshots, imagens e mensagens, facilitando para ambos os lados conseguirem se conectar através de outras plataformas como Steam e Discord para iniciarem ou combinarem a jogatina. 
 
-### `npm start`
+Com o fim de indicar o seu status atual na aplicação, será possível estampar no seu perfil que você está procurando por um amigo para determinado jogo, assim você irá aparecer na lista de outras pessoas que também procuram pelo mesmo jogo em questão.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Features do MVP inicial?
+● Uma Mini Rede Social para encontrar pessoas para jogar jogos juntos.
+● Uma lista completa de jogos de várias plataformas diferentes.
+● Chat Individual e em tempo real entre os usuários.
+● Ranking por avaliação de comportamento.
+● Lista de jogos favoritos.
+● Status mostrando o jogo que a pessoa quer jogar naquele momento.
+● Telas Cadastro/Login
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Features Extras
+● Lista de amigos favoritos.
+● Opção de poder adicionar/Remover Amigos.
+● Ter um chat geral para cada jogo, uma espécie de Lobby para cada jogo.
 
-### `npm test`
+Tecnologias/Programas:
+● Figma
+● Heroku
+● Git/ Github
+● Trello
+● Vercel
+● React
+● Context API
+● JSON Server
+● Insomnia
+● Visual Studio Code
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Bibliotecas:
+● Yup
+● React Router Dom v5
+● Styled-Components
+● React Hook Form
+● Framer Motion
+● Material UI
+● Axios
+● React Icons
+● React Hot Toast
+● Cors
+● Json-server
+● Json-server-auth
 
-### `npm run build`
+API’s externas:
+● Api para consumo do acervo de jogos das plataformas de console, mobile e computador.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+API interna usando Json Server:
+● Será implementada uma Api para gerenciar o tráfego de dados envolvendo cadastro, login, dados do usuário em relação aos jogos e as mensagens do chat.
