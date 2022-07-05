@@ -3,12 +3,17 @@ import { createGlobalStyle } from "styled-components"
 const GlobalStyle = createGlobalStyle`
 
 :root {
-    // default colors
+    --background-black: #14031E;
+    --background-white: #ffffff;
+    --color-primary: #570A57;
+    --color-secondary: #ffffff;
 }
 
 #root {
     width: 100vw;
     min-height: 100vh;
+    background-color: var(--background-black);
+    font-family: 'Inter', sans-serif;
 }
 
 * {
@@ -25,6 +30,7 @@ button {
     cursor: pointer;
     border: none;
 }
+
 `
 
 export default GlobalStyle
