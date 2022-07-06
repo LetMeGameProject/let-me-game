@@ -4,7 +4,6 @@ import StyledCarouselCard from "./styles"
 import CardsButton from "../../CardsButton"
 
 const CarouselCard = ({ game }) => {
-  console.log(game)
   return (
     <StyledCarouselCard>
       <div className="container-card">

@@ -4,6 +4,7 @@ const StyledCarrouselCard = styled.section`
   width: 100%;
   height: 100%;
   &:hover {
+    
     .container-card {
       transition: 0.5s;
       display: flex;

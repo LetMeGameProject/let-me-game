@@ -20,12 +20,12 @@ export const Content = styled.div`
     position: absolute;
     top: 80px;
     align-items: center;
-    height:calc(100% - 80px);
+    height: 400px;
     right: 0px;
     gap: 30px;
     width: 60%;
     max-width: 400px;
-    background-color: var(--primary-white);
+    background-color: var(--secondary-white);
 
     .user{
         display: flex;

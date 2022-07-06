@@ -1,11 +1,11 @@
-import { useContext, useState } from "react"
+import { useContext } from "react"
 import { IoIosStarOutline, IoIosStar } from "react-icons/io"
 import { FavoriteContext } from "../../../context/FavoriteList"
 import Button from "./styles"
 
 const CardsButton = ({ game, favorite = false }) => {
+  
   const { addFavorite, removeFavorite } = useContext(FavoriteContext)
-  const [setIsFavorite] = useState(favorite)
 
   return (
     <>
@@ -14,7 +14,6 @@ const CardsButton = ({ game, favorite = false }) => {
           onFavorite
           onClick={() => {
             removeFavorite(game.id)
-            setIsFavorite(false)
           }}
         >
           <IoIosStar className="IoIosStar" />
@@ -23,7 +22,6 @@ const CardsButton = ({ game, favorite = false }) => {
         <Button
           onClick={() => {
             addFavorite(game)
-            setIsFavorite(true)
           }}
         >
           <IoIosStarOutline />

@@ -1,10 +1,8 @@
 import styled from "styled-components"
 
 const StyledMain = styled.main`
-  background-color: var(--background-color);
-
   section {
-    height: 100%;
+    
     display: flex;
     flex-direction: column;
     align-items: center;

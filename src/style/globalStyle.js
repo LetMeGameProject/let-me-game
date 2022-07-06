@@ -27,9 +27,6 @@ const GlobalStyle = createGlobalStyle`
 }
 
 #root {
-    width: 100vw;
-    min-height: 100vh;
-    background-color: var(--background-color);
     font-family: 'Inter', sans-serif;
 
 }
@@ -38,6 +35,10 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+body{
+    background-color: var(--background-color);
 }
 
 ul, li, ol {

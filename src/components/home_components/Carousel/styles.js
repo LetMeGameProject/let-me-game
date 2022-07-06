@@ -1,6 +1,7 @@
 import styled from "styled-components"
 
 const StyledCarousel = styled.section`
+  padding-top: 100px;
   .swiper {
     max-width: 624px;
     width: 100%;

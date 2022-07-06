@@ -24,6 +24,8 @@ export const StyledHeader = styled.header`
     width: 100%;
     height: 80px;
     background-color: var(--primary-white);
+    position: fixed;
+    z-index: 1001;
 
 `
 

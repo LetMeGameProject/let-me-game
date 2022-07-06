@@ -30,7 +30,8 @@ export default function Header(){
             {isOpen && 
             <motion.div
             initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}>
+            animate={{ opacity: 1 }}
+            style={{zIndex: 1}}>
                 <SideBar setOpen={setOpen} setOpenModalUser={setOpenModalUser}/>
             </motion.div>}
 

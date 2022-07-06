@@ -9,8 +9,6 @@ export const FavoriteProvider = ({ children }) => {
     setFavoriteList([...favoriteList, game])
   }
 
-  console.log(favoriteList)
-
   const removeFavorite = (gameId) => {
     const newFavoriteList = favoriteList.filter((game) => game.id !== gameId)
 
