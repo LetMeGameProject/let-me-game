@@ -12,4 +12,8 @@ export const Div = styled.div`
     height: 220px;
     width: 220px;
   }
+
+  @media (max-width: 800px) {
+    display: none;
+  }
 `;

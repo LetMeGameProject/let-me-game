@@ -22,7 +22,7 @@ export const Div = styled.div`
     h1 {
       padding-top: 20px;
       font-size: 18px;
-      color: #570A57;
+      color: #570a57;
     }
 
     p {
@@ -30,26 +30,29 @@ export const Div = styled.div`
       font-size: 16px;
     }
 
-    a{
-        text-decoration: none;
-        color: #570A57;
+    a {
+      text-decoration: none;
+      color: #570a57;
+      :hover {
+        color: #b000f1;
+      }
     }
 
-    button{
-        width: 85%;
-        height: 40px;
+    button {
+      width: 85%;
+      height: 40px;
 
-        font-size: 18px;
-        color: white;
-        font-weight: 500;
-        background: linear-gradient(to right, #5200d5, #b000f1, #ce00fb);
-        border-radius: 7px;
+      font-size: 18px;
+      color: white;
+      font-weight: 500;
+      background: linear-gradient(to right, #5200d5, #b000f1, #ce00fb);
+      border-radius: 7px;
 
-        :hover{
-            opacity: 0.8;
-            border: 2px solid #5200d5;
-            transition: 0.5s;
-        }
+      :hover {
+        opacity: 0.8;
+        border: 2px solid #5200d5;
+        transition: 0.5s;
+      }
     }
   }
 
@@ -78,19 +81,29 @@ export const Div = styled.div`
       border: none;
       border-radius: 8px;
 
-      :focus{
+      :focus {
         outline: 0;
       }
     }
   }
 
-  .label{
+  .label {
     display: flex;
     column-gap: 5px;
     align-items: center;
 
-    h6{
+    h6 {
       color: #b000f1;
+    }
+  }
+
+  @media (max-width: 800px) {
+    width: 100vw;
+  }
+
+  @media (max-width: 550px) {
+    form {
+      width: 80%;
     }
   }
 `;
