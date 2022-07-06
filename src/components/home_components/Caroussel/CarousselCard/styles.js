@@ -10,6 +10,7 @@ const StyledCarrouselCard = styled.section`
       flex-direction:column;
       justify-content:space-between;
     }
+    
   }
 
 
@@ -45,12 +46,21 @@ const StyledCarrouselCard = styled.section`
   }
 
   button{
-    width:30px;
-    height:30px;
     margin-right:10px;
     margin-top:10px;
+    background:none;
+    border:none;
   }
 
+  .star-button{
+    color:yellow;
+    width:30px;
+    height:30px;
+  }
+
+  .star-button:hover{
+      color:darkgray;
+    }
 
 `
 export default StyledCarrouselCard
