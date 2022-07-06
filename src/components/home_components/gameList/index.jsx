@@ -1,6 +1,6 @@
 import { useContext } from "react"
 
-import { GamesContext } from "../../../context/gameList"
+import { GamesContext } from "../../../context/GameList/gameList"
 import GameCard from "../gameCard"
 import { StyledDiv, StyledUl } from "./styles"
 
