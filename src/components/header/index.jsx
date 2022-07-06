@@ -4,10 +4,14 @@ import SideBar from "./side_bar";
 import { Squash as Hamburger } from 'hamburger-react'
 import { useState } from 'react'
 import { motion } from "framer-motion";
+import ShowUser from "./show_user";
+import EditUser from "./edit_user";
 
 export default function Header(){
 
     const [isOpen, setOpen] = useState(false)
+    const [openModalUser, setOpenModalUser] = useState(false);
+    const [openModalEditUser, setOpenModalEditUser] = useState(false);
 
     return(
         <StyledHeader>
@@ -27,9 +31,11 @@ export default function Header(){
             <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}>
-                <SideBar setOpen={setOpen} />
+                <SideBar setOpen={setOpen} setOpenModalUser={setOpenModalUser}/>
             </motion.div>}
 
+            {openModalUser && <ShowUser openModalUser={openModalUser} setOpenModalUser={setOpenModalUser} setOpenModalEditUser={setOpenModalEditUser}/>}
+            {openModalEditUser && <EditUser openModalEditUser={openModalEditUser} setOpenModalEditUser={setOpenModalEditUser}/>}   
         </StyledHeader>
         
     )

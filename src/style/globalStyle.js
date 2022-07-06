@@ -1,25 +1,45 @@
-import { createGlobalStyle } from "styled-components"
+import styled, { createGlobalStyle } from "styled-components"
 
 const GlobalStyle = createGlobalStyle`
 
+
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+        
+::-webkit-scrollbar-thumb {
+    background: white; 
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background:#570A57; 
+}
+
 :root {
-    --background-black: #14031E;
-    --background-white: #ffffff;
-    --color-primary: #570A57;
-    --color-secondary: #ffffff;
+  --background-color: #14031E;
+  --foreground-color: #570A57;
+  --hover-color: #0a0000;
+  --accent-color: #F806CC;
+  --primary-white: #ffffff;
+  --secondary-white: #f5f5f5;
 }
 
 #root {
     width: 100vw;
     min-height: 100vh;
-    background-color: var(--background-black);
+    background-color: var(--background-color);
     font-family: 'Inter', sans-serif;
+
 }
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    
+    
 }
 
 ul, li, ol {
@@ -31,6 +51,27 @@ button {
     border: none;
 }
 
+`
+
+export const ProgressBar = styled.progress`
+    height: 11px;
+    background-color: #DFC640;
+    border-radius: 4px;
+    &::-webkit-progress-bar {
+        background-color: var(--background-color);
+        border-bottom-right-radius: 4px;
+        border-top-right-radius: 4px;
+        border-bottom-left-radius: 4px;
+        border-top-left-radius: 4px;
+    }
+
+    &::-webkit-progress-value {
+        background-color: #DFC640;
+        border-bottom-left-radius: 2px;
+        border-top-left-radius: 2px;
+        border-bottom-right-radius: 2px;
+        border-top-right-radius: 2px;
+    }
 `
 
 export default GlobalStyle

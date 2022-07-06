@@ -25,7 +25,7 @@ export const Content = styled.div`
     gap: 30px;
     width: 60%;
     max-width: 400px;
-    background-color: var(--background-white);
+    background-color: var(--primary-white);
 
     .user{
         display: flex;
@@ -65,25 +65,6 @@ export const Content = styled.div`
                 align-items: ${media.alignItems}
             }`)}
             
-            progress{
-                height: 10px;
-                background-color: #DFC640;
-                border-radius: 4px
-            }
-            progress::-webkit-progress-bar {
-                background-color: var(--background-black);
-                border-bottom-right-radius: 4px;
-                border-top-right-radius: 4px;
-                border-bottom-left-radius: 4px;
-                border-top-left-radius: 4px;
-            }
-            progress::-webkit-progress-value {
-                background-color: #DFC640;
-                border-bottom-left-radius: 2px;
-                border-top-left-radius: 2px;
-                border-bottom-right-radius: 2px;
-                border-top-right-radius: 2px;
-            }
         }
 
     }
@@ -96,7 +77,7 @@ export const Content = styled.div`
         width: 70%;
         height: 50px;
         gap: 10px;
-        border-bottom: 3px solid var(--background-black); 
+        border-bottom: 3px solid var(--background-color); 
     }
 
 `
