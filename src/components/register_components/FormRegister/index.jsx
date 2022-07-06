@@ -5,6 +5,7 @@ import { Link, useHistory } from "react-router-dom";
 import * as yup from "yup";
 import { internalApi } from "../../../services/internalAPI";
 import { Div } from "./style";
+import { v4 as uuidv4 } from "uuid";
 
 export const DivForm = () => {
   const history = useHistory();
@@ -30,6 +31,7 @@ export const DivForm = () => {
   const onSubmit = (data) => {
     const restOfData = {
       reputation: 100,
+      id: uuidv4(),
       current_game: null,
       friend_list: [],
       pending_friend_requests: [],
