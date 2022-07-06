@@ -83,4 +83,14 @@ export const Div = styled.div`
       }
     }
   }
+
+  .label{
+    display: flex;
+    column-gap: 5px;
+    align-items: center;
+
+    h6{
+      color: #b000f1;
+    }
+  }
 `;
