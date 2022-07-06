@@ -27,7 +27,7 @@ export default function Header(){
             <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}>
-                <SideBar isOpen={isOpen} />
+                <SideBar setOpen={setOpen} />
             </motion.div>}
 
         </StyledHeader>

@@ -88,7 +88,7 @@ export const Content = styled.div`
 
     }
 
-    .user-edit{
+    .user-edit, .user-message, .user-logout{
         cursor: pointer;
         display: flex;
         justify-content: center;
@@ -97,17 +97,6 @@ export const Content = styled.div`
         height: 50px;
         gap: 10px;
         border-bottom: 3px solid var(--background-black); 
-    }
-
-    .user-message{
-        cursor: pointer;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 70%;
-        height: 50px;
-        gap: 10px;
-        border-bottom: 3px solid var(--background-black);
     }
 
 `
