@@ -1,11 +1,13 @@
+import { GamesProvider } from "./context/GameList/gameList"
 import Header from "./components/header"
-
+import Home from "./pages/home/index"
 
 function App() {
   return (
-    <div>
-      <Header/>
-    </div>
+    <GamesProvider>
+      <Header />
+      <Home />
+    </GamesProvider>
   )
 }
 

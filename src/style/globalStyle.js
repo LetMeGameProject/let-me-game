@@ -38,8 +38,6 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    
-    
 }
 
 ul, li, ol {
@@ -51,6 +49,10 @@ button {
     border: none;
 }
 
+input {
+  cursor: text;
+  border: none;
+}
 `
 
 export const ProgressBar = styled.progress`
