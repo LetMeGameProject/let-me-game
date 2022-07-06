@@ -18,6 +18,7 @@ export const Div = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
+    border-radius: 4px;
 
     h1 {
       font-size: 18px;

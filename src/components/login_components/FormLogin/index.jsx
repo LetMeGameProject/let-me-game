@@ -1,10 +1,17 @@
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useContext } from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import toast, { Toaster } from "react-hot-toast";
+import { Link, useHistory } from "react-router-dom";
 import * as yup from "yup";
+import { UserContext } from "../../../providers/user";
+import { internalApi } from "../../../services/internalAPI";
 import { Div } from "./style";
 
 export const DivForm = () => {
+  const { setUser } = useContext(UserContext);
+  const history = useHistory();
+
   const formSchema = yup.object().shape({
     email: yup.string().required("Email obrigatório").email("Email inválido"),
     password: yup.string().required("Senha obrigatória"),
@@ -17,7 +24,17 @@ export const DivForm = () => {
   } = useForm({ resolver: yupResolver(formSchema) });
 
   const onSubmit = (data) => {
-    console.log(data);
+    const request = internalApi.post("login", data);
+    toast.promise(request, {
+      loading: "Carregando",
+      success: (data) => {
+        "Logado com sucesso";
+        localStorage.setItem("@tokenLMG", data.data.accessToken);
+        setUser(data.data.user);
+        history.push("/home");
+      },
+      error: (err) => "Ususário ou senha incorretos",
+    });
   };
 
   return (
@@ -52,6 +69,7 @@ export const DivForm = () => {
         </div>
         <button type="submit">Login</button>
       </form>
+      <Toaster />
     </Div>
   );
 };

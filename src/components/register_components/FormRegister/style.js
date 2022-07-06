@@ -18,6 +18,7 @@ export const Div = styled.div`
     flex-direction: column;
     align-items: center;
     row-gap: 15px;
+    border-radius: 4px;
 
     h1 {
       padding-top: 20px;

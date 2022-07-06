@@ -41,7 +41,7 @@ export const DivForm = () => {
     const request = internalApi.post("register", completeData);
 
     toast.promise(request, {
-      loading: "Loading",
+      loading: "Carregando",
       success: (data) => {
         "Cadastrado com sucesso";
         setTimeout(() => {
