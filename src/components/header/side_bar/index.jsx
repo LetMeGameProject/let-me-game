@@ -1,6 +1,6 @@
 import { Content } from "./styles";
 import { FiUser } from "react-icons/fi"
-import { BiMessageRounded } from "react-icons/bi"
+import { BiMessageRounded, BiLogOut } from "react-icons/bi"
 
 
 
@@ -11,6 +11,10 @@ export default function SideBar({setOpen}){
     }
 
     const openModalMessage = ()=>{
+        setOpen(false)
+    }
+
+    const logout = ()=>{
         setOpen(false)
     }
 
@@ -35,6 +39,11 @@ export default function SideBar({setOpen}){
             <div className="user-message" onClick={()=> openModalMessage()}>
                 <BiMessageRounded size={20}/>
                 <h5>Mensagens</h5>  
+            </div>
+
+            <div className="user-logout" onClick={()=> logout()}>
+                <BiLogOut size={20}/>
+                <h5>Sair</h5>  
             </div>
         </Content>
     )
