@@ -1,0 +1,57 @@
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
+import * as yup from "yup";
+import { Div } from "./style";
+
+export const DivForm = () => {
+  const formSchema = yup.object().shape({
+    email: yup.string().required("Email obrigatório").email("Email inválido"),
+    password: yup.string().required("Senha obrigatória"),
+  });
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({ resolver: yupResolver(formSchema) });
+
+  const onSubmit = (data) => {
+    console.log(data);
+  };
+
+  return (
+    <Div>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <h1>LOGIN</h1>
+        <div className="div__inputs">
+          <div className="div__input">
+            <div className="label">
+              <span>Email</span>
+              {errors && <h6>{errors.email?.message}</h6>}
+            </div>
+            <input placeholder="Seu email" {...register("email")} />
+          </div>
+          <div className="div__input">
+            <div className="label">
+              <span>Senha</span>
+              {errors && <h6>{errors.password?.message}</h6>}
+            </div>
+            <input
+              type="password"
+              placeholder="Sua Senha"
+              {...register("password")}
+            />
+          </div>
+        </div>
+        <div className="link__register">
+          <p>Ainda não tem uma conta?</p>
+          <p>
+            Cadastre-se <Link to="/register">aqui</Link>!
+          </p>
+        </div>
+        <button type="submit">Login</button>
+      </form>
+    </Div>
+  );
+};
