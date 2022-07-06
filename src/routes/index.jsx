@@ -1,6 +1,7 @@
-import { Switch } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
+import { Register } from "../pages/register";
 
-export default Routes = () => {
+export const Routes = () => {
   return (
     <Switch>
       <Route path="/register">
