@@ -1,12 +1,15 @@
 import { Content } from "./styles";
 import { FiUser } from "react-icons/fi"
 import { BiMessageRounded, BiLogOut } from "react-icons/bi"
+import { ProgressBar } from "../../../style/globalStyle";
 
 
 
-export default function SideBar({setOpen}){
+export default function SideBar({setOpen, setOpenModalUser}){
+    
 
     const openModalEdit = ()=>{
+        setOpenModalUser(true)
         setOpen(false)
     }
 
@@ -16,9 +19,11 @@ export default function SideBar({setOpen}){
 
     const logout = ()=>{
         setOpen(false)
+        return
     }
 
     return(
+        <>
         <Content>
             <div className="user">
                 <div className="user-img">
@@ -26,7 +31,7 @@ export default function SideBar({setOpen}){
                 </div>
                 <div className="user-info">
                     <h4>TheRobite</h4>
-                    <progress value="90" max="100"></progress>
+                    <ProgressBar value="90" max="100" />
                 </div>
 
             </div>
@@ -46,5 +51,7 @@ export default function SideBar({setOpen}){
                 <h5>Sair</h5>  
             </div>
         </Content>
+        
+        </>
     )
 }
