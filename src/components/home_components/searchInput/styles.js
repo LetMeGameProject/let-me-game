@@ -18,7 +18,11 @@ const StyledDiv = styled.div`
     background-color: var(--foreground-color);
     color: var(--primary-white);
 
-    padding: 10px;
+    width: 36px;
+    height: 36px;
+
+    font-size: 30px;
+    line-height: 24px;
     border-radius: 30px;
 
     :hover {

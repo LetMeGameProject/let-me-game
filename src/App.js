@@ -1,5 +1,12 @@
+import { GamesProvider } from "./context/gameList"
+import Home from "./pages/home"
+
 function App() {
-  return <div></div>
+  return (
+    <GamesProvider>
+      <Home />
+    </GamesProvider>
+  )
 }
 
 export default App
