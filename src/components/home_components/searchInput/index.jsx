@@ -1,7 +1,7 @@
 import { useContext } from "react"
 import { BiSearchAlt } from "react-icons/bi"
 
-import { GamesContext } from "../../../context/gameList"
+import { GamesContext } from "../../../context/GameList/gameList"
 import StyledDiv from "./styles"
 
 const SearchInput = () => {

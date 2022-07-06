@@ -1,7 +1,7 @@
 import { useContext } from "react"
 import GameList from "../../components/home_components/gameList"
 import SearchInput from "../../components/home_components/searchInput"
-import { GamesContext } from "../../context/gameList"
+import { GamesContext } from "../../context/GameList/gameList"
 import StyledMain from "./styles"
 
 const Home = () => {

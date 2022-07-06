@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from "react"
-import { Api } from "../services/externalApi"
+import { Api } from "../../services/externalApi"
 
 export const GamesContext = createContext([])
 

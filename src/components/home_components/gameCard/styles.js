@@ -18,9 +18,23 @@ export const StyledLi = styled.li`
     button {
       display: block;
     }
+    ul {
+      display: block;
+    }
   }
 
   h3 {
+    display: none;
+    position: absolute;
+    bottom: 30px;
+    left: 5px;
+    margin: 0 0 10px 10px;
+    font-size: 18px;
+    color: var(--primary-white);
+    text-shadow: 1px 1px 1px var(--foreground-color);
+  }
+
+  ul {
     display: none;
     position: absolute;
     bottom: 0px;
@@ -29,6 +43,10 @@ export const StyledLi = styled.li`
     font-size: 18px;
     color: var(--primary-white);
     text-shadow: 1px 1px 1px var(--foreground-color);
+
+    li {
+      font-size: 12px;
+    }
   }
 
   button {
