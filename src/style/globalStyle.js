@@ -11,6 +11,13 @@ const GlobalStyle = createGlobalStyle`
   --secondary-white: #f5f5f5;
 }
 
+#root {
+    width: 100vw;
+    min-height: 100vh;
+    background-color: var(--background-color);
+    font-family: 'Inter', sans-serif;
+}
+
 * {
     margin: 0;
     padding: 0;
