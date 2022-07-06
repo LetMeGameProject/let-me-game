@@ -1,8 +1,7 @@
+import { GamesProvider } from "./context/gameList"
+
 function App() {
-  return (
-    <div>
-    </div>
-  )
+  return <GamesProvider></GamesProvider>
 }
 
 export default App
