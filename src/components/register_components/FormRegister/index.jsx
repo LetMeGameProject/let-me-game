@@ -1,12 +1,16 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import toast, { Toaster } from "react-hot-toast";
+import { Link, useHistory } from "react-router-dom";
 import * as yup from "yup";
+import { internalApi } from "../../../services/internalAPI";
 import { Div } from "./style";
 
 export const DivForm = () => {
+  const history = useHistory();
+
   const formSchema = yup.object().shape({
-    username: yup.string().required("Nome obrigatório"),
+    username: yup.string().required("Nick-name obrigatório"),
     email: yup.string().required("Email obrigatório").email("Email inválido"),
     bio: yup.string().required("Bio obrigatória"),
     country: yup.string().required("País obrigatório"),
@@ -24,7 +28,28 @@ export const DivForm = () => {
   } = useForm({ resolver: yupResolver(formSchema) });
 
   const onSubmit = (data) => {
-    console.log(data);
+    const restOfData = {
+      reputation: 100,
+      current_game: null,
+      friend_list: [],
+      pending_friend_requests: [],
+      last_feedbacks: [],
+      plataforms: [],
+      favorite_games: [],
+    };
+    const completeData = { ...data, ...restOfData };
+    const request = internalApi.post("register", completeData);
+
+    toast.promise(request, {
+      loading: "Loading",
+      success: (data) => {
+        "Cadastrado com sucesso";
+        setTimeout(() => {
+          history.push("/login");
+        }, 3000);
+      },
+      error: (err) => `Esse email já existe`,
+    });
   };
 
   return (
@@ -34,7 +59,7 @@ export const DivForm = () => {
         <div className="div__inputs">
           <div className="div__input">
             <div className="label">
-              <span>Nome</span>
+              <span>Nick-name</span>
               {errors && <h6>{errors.username?.message}</h6>}
             </div>
             <input placeholder="Seu nome" {...register("username")} />
@@ -83,6 +108,7 @@ export const DivForm = () => {
           Já tem uma conta? Entre <Link to="/login">aqui</Link>
         </p>
         <button type="submit">Cadastrar</button>
+        <Toaster />
       </form>
     </Div>
   );
