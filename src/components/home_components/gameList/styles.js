@@ -1,18 +1,24 @@
 import styled from "styled-components"
 
 export const StyledDiv = styled.div`
-  width: 100vw;
-  height: 100vh;
+  min-width: 100vw;
+  min-height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  button {
+    height: 30px;
+  }
 `
 
 export const StyledUl = styled.ul`
   width: 90%;
-  height: 100vh;
-  background-color: red;
 
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   flex-wrap: wrap;
-  gap: 15px;
+  gap: 25px;
 `

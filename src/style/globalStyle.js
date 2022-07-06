@@ -11,15 +11,11 @@ const GlobalStyle = createGlobalStyle`
   --secondary-white: #f5f5f5;
 }
 
-#root {
-    width: 100vw;
-    min-height: 100vh;
-}
-
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    box-sizing: content-box;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 ul, li, ol {
@@ -29,6 +25,11 @@ ul, li, ol {
 button {
     cursor: pointer;
     border: none;
+}
+
+input {
+  cursor: text;
+  border: none;
 }
 `
 

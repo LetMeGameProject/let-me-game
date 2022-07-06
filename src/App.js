@@ -1,11 +1,5 @@
-import GameList from "./components/home_components/gameList"
-
 function App() {
-  return (
-    <div>
-      <GameList />
-    </div>
-  )
+  return <div></div>
 }
 
 export default App
