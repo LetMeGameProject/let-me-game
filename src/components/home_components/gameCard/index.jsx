@@ -1,7 +1,10 @@
 import { StyledLi, Background } from "./styles"
-import { IoIosStarOutline, IoIosStar } from "react-icons/io"
+import CardsButton from "../CardsButton"
+import { useContext } from "react"
+import { FavoriteContext } from "../../../context/FavoriteList"
 
-const GameCard = ({ game, isFavorite = false }) => {
+const GameCard = ({ game }) => {
+  const { favoriteList } = useContext(FavoriteContext)
   const { name, background_image, genres } = game
   const genresGame = genres.slice(0, 2)
 
@@ -14,14 +17,10 @@ const GameCard = ({ game, isFavorite = false }) => {
           <li key={index}>{genre.name}</li>
         ))}
       </ul>
-      {isFavorite ? (
-        <button>
-          <IoIosStar />
-        </button>
+      {favoriteList.includes(game) ? (
+        <CardsButton game={game} favorite />
       ) : (
-        <button>
-          <IoIosStarOutline />
-        </button>
+        <CardsButton game={game} />
       )}
     </StyledLi>
   )

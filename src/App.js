@@ -1,13 +1,13 @@
-import { GamesProvider } from "./context/GameList/gameList"
 import Header from "./components/header"
 import Home from "./pages/home/index"
+import Providers from "./context"
 
 function App() {
   return (
-    <GamesProvider>
+    <Providers>
       <Header />
       <Home />
-    </GamesProvider>
+    </Providers>
   )
 }
 

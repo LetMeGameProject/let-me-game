@@ -1,4 +1,5 @@
 import { useContext } from "react"
+import Carousel from "../../components/home_components/Carousel"
 import GameList from "../../components/home_components/gameList"
 import SearchInput from "../../components/home_components/searchInput"
 import { GamesContext } from "../../context/GameList/gameList"
@@ -10,7 +11,7 @@ const Home = () => {
   return (
     <StyledMain>
       <section>
-        {/* <FavoriteGames/> */}
+        <Carousel />
         <SearchInput />
         <GameList />
         <button className="loadMore" onClick={() => loadMore()}>
