@@ -8,6 +8,13 @@ export const GamesProvider = ({ children }) => {
 
   const [gameList, setGameList] = useState([])
   const [page, setPage] = useState(1)
+  const [search, setSearch] = useState("")
+
+  const searchByName = () => {
+    Api.get(`/games${ApiKey}&search=${search}`)
+      .then((res) => setGameList(res.data.results))
+      .catch((err) => console.log(err))
+  }
 
   const loadMore = () => {
     setPage(page + 1)
@@ -20,7 +27,9 @@ export const GamesProvider = ({ children }) => {
   }, [page])
 
   return (
-    <GamesContext.Provider value={{ gameList, loadMore }}>
+    <GamesContext.Provider
+      value={{ gameList, loadMore, searchByName, search, setSearch }}
+    >
       {children}
     </GamesContext.Provider>
   )
