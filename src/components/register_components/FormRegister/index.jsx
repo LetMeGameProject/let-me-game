@@ -43,12 +43,9 @@ export const DivForm = () => {
     toast.promise(request, {
       loading: "Carregando",
       success: (data) => {
-        "Cadastrado com sucesso";
-        setTimeout(() => {
-          history.push("/login");
-        }, 3000);
+        history.push("/login");
       },
-      error: (err) => `Esse email já existe`,
+      error: (err) => `Email já existente`,
     });
   };
 

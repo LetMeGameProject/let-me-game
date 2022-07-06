@@ -28,12 +28,11 @@ export const DivForm = () => {
     toast.promise(request, {
       loading: "Carregando",
       success: (data) => {
-        "Logado com sucesso";
         localStorage.setItem("@tokenLMG", data.data.accessToken);
         setUser(data.data.user);
         history.push("/home");
       },
-      error: (err) => "Ususário ou senha incorretos",
+      error: (err) => "Usuário ou senha incorretos",
     });
   };
 
