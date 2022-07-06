@@ -12,11 +12,20 @@ export const StyledLi = styled.li`
     box-shadow: -8px 8px 2px 0px var(--accent-color);
     transition: 0.2s;
 
+    div {
+      filter: brightness(0.3);
+    }
+
     h3 {
       display: block;
     }
     button {
       display: block;
+
+      :hover {
+        color: gold;
+        transition: 0.2s;
+      }
     }
     ul {
       display: block;
@@ -48,16 +57,6 @@ export const StyledLi = styled.li`
       font-size: 12px;
     }
   }
-
-  button {
-    display: none;
-    background: transparent;
-    position: absolute;
-    color: gold;
-    font-size: 32px;
-    top: 5px;
-    right: 5px;
-  }
 `
 
 export const Background = styled.div`
@@ -70,9 +69,4 @@ export const Background = styled.div`
 
   display: flex;
   align-items: flex-end;
-
-  :hover {
-    filter: brightness(0.3);
-    transition: 0.2s;
-  }
 `

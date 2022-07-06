@@ -1,10 +1,11 @@
-import { RemoveFavoritProvider } from "./RemoveFavorite"
+import { FavoriteProvider } from "./FavoriteList"
+import { GamesProvider } from "./GameList/gameList"
 
-const Providers = ({children}) => {
+const Providers = ({ children }) => {
   return (
-    <RemoveFavoritProvider>
-      {children}
-    </RemoveFavoritProvider>
+    <GamesProvider>
+      <FavoriteProvider>{children}</FavoriteProvider>
+    </GamesProvider>
   )
 }
 
