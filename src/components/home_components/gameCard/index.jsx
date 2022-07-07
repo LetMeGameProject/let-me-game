@@ -1,34 +1,30 @@
-import { StyledLi, Background } from "./styles";
-import CardsButton from "../CardsButton";
-import { useContext } from "react";
-import { FavoriteContext } from "../../../context/FavoriteList";
-import { useHistory } from "react-router-dom";
-import { CurrentLobbyContext } from "../../../context/currentLobby";
+import { StyledLi, Background } from "./styles"
+import CardsButton from "../CardsButton"
+import { useContext } from "react"
+import { FavoriteContext } from "../../../context/FavoriteList"
+import { useHistory } from "react-router-dom"
+import { CurrentLobbyContext } from "../../../context/currentLobby"
+import { GiExitDoor } from "react-icons/gi"
 
 const GameCard = ({ game, userCount }) => {
-  const { favoriteList } = useContext(FavoriteContext);
-  const { name, background_image, genres } = game;
-  const genresGame = genres.slice(0, 2);
-  let history = useHistory();
-  const { setCurrentGame } = useContext(CurrentLobbyContext);
+  const { favoriteList } = useContext(FavoriteContext)
+  const { name, background_image, genres } = game
+  const genresGame = genres.slice(0, 2)
+  let history = useHistory()
+  const { setCurrentGame } = useContext(CurrentLobbyContext)
 
   function redirectToLobbyPage() {
-    setCurrentGame(game);
-    history.push("/teste");
+    setCurrentGame(game)
+    history.push("/teste")
   }
   return (
     <StyledLi>
       {/*  */}
       {/*  */}
-      <button
-        style={{ Top: "0", position: "relative" }}
-        onClick={() => redirectToLobbyPage()}
-      >
-        Entrar
-      </button>
-      <h4
-        style={{ color: "white", position: "relative" }}
-      >{`${userCount} jogadores online`}</h4>
+
+      <GiExitDoor className="iconLobby" onClick={() => redirectToLobbyPage()} />
+
+      <h4>{`${userCount} jogadores online`}</h4>
 
       {/* */}
       {/*  */}
@@ -46,7 +42,7 @@ const GameCard = ({ game, userCount }) => {
         <CardsButton game={game} />
       )}
     </StyledLi>
-  );
-};
+  )
+}
 
-export default GameCard;
+export default GameCard

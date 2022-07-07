@@ -4,22 +4,23 @@ import { FavoriteContext } from "../../../context/FavoriteList"
 import Button from "./styles"
 
 const CardsButton = ({ game, favorite = false }) => {
-  
   const { addFavorite, removeFavorite } = useContext(FavoriteContext)
 
   return (
     <>
       {favorite ? (
         <Button
+          addFavorite
           onFavorite
           onClick={() => {
             removeFavorite(game.id)
           }}
         >
-          <IoIosStar className="IoIosStar" />
+          <IoIosStar />
         </Button>
       ) : (
         <Button
+          removeFavorite
           onClick={() => {
             addFavorite(game)
           }}
