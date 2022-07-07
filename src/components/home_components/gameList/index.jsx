@@ -10,7 +10,7 @@ const GameList = () => {
   return (
     <StyledDiv>
       <StyledUl>
-        {gameList.map((game, index) => (
+        {gameList?.map((game, index) => (
           <GameCard key={index} game={game} />
         ))}
       </StyledUl>

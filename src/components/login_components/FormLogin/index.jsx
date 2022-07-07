@@ -1,40 +1,40 @@
-import { yupResolver } from "@hookform/resolvers/yup";
-import { useContext } from "react";
-import { useForm } from "react-hook-form";
-import toast, { Toaster } from "react-hot-toast";
-import { Link, useHistory } from "react-router-dom";
-import * as yup from "yup";
-import { UserContext } from "../../../providers/user";
-import { internalApi } from "../../../services/internalAPI";
-import { Div } from "./style";
+import { yupResolver } from "@hookform/resolvers/yup"
+import { useContext } from "react"
+import { useForm } from "react-hook-form"
+import toast, { Toaster } from "react-hot-toast"
+import { Link, useHistory } from "react-router-dom"
+import * as yup from "yup"
+import { UserContext } from "../../../context/User"
+import { internalApi } from "../../../services/internalAPI"
+import { Div } from "./style"
 
 export const DivForm = () => {
-  const { setUser } = useContext(UserContext);
-  const history = useHistory();
+  const { setUser } = useContext(UserContext)
+  const history = useHistory()
 
   const formSchema = yup.object().shape({
     email: yup.string().required("Email obrigatório").email("Email inválido"),
     password: yup.string().required("Senha obrigatória"),
-  });
+  })
 
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({ resolver: yupResolver(formSchema) });
+  } = useForm({ resolver: yupResolver(formSchema) })
 
   const onSubmit = (data) => {
-    const request = internalApi.post("login", data);
+    const request = internalApi.post("login", data)
     toast.promise(request, {
       loading: "Carregando",
       success: (data) => {
-        localStorage.setItem("@tokenLMG", data.data.accessToken);
-        setUser(data.data.user);
-        history.push("/home");
+        localStorage.setItem("@tokenLMG", data.data.accessToken)
+        setUser(data.data.user)
+        history.push("/home")
       },
       error: (err) => "Usuário ou senha incorretos",
-    });
-  };
+    })
+  }
 
   return (
     <Div>
@@ -70,5 +70,5 @@ export const DivForm = () => {
       </form>
       <Toaster />
     </Div>
-  );
-};
+  )
+}

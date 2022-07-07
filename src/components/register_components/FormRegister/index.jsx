@@ -1,14 +1,14 @@
-import { yupResolver } from "@hookform/resolvers/yup";
-import { useForm } from "react-hook-form";
-import toast, { Toaster } from "react-hot-toast";
-import { Link, useHistory } from "react-router-dom";
-import * as yup from "yup";
-import { internalApi } from "../../../services/internalAPI";
-import { Div } from "./style";
-import { v4 as uuidv4 } from "uuid";
+import { yupResolver } from "@hookform/resolvers/yup"
+import { useForm } from "react-hook-form"
+import toast, { Toaster } from "react-hot-toast"
+import { Link, useHistory } from "react-router-dom"
+import * as yup from "yup"
+import { internalApi } from "../../../services/internalAPI"
+import { Div } from "./style"
+import { v4 as uuidv4 } from "uuid"
 
 export const DivForm = () => {
-  const history = useHistory();
+  const history = useHistory()
 
   const formSchema = yup.object().shape({
     username: yup.string().required("Nick-name obrigatório"),
@@ -20,13 +20,13 @@ export const DivForm = () => {
       .string()
       .required("Senha obrigatória")
       .min(8, "Sua senha deve conter no mínimo 8 caracteres"),
-  });
+  })
 
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({ resolver: yupResolver(formSchema) });
+  } = useForm({ resolver: yupResolver(formSchema) })
 
   const onSubmit = (data) => {
     const restOfData = {
@@ -38,18 +38,18 @@ export const DivForm = () => {
       last_feedbacks: [],
       plataforms: [],
       favorite_games: [],
-    };
-    const completeData = { ...data, ...restOfData };
-    const request = internalApi.post("register", completeData);
+    }
+    const completeData = { ...data, ...restOfData }
+    const request = internalApi.post("register", completeData)
 
     toast.promise(request, {
       loading: "Carregando",
       success: (data) => {
-        history.push("/login");
+        history.push("/")
       },
       error: (err) => `Email já existente`,
-    });
-  };
+    })
+  }
 
   return (
     <Div>
@@ -110,5 +110,5 @@ export const DivForm = () => {
         <Toaster />
       </form>
     </Div>
-  );
-};
+  )
+}

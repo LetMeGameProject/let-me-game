@@ -4,6 +4,7 @@ export const FavoriteContext = createContext()
 
 export const FavoriteProvider = ({ children }) => {
   const [favoriteList, setFavoriteList] = useState([])
+  console.log(favoriteList)
 
   const addFavorite = (game) => {
     setFavoriteList([...favoriteList, game])

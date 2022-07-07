@@ -39,7 +39,7 @@ const Carousel = () => {
         modules={[EffectCoverflow, Pagination, Navigation]}
         className="mySwiper"
       >
-        {favoriteList.map((game, index) => {
+        {favoriteList?.map((game, index) => {
           return (
             <SwiperSlide key={index}>
               <CarouselCard game={game} removeFavorite={removeFavorite} />
