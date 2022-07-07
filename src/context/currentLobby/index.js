@@ -9,7 +9,7 @@ export const CurrentLobbyProvider = ({ children }) => {
   useEffect(() => {
     //implementar para pegar token atual do usuario no local storage
     const token =
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hcmdvZEBtYXJnb2QuY29tIiwiaWF0IjoxNjU3MTU3MTQyLCJleHAiOjE2NTcxNjA3NDIsInN1YiI6IjQ4NTk4OTU4NTg1NjU2NTUifQ.vr9Vv1sMGYfT3tlpupZEV5Ddt8BAdpidF18H77jTgq8";
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hcmdvZEBtYXJnb2QuY29tIiwiaWF0IjoxNjU3MjA0NTU5LCJleHAiOjE2NTcyMDgxNTksInN1YiI6IjQ4NTk4OTU4NTg1NjU2NTUifQ.dEuw5l6DTIsUkYRjJyHzOPSnnMeh0Cycx6Z7km0SFgA";
     fetch("https://json-sever-let-me-game.herokuapp.com/online_users_list", {
       headers: {
         Authorization: `Bearer ${token}`,
