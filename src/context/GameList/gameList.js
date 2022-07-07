@@ -9,10 +9,15 @@ export const GamesProvider = ({ children }) => {
   const [gameList, setGameList] = useState([])
   const [page, setPage] = useState(1)
   const [search, setSearch] = useState("")
+  const [loading, setLoading] = useState(false)
 
   const searchByName = () => {
+    setLoading(true)
     Api.get(`/games${ApiKey}&search=${search}`)
-      .then((res) => setGameList(res.data.results))
+      .then((res) => {
+        setGameList(res.data.results)
+        setLoading(false)
+      })
       .catch((err) => console.log(err))
   }
 
@@ -21,14 +26,19 @@ export const GamesProvider = ({ children }) => {
   }
 
   useEffect(() => {
+    setLoading(true)
+
     Api.get(`/games${ApiKey}&page=${page}&page_size=${15}`)
-      .then((res) => setGameList([...gameList, ...res.data.results]))
+      .then((res) => {
+        setGameList([...gameList, ...res.data.results])
+        setLoading(false)
+      })
       .catch((err) => console.log(err))
   }, [page])
 
   return (
     <GamesContext.Provider
-      value={{ gameList, loadMore, searchByName, search, setSearch }}
+      value={{ loading, gameList, loadMore, searchByName, search, setSearch }}
     >
       {children}
     </GamesContext.Provider>
