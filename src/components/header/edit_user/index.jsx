@@ -12,12 +12,15 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useContext } from 'react';
 import { UserContext } from '../../../context/User';
 import { internalApi } from '../../../services/internalAPI';
+import toast from 'react-hot-toast';
+import { TextField } from '@mui/material';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 export default function EditUser({openModalEditUser, setOpenModalEditUser}){
 
-    const { user } = useContext(UserContext)
+    const { user, setUser } = useContext(UserContext)
 
-    const style = {
+    const styleModal = {
         position: 'absolute',
         top: '50%',
         left: '50%',
@@ -32,6 +35,17 @@ export default function EditUser({openModalEditUser, setOpenModalEditUser}){
         justifyContent: "center", 
         alignItems: "center"
     };
+
+    const theme = createTheme({
+        palette: {
+          primary: {
+            main: '#ffffff',
+          },
+          secondary: {
+            main: '#11cb5f',
+          },
+        },
+      });
 
     const schema = yup.object().shape({
         photoUrl: yup.string().url(),
@@ -51,11 +65,24 @@ export default function EditUser({openModalEditUser, setOpenModalEditUser}){
     })
 
     const onSubmit= (data) => {
-        internalApi.patch(`users/${localStorage.getItem("@id")}`, data, 
+
+        const response = internalApi.patch(`users/${localStorage.getItem("@id")}`, data, 
         {
             headers:{
-                'Authorization': `Bearer ${localStorage.getItem("@tokenLMG")}`
+                'Authorization':  `Bearer ${localStorage.getItem("@tokenLMG")}`
             }
+        })
+
+        toast.promise(response,{
+            loading: 'Atualizando Perfil...',
+            success: (response)=> {
+                setUser(response.data)
+                setTimeout(()=>{
+                    setOpenModalEditUser(false)
+                }, 1500)
+                return "Perfil atualizado com sucesso"
+            },
+            error: "Poxa, não conseguimos atualizar!"
         })
     }
 
@@ -72,31 +99,64 @@ export default function EditUser({openModalEditUser, setOpenModalEditUser}){
             }}
         >
             <Fade in={openModalEditUser}>
-            <Box sx={style}>
+            <Box sx={styleModal}>
                 <FormStyled onSubmit={handleSubmit(onSubmit)}> 
                     <div className="div-input">
-                        <label>Foto de perfil</label>
-                        <input placeholder={user.photoUrl}{...register("photoUrl")}></input>
-                        <label>Bio</label>
-                        <textarea placeholder={user.bio}  {...register("bio")}></textarea>
+                        <ThemeProvider theme={theme}>
+                            <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: "center" }}>
+                            <TextField defaultValue={user.photoUrl} size="small" label="Foto de perfil" variant="standard" 
+                            inputProps={{style: {height: 15, backgroundColor: "var(--background-color)", borderRadius: 4, color: "white", fontSize: 12, padding: 10}}}
+                            InputLabelProps={{style: {color: 'white', fontSize: 18}}}
+                            {...register("photoUrl")} />
+                            </Box>
+                      
+                            <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: "center" }}>
+                            <TextField defaultValue={user.bio} size="small"  multiline  maxRows={4} label="Bio" variant="standard" 
+                            inputProps={{style: {height: 55, backgroundColor: "var(--background-color)", borderRadius: 4, color: "white", fontSize: 12, padding: 10}}}
+                            InputLabelProps={{style: {color: 'white', fontSize: 18}}}
+                            {...register("bio")}
+                            />
+                            </Box>
+                        </ThemeProvider>
                     </div>
                     <div className="div-checkbox">
-                        <div>
+                    <ThemeProvider theme={theme}>
+                        <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: "center" }}>
                             <FaSteam size={20}/>
-                            <input placeholder={user.plataforms[0].steam !== "" ? user.plataforms[0].steam: "Insira seu link para Steam"}{...register("plataforms[0].steam")}></input>
-                        </div>
-                        <div>
+                            <TextField defaultValue={user.plataforms[0]?.steam} placeholder="Link para sua conta Steam"  size="small" variant="standard" 
+                            inputProps={{style: { width: 180, maxWidth: 400,height: 10, backgroundColor: "var(--primary-white)", borderRadius: 4, color: "black", fontSize: 12, padding: 10}}}
+                            InputLabelProps={{style: {color: 'white', fontSize: 18}}}
+                            {...register("plataforms[0].steam")}
+                            />
+                        </Box>
+
+                        <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: "center", marginTop: -5 }}>
                             <SiEpicgames size={20}/>
-                            <input placeholder={user.plataforms[1].epic !== "" ? user.plataforms[1].epic: "Insira seu link para Epic"} {...register("plataforms[1].epic")}></input>
-                        </div>
-                        <div>
+                            <TextField defaultValue={user.plataforms[1]?.epic} placeholder="Link para sua conta Epic"  size="small" variant="standard"
+                            inputProps={{style: {width: 180, maxWidth: 400, height: 10, backgroundColor: "var(--primary-white)", borderRadius: 4, color: "black", fontSize: 12, padding: 10}}}
+                            InputLabelProps={{style: {color: 'white', fontSize: 18}}}
+                            {...register("plataforms[1].epic")}
+                            />
+                        </Box>
+
+                        <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: "center", marginTop: -5 }}>
                             <FaPlaystation size={20}/>
-                            <input placeholder={user.plataforms[2].psn !== "" ? user.plataforms[2].psn: "Insira seu link para PSN"} {...register("plataforms[2].psn")}></input>
-                        </div>
-                        <div>
+                            <TextField defaultValue={user.plataforms[2]?.psn} placeholder="Link para sua conta PSN" size="small" variant="standard" 
+                            inputProps={{style: {width: 180, maxWidth: 400, height: 10, backgroundColor: "var(--primary-white)", borderRadius: 4, color: "black", fontSize: 12, padding: 10}}}
+                            InputLabelProps={{style: {color: 'white', fontSize: 18}}}
+                            {...register("plataforms[2].psn")}
+                            />
+                        </Box>
+
+                        <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: "center", marginTop: -5 }}>
                             <FaXbox size={20}/>
-                            <input placeholder={user.plataforms[3].xbox !== "" ? user.plataforms[3].xbox: "Insira seu link para Xbox"} {...register("plataforms[3].xbox")}></input>
-                        </div>
+                            <TextField defaultValue={user.plataforms[3]?.xbox} placeholder="Link para sua conta Xbox"  size="small" variant="standard" 
+                            inputProps={{style: {width: 180, maxWidth: 400, height: 10, backgroundColor: "var(--primary-white)", borderRadius: 4, color: "black", fontSize: 12, padding: 10}}}
+                            InputLabelProps={{style: {color: 'white', fontSize: 18}}}
+                            {...register("plataforms[3].xbox")}
+                            />
+                        </Box>
+                    </ThemeProvider>
                     </div>
                     <div className="div-btn">
                         <button className="btn-update">Atualizar</button>

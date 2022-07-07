@@ -83,13 +83,13 @@ export default function ShowUser({openModalUser, setOpenModalUser, setOpenModalE
                         <div className="plataform-title">
                             <h4>Plataformas</h4>
                         </div>
-                        {user.plataforms.length > 0 ? 
+                        {user.plataforms.length > 0  ?
                         (
                             <div className="plataforms">
-                                {user.plataforms[0].steam !== "" && <FaSteam size={20}/>} 
-                                {user.plataforms[1].epic !== "" &&  <SiEpicgames size={20}/>}
-                                {user.plataforms[2].psn !== "" &&  <FaPlaystation size={20}/>}
-                                {user.plataforms[3].xbox !== "" &&  <FaXbox size={20}/>}
+                                {user.plataforms[0]?.steam !== "" && <FaSteam size={20}/>} 
+                                {user.plataforms[1]?.epic !== "" &&  <SiEpicgames size={20}/>}
+                                {user.plataforms[2]?.psn !== "" &&  <FaPlaystation size={20}/>}
+                                {user.plataforms[3]?.xbox !== "" && <FaXbox size={20}/>}
                             </div>
                         ) : (
                             <div className="no-plataforms"><p>Nenhuma plataforma cadastrada</p></div>

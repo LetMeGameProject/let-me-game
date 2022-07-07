@@ -26,7 +26,7 @@ export default function Header(){
                 'Authorization': `Bearer ${localStorage.getItem("@tokenLMG")}`
             }
         })
-            .then(res => setUser(res.data))
+            .then((res) => setUser(res.data))
     }, [])
 
     return(

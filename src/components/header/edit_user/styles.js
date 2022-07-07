@@ -11,42 +11,28 @@ export const FormStyled = styled.form`
     font-family: 'Inter', sans-serif;
 
     .div-input{
-        width: 90%;
-        margin-top: 20px;
-        display:flex;
-        gap:10px;
-        flex-direction: column;
+        width: 100%;
+        display: flex;
         justify-content: center;
+        flex-direction: column;
         align-items: center;
-        label{
-            align-self: flex-start;
-            font-size: 14px;
-            margin-bottom: -5px
-        }
-
-        input, textarea{
-            width: 100%;
-            height: 30px;
-            border-radius: 4px;
-            border: none;
-            padding: 20px;
-            background-color: var(--background-color);
-            color: white;
-            &::placeholder{
-                color: grey;
+        gap: 10px;
+        padding: 10px;
+        color: var(--primary-white);
+        div{
+            width: 99%;
+            div{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 3px;
             }
-
-        }
-
-        textarea{
-            height: 120px;
-            font-family: 'Inter', sans-serif;
-            resize: none;
         }
     }
 
     .div-checkbox{
         width: 90%;
+        margin-top: -20px;
         border-radius: 4px;
         display:flex;
         flex-direction: column;
@@ -54,28 +40,19 @@ export const FormStyled = styled.form`
         align-items: center;
         background-color: var(--background-color);
         color: var(--primary-white);
-
-        input{
-            height: 25px; 
-            padding: 0px 3px;
-            border-radius: 4px;
-            border: none;
-            background-color: var(--primary-white);
-            color: var(--background-color);
-            &::placeholder{
-                color: grey;
-            }
-        }
-
+        gap: 40px;
 
         div{
-            width: 100%;
+            width: 90%;
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 10px;
             padding: 10px;
             color: var(--primary-white);
+            div{
+                padding: 3px;
+            }
+            
         }
     }
 
