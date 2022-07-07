@@ -6,12 +6,7 @@ import GameCard from "../gameCard"
 import { StyledDiv, StyledUl } from "./styles"
 
 const GameList = () => {
-<<<<<<< HEAD
   const { gameList, loading, loadMore } = useContext(GamesContext)
-=======
-  const { gameList, loading } = useContext(GamesContext)
-  const { loadMore } = useContext(GamesContext)
->>>>>>> a31488f9e8cf51d60f7f63d387eb804fe0a1c718
 
   return (
     <>
