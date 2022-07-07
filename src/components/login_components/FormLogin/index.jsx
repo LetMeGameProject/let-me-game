@@ -1,15 +1,12 @@
 import { yupResolver } from "@hookform/resolvers/yup"
-import { useContext } from "react"
 import { useForm } from "react-hook-form"
 import toast, { Toaster } from "react-hot-toast"
 import { Link, useHistory } from "react-router-dom"
 import * as yup from "yup"
-import { UserContext } from "../../../context/User"
 import { internalApi } from "../../../services/internalAPI"
 import { Div } from "./style"
 
 export const DivForm = () => {
-  const { setUser } = useContext(UserContext)
   const history = useHistory()
 
   const formSchema = yup.object().shape({
@@ -29,8 +26,11 @@ export const DivForm = () => {
       loading: "Carregando",
       success: (data) => {
         localStorage.setItem("@tokenLMG", data.data.accessToken)
-        setUser(data.data.user)
-        history.push("/home")
+        localStorage.setItem("@id", data.data.user.id)
+        setTimeout(()=>{
+          history.push("/home")
+        }, 1500)
+        return `Bem-vindo ${data.data.user.username}`
       },
       error: (err) => "Usuário ou senha incorretos",
     })

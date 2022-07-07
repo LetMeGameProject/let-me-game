@@ -6,7 +6,9 @@ const Providers = ({ children }) => {
   return (
     <UserProvider>
       <GamesProvider>
-        <FavoriteProvider>{children}</FavoriteProvider>
+        <FavoriteProvider>
+          {children}
+        </FavoriteProvider>
       </GamesProvider>
     </UserProvider>
   )
