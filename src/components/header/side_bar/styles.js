@@ -48,7 +48,10 @@ export const Content = styled.div`
 
             img{
                 width:50px;
+                height: 50px;
+                object-fit: cover;
                 border-radius: 100%;
+                border: 2.5px solid var(--foreground-color);
             }
         }
 

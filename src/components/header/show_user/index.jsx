@@ -8,8 +8,12 @@ import { FaSteam } from "react-icons/fa"
 import { SiEpicgames } from "react-icons/si"
 import { FaPlaystation, FaXbox } from "react-icons/fa"
 import { ProgressBar } from '../../../style/globalStyle';
+import { useContext } from 'react';
+import { UserContext } from '../../../context/User';
 
 export default function ShowUser({openModalUser, setOpenModalUser, setOpenModalEditUser}){
+
+    const { user } = useContext(UserContext)
 
     const openModalEdit = () => {
         setOpenModalUser(false)
@@ -53,14 +57,14 @@ export default function ShowUser({openModalUser, setOpenModalUser, setOpenModalE
 
                     <div className="user-info">
                         <div className="user-img">
-                            <img src="https://tecnoandroid.net/wp-content/uploads/2022/02/fotos-boninas-para-perfil-whatsapp-gratis-sin-frase-156.jpg" alt="imagem de perfil do usuário"/>
+                            <img src={user.photoUrl} alt="imagem de perfil do usuário"/>
                         </div>
 
                         <div className="user">
-                            <h4>TheRobite</h4>
-                            <h4>Brasil</h4>
+                            <h4>{user.username}</h4>
+                            <h4>{user.country}</h4>
                             <h4>Reputação</h4>
-                            <ProgressBar value="90" max="100" />
+                            <ProgressBar value={user.reputation} max="100" />
                         </div>
                     </div>
 
@@ -71,7 +75,7 @@ export default function ShowUser({openModalUser, setOpenModalUser, setOpenModalE
                             <h4>Bio</h4>
                         </div>
                         <div className="bio-text">
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+                            <p>{user.bio}</p>
                         </div>
                     </div>
 
@@ -79,12 +83,19 @@ export default function ShowUser({openModalUser, setOpenModalUser, setOpenModalE
                         <div className="plataform-title">
                             <h4>Plataformas</h4>
                         </div>
-                        <div className="plataforms">
-                            <FaSteam size={20}/>
-                            <SiEpicgames size={20}/>
-                            <FaPlaystation size={20}/>
-                            <FaXbox size={20}/>
-                        </div>
+                        {user.plataforms.length > 0 ? 
+                        (
+                            <div className="plataforms">
+                                {user.plataforms[0].steam !== "" && <FaSteam size={20}/>} 
+                                {user.plataforms[1].epic !== "" &&  <SiEpicgames size={20}/>}
+                                {user.plataforms[2].psn !== "" &&  <FaPlaystation size={20}/>}
+                                {user.plataforms[3].xbox !== "" &&  <FaXbox size={20}/>}
+                            </div>
+                        ) : (
+                            <div className="no-plataforms"><p>Nenhuma plataforma cadastrada</p></div>
+                        )
+                        }
+                        
                     </div>
                 </DivStyled>
             </Box>

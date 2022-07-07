@@ -104,7 +104,7 @@ export const DivForm = () => {
           </div>
         </div>
         <p>
-          Já tem uma conta? Entre <Link to="/login">aqui</Link>
+          Já tem uma conta? Entre <Link to="/">aqui</Link>
         </p>
         <button type="submit">Cadastrar</button>
         <Toaster />

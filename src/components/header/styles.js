@@ -44,6 +44,7 @@ export const Content = styled.div`
     .div-logo{
         img{
           width: 60px;
+          
         }
        ${medias.map(media => css`
        @media(min-width: ${media.break}px){

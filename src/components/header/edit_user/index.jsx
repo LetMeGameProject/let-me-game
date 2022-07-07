@@ -9,8 +9,14 @@ import { FaPlaystation, FaXbox } from "react-icons/fa";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from '@hookform/resolvers/yup';
+import { useContext } from 'react';
+import { UserContext } from '../../../context/User';
+import { internalApi } from '../../../services/internalAPI';
 
 export default function EditUser({openModalEditUser, setOpenModalEditUser}){
+
+    const { user } = useContext(UserContext)
+
     const style = {
         position: 'absolute',
         top: '50%',
@@ -45,7 +51,12 @@ export default function EditUser({openModalEditUser, setOpenModalEditUser}){
     })
 
     const onSubmit= (data) => {
-        console.log(data.plataforms)
+        internalApi.patch(`users/${localStorage.getItem("@id")}`, data, 
+        {
+            headers:{
+                'Authorization': `Bearer ${localStorage.getItem("@tokenLMG")}`
+            }
+        })
     }
 
     return(
@@ -65,26 +76,26 @@ export default function EditUser({openModalEditUser, setOpenModalEditUser}){
                 <FormStyled onSubmit={handleSubmit(onSubmit)}> 
                     <div className="div-input">
                         <label>Foto de perfil</label>
-                        <input placeholder="Insira o link para a nova foto" {...register("photoUrl")}></input>
+                        <input placeholder={user.photoUrl}{...register("photoUrl")}></input>
                         <label>Bio</label>
-                        <textarea placeholder="Altere sua Bio" {...register("bio")}></textarea>
+                        <textarea placeholder={user.bio}  {...register("bio")}></textarea>
                     </div>
                     <div className="div-checkbox">
                         <div>
                             <FaSteam size={20}/>
-                            <input placeholder="Link do perfil Steam" {...register("plataforms[0].steam")}></input>
+                            <input placeholder={user.plataforms[0].steam !== "" ? user.plataforms[0].steam: "Insira seu link para Steam"}{...register("plataforms[0].steam")}></input>
                         </div>
                         <div>
                             <SiEpicgames size={20}/>
-                            <input placeholder="Link do perfil Epic" {...register("plataforms[1].epic")}></input>
+                            <input placeholder={user.plataforms[1].epic !== "" ? user.plataforms[1].epic: "Insira seu link para Epic"} {...register("plataforms[1].epic")}></input>
                         </div>
                         <div>
                             <FaPlaystation size={20}/>
-                            <input placeholder="Link do perfil PSN" {...register("plataforms[2].psn")}></input>
+                            <input placeholder={user.plataforms[2].psn !== "" ? user.plataforms[2].psn: "Insira seu link para PSN"} {...register("plataforms[2].psn")}></input>
                         </div>
                         <div>
                             <FaXbox size={20}/>
-                            <input placeholder="Link do perfil Xbox" {...register("plataforms[3].xbox")}></input>
+                            <input placeholder={user.plataforms[3].xbox !== "" ? user.plataforms[3].xbox: "Insira seu link para Xbox"} {...register("plataforms[3].xbox")}></input>
                         </div>
                     </div>
                     <div className="div-btn">

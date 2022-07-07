@@ -2,16 +2,32 @@ import { Content, StyledHeader} from "./styles";
 import Logo from "../../assets/images/logo_LetMeGame.svg"
 import SideBar from "./side_bar";
 import { Squash as Hamburger } from 'hamburger-react'
-import { useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { motion } from "framer-motion";
 import ShowUser from "./show_user";
 import EditUser from "./edit_user";
+import { UserContext } from "../../context/User";
+import { internalApi } from "../../services/internalAPI";
+
+
 
 export default function Header(){
 
     const [isOpen, setOpen] = useState(false)
     const [openModalUser, setOpenModalUser] = useState(false);
     const [openModalEditUser, setOpenModalEditUser] = useState(false);
+    
+    const { setUser } = useContext(UserContext)
+
+    useEffect(()=>{
+        internalApi.get(`users/${localStorage.getItem("@id")}`, 
+        {
+            headers:{
+                'Authorization': `Bearer ${localStorage.getItem("@tokenLMG")}`
+            }
+        })
+            .then(res => setUser(res.data))
+    }, [])
 
     return(
         <StyledHeader>
