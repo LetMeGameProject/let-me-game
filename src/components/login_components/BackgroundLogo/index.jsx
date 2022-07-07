@@ -1,4 +1,4 @@
-import background from "../../../assets/images/registerImages/background.svg";
+import background from "../../../assets/images/registerImages/newBackground.svg";
 import { DivImages } from "./style";
 
 export const BackgroundBody = (prop) => {
