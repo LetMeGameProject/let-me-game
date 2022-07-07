@@ -2,7 +2,6 @@ import styled from "styled-components"
 
 const StyledMain = styled.main`
   section {
-    
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -20,6 +19,10 @@ const StyledMain = styled.main`
         background-color: var(--hover-color);
         transition: 0.3s;
       }
+    }
+
+    .loading {
+      margin-top: 15%;
     }
   }
 `
