@@ -1,25 +1,30 @@
-import styled from "styled-components";
+import styled from "styled-components"
 
 const StyledInput = styled.div`
-  width:260px;
+  width: 260px;
   height: 48px;
-  background-color:white;
-  padding:10px;
-  border-radius:50px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  
+  background-color: white;
+  padding: 10px 10px 10px 20px;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 
-  div{
-    width:35px;
-    height:35px;
-    background-color:var(--accent-color);
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    border-radius:50px;
+  input {
+    width: 100%;
   }
 
+  .searchIcon {
+    color: var(--background-white);
+    height: 36px;
+    font-size: 36px;
+    line-height: 24px;
+
+    :hover {
+      color: var(--accent-color);
+      transition: 0.3s;
+      cursor: pointer;
+    }
+  }
 `
 export default StyledInput

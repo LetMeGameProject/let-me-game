@@ -5,7 +5,6 @@ import StyledMain from "./styles"
 import Header from "../../components/header"
 import { Toaster } from "react-hot-toast"
 
-
 const Home = () => {
   return (
     <>
