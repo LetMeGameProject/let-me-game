@@ -1,16 +1,18 @@
 import { FavoriteProvider } from "./FavoriteList"
 import { GamesProvider } from "./GameList/gameList"
 import { UserProvider } from "./User"
+import { LobbyProvider } from "./OpenLobby"
 
 const Providers = ({ children }) => {
   return (
-    <UserProvider>
-      <GamesProvider>
-        <FavoriteProvider>
-          {children}
-        </FavoriteProvider>
-      </GamesProvider>
-    </UserProvider>
+    <LobbyProvider>
+      <UserProvider>
+        <GamesProvider>
+          <FavoriteProvider>{children}</FavoriteProvider>
+        </GamesProvider>
+      </UserProvider>  
+    </LobbyProvider>
+
   )
 }
 
