@@ -16,7 +16,7 @@ import toast from 'react-hot-toast';
 import { TextField } from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
-export default function EditUser({openModalEditUser, setOpenModalEditUser}){
+const EditUser = ({openModalEditUser, setOpenModalEditUser}) =>{
 
     const { user, setUser } = useContext(UserContext)
 
@@ -138,7 +138,7 @@ export default function EditUser({openModalEditUser, setOpenModalEditUser}){
                             {...register("plataforms[1].epic")}
                             />
                         </Box>
-
+ 
                         <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: "center", marginTop: -5 }}>
                             <FaPlaystation size={20}/>
                             <TextField defaultValue={user.plataforms[2]?.psn} placeholder="Link para sua conta PSN" size="small" variant="standard" 
@@ -169,3 +169,5 @@ export default function EditUser({openModalEditUser, setOpenModalEditUser}){
         </Modal>
     )
 }
+
+export default EditUser
