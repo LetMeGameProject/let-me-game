@@ -14,10 +14,8 @@ const StyledDiv = styled.div`
     border-radius: 30px;
   }
 
-  button {
-    background-color: var(--foreground-color);
+  .searchIcon {
     color: var(--primary-white);
-
     width: 36px;
     height: 36px;
 
@@ -26,8 +24,9 @@ const StyledDiv = styled.div`
     border-radius: 30px;
 
     :hover {
-      background-color: var(--hover-color);
+      color: var(--accent-color);
       transition: 0.3s;
+      cursor: pointer;
     }
   }
 `

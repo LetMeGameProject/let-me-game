@@ -1,6 +1,6 @@
 import { useContext } from "react"
 import { RingLoader } from "react-spinners"
-
+import { MdOutlineExpandMore } from "react-icons/md"
 import { GamesContext } from "../../../context/GameList/gameList"
 import GameCard from "../gameCard"
 import { StyledDiv, StyledUl } from "./styles"
@@ -25,7 +25,7 @@ const GameList = () => {
             ))}
           </StyledUl>
           <button className="loadMore" onClick={() => loadMore()}>
-            Load More
+            <MdOutlineExpandMore size={46} />
           </button>
         </StyledDiv>
       )}

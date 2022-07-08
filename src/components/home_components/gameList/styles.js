@@ -6,8 +6,13 @@ export const StyledDiv = styled.div`
   flex-direction: column;
   align-items: center;
 
-  button {
-    height: 30px;
+  .loadMore {
+    margin: 30px;
+    min-height: 30px;
+    min-width: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 `
 
