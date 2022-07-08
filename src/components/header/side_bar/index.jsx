@@ -8,7 +8,7 @@ import { toast } from "react-hot-toast"
 import { useHistory } from "react-router-dom";
 
 
-export default function SideBar({setOpen, setOpenModalUser}){
+const SideBar =({setOpen, setOpenModalUser}) =>{
 
     const { user } = useContext(UserContext)
     const history= useHistory()
@@ -17,6 +17,7 @@ export default function SideBar({setOpen, setOpenModalUser}){
         setOpenModalUser(true)
         setOpen(false)
     }
+
 
     const openModalMessage = ()=>{
         setOpen(false)
@@ -28,10 +29,10 @@ export default function SideBar({setOpen, setOpenModalUser}){
         localStorage.removeItem("@tokenLMG")
         setTimeout(()=>{
             history.push("/")
-        }, 1000)
+        }, 800)
         setTimeout(()=>{
             toast.success('Deslogado com sucesso!')
-        }, 1100)
+        }, 900)
 
     }
 
@@ -68,3 +69,5 @@ export default function SideBar({setOpen, setOpenModalUser}){
         </>
     )
 }
+
+export default SideBar

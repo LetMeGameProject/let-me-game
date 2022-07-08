@@ -42,6 +42,7 @@ export const Content = styled.div`
 
 
     .div-logo{
+        cursor: pointer;
         img{
           width: 60px;
           

@@ -11,7 +11,7 @@ import { ProgressBar } from '../../../style/globalStyle';
 import { useContext } from 'react';
 import { UserContext } from '../../../context/User';
 
-export default function ShowUser({openModalUser, setOpenModalUser, setOpenModalEditUser}){
+const ShowUser = ({openModalUser, setOpenModalUser, setOpenModalEditUser}) =>{
 
     const { user } = useContext(UserContext)
 
@@ -103,3 +103,5 @@ export default function ShowUser({openModalUser, setOpenModalUser, setOpenModalE
         </Modal>
     );
 }
+
+export default ShowUser
