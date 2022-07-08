@@ -12,6 +12,7 @@ const Providers = ({ children }) => {
         </GamesProvider>
       </UserProvider>  
     </LobbyProvider>
+
   )
 }
 

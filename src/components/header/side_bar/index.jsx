@@ -2,11 +2,16 @@ import { Content } from "./styles";
 import { FiUser } from "react-icons/fi"
 import { BiMessageRounded, BiLogOut } from "react-icons/bi"
 import { ProgressBar } from "../../../style/globalStyle";
-
+import { useContext } from "react";
+import { UserContext } from "../../../context/User";
+import { toast } from "react-hot-toast"
+import { useHistory } from "react-router-dom";
 
 
 export default function SideBar({setOpen, setOpenModalUser}){
-    
+
+    const { user } = useContext(UserContext)
+    const history= useHistory()
 
     const openModalEdit = ()=>{
         setOpenModalUser(true)
@@ -19,7 +24,15 @@ export default function SideBar({setOpen, setOpenModalUser}){
 
     const logout = ()=>{
         setOpen(false)
-        return
+        localStorage.removeItem("@id")
+        localStorage.removeItem("@tokenLMG")
+        setTimeout(()=>{
+            history.push("/")
+        }, 1000)
+        setTimeout(()=>{
+            toast.success('Deslogado com sucesso!')
+        }, 1100)
+
     }
 
     return(
@@ -27,11 +40,11 @@ export default function SideBar({setOpen, setOpenModalUser}){
         <Content>
             <div className="user">
                 <div className="user-img">
-                    <img src="https://tecnoandroid.net/wp-content/uploads/2022/02/fotos-boninas-para-perfil-whatsapp-gratis-sin-frase-156.jpg" alt ="imagem de perfil definida pelo usuário"/>
+                    <img src={user.photoUrl} alt ="imagem de perfil definida pelo usuário"/>
                 </div>
                 <div className="user-info">
-                    <h4>TheRobite</h4>
-                    <ProgressBar value="90" max="100" />
+                    <h4>{user.username}</h4>
+                    <ProgressBar value={user.reputation} max="100" />
                 </div>
 
             </div>

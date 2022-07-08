@@ -31,6 +31,8 @@ export const DivStyled = styled.div`
             width: 70px;
             img{
                 width: 70px;
+                height: 70px;
+                object-fit: cover;
                 border-radius: 100%;
                 border: 2.5px solid white;
             }
@@ -97,5 +99,10 @@ export const DivStyled = styled.div`
             gap: 20px;
         }
     }
-
+    
+    .no-plataforms{
+        p{
+            font-size: 14px;
+        }
+    }
 `
