@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from "styled-components"
 
 export const Div = styled.div`
   height: 100vh;
@@ -16,4 +16,4 @@ export const Div = styled.div`
   @media (max-width: 800px) {
     display: none;
   }
-`;
+`

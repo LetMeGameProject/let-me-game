@@ -16,9 +16,8 @@ const SearchInput = () => {
         }}
         placeholder="Pesquisar por nome..."
       ></input>
-      <button onClick={() => searchByName()}>
-        <BiSearchAlt />
-      </button>
+
+      <BiSearchAlt className="searchIcon" onClick={() => searchByName()} />
     </StyledDiv>
   )
 }
