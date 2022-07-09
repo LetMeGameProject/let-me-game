@@ -18,15 +18,12 @@ export const StyledDiv = styled.div`
     position: ${({modal})=> modal ? "fixed" : "unset"};
     z-index: 1001;
     background-color:${({modal})=> modal ? "rgba(0,0,0,0.60)" : "rgba(0,0,0,0.0)"};
-    .icon-loading{
-        color: var(--primary-white);
-    }
 
 `
 export const DivModal = styled.div `
     width:  ${({modal})=> modal ? "90%" : "0%"};
     max-width: ${({modal})=> modal ? "500px" : "0px"};
-    height: ${({modal})=> modal ? "300px" : "0px"};
+    height: ${({modal})=> modal ? "auto" : "0px"};
     display: flex;
     flex-direction: column;
     justify-content: center;
