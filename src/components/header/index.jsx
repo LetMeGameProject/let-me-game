@@ -32,7 +32,9 @@ const Header = ()=> {
                 'Authorization': `Bearer ${localStorage.getItem("@tokenLMG")}`
             }
         })
-            .then((res) => setUser(res.data))
+            .then((res) => {
+                setUser(res.data)
+            })
     }, [])
 
 
@@ -73,7 +75,6 @@ const Header = ()=> {
             style={{zIndex: 1}}>
                 <SideBar setOpen={setOpen} setOpenModalUser={setOpenModalUser}/>
             </motion.div>}
-            
             {openModalUser && <ShowUser openModalUser={openModalUser} setOpenModalUser={setOpenModalUser} setOpenModalEditUser={setOpenModalEditUser}/>}
             {openModalEditUser && <EditUser openModalEditUser={openModalEditUser} setOpenModalEditUser={setOpenModalEditUser}/>}   
         </StyledHeader>

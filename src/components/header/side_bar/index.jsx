@@ -1,6 +1,6 @@
 import { Content } from "./styles";
 import { FiUser } from "react-icons/fi"
-import { BiMessageRounded, BiLogOut } from "react-icons/bi"
+import { BiLogOut } from "react-icons/bi"
 import { ProgressBar } from "../../../style/globalStyle";
 import { useContext } from "react";
 import { UserContext } from "../../../context/User";
@@ -15,11 +15,6 @@ const SideBar =({setOpen, setOpenModalUser}) =>{
 
     const openModalEdit = ()=>{
         setOpenModalUser(true)
-        setOpen(false)
-    }
-
-
-    const openModalMessage = ()=>{
         setOpen(false)
     }
 
@@ -53,11 +48,6 @@ const SideBar =({setOpen, setOpenModalUser}) =>{
             <div className="user-edit" onClick={()=> openModalEdit()}>
                 <FiUser size={20}/>
                 <h5>Ver Perfil</h5>    
-            </div>
-
-            <div className="user-message" onClick={()=> openModalMessage()}>
-                <BiMessageRounded size={20}/>
-                <h5>Mensagens</h5>  
             </div>
 
             <div className="user-logout" onClick={()=> logout()}>

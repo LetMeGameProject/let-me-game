@@ -48,7 +48,7 @@ export const FormStyled = styled.form`
             justify-content: center;
             align-items: center;
             padding: 10px;
-            color: var(--primary-white);
+            color: var(--background-white);
             div{
                 padding: 3px;
             }
@@ -70,13 +70,21 @@ export const FormStyled = styled.form`
         }
 
         button:first-child{
-            background-color: green;
-            background-color: var(--primary-white);
+            background-color: var(--background-color);
+            color: white;
+            transition: .3s;
+            :hover{
+                background-color: var(--foreground-color);
+            }
         }
 
         button:last-child{
             background-color: var(--background-color);
             color: white;
+            transition: .3s;
+            :hover{
+                background-color: black;
+            }
         }
 
     }

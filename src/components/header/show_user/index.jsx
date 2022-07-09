@@ -27,7 +27,7 @@ const ShowUser = ({openModalUser, setOpenModalUser, setOpenModalEditUser}) =>{
         transform: 'translate(-50%, -50%)',
         width: "90%",
         maxWidth: 400,
-        bgcolor: '#570A57',
+        bgcolor: 'var(--primary-white)',
         boxShadow: 24,
         borderRadius: "6px",
         display: "flex", 

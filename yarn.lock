@@ -9308,6 +9308,11 @@ tailwindcss@^3.0.2:
     quick-lru "^5.1.1"
     resolve "^1.22.1"
 
+talkjs@^0.15.5:
+  version "0.15.5"
+  resolved "https://registry.yarnpkg.com/talkjs/-/talkjs-0.15.5.tgz#e9438fe3e5f87349952f5efb97bf463bf899d5e1"
+  integrity sha512-YGTSXxVFSZQDxPz/UgvZZPxQHO9RVVbDqEl93oGdFNBj9TobmVc+dp7kzVNgakN4c0hmBuV3GR2mOZF1oSyhZg==
+
 tapable@^1.0.0:
   version "1.1.3"
   resolved "https://registry.yarnpkg.com/tapable/-/tapable-1.1.3.tgz#a1fccc06b58db61fd7a45da2da44f5f3a3e67ba2"

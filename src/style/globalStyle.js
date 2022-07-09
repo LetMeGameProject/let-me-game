@@ -57,8 +57,9 @@ input {
 `
 
 export const ProgressBar = styled.progress`
-    height: 11px;
+    height: 13px;
     background-color: #DFC640;
+    border: 1.5px solid var(--background-color);
     border-radius: 4px;
     &::-webkit-progress-bar {
         background-color: var(--background-color);
