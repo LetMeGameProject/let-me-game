@@ -4,7 +4,7 @@ import ContainerLobby from "./styles"
 import UsersInput from "../../components/lobby_components/UsersInput"
 import { LobbyContext } from "../../context/OpenLobby"
 import Header from "../../components/header"
-import ModalInbox from "../../components/header/modal_inbox"
+import ModalInbox from "../../components/modal_inbox"
 
 const Lobby = () => {
   const { background, name } = useContext(LobbyContext)

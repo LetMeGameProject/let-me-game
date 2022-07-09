@@ -1,8 +1,8 @@
 import { TbMessage } from "react-icons/tb"
-import { UserContext } from '../../../context/User';
+import { UserContext } from '../../context/User';
 import { createRef, useContext } from 'react';
 import Talk from 'talkjs' ;
-import { ID_TALKJS } from '../../../services/talkjs';
+import { ID_TALKJS } from '../../services/talkjs';
 import { Button, DivModal, StyledDiv } from './styles';
 import { purple } from "@mui/material/colors";
 import { useState } from "react";
