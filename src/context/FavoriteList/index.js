@@ -1,19 +1,18 @@
-import { createContext, useState } from "react"
+import { createContext, useState } from "react";
 
-export const FavoriteContext = createContext()
+export const FavoriteContext = createContext();
 
 export const FavoriteProvider = ({ children }) => {
-  const [favoriteList, setFavoriteList] = useState([])
-
+  const [favoriteList, setFavoriteList] = useState([]);
   const addFavorite = (game) => {
-    setFavoriteList([...favoriteList, game])
-  }
+    setFavoriteList([...favoriteList, game]);
+  };
 
   const removeFavorite = (gameId) => {
-    const newFavoriteList = favoriteList.filter((game) => game.id !== gameId)
+    const newFavoriteList = favoriteList.filter((game) => game.id !== gameId);
 
-    setFavoriteList(newFavoriteList)
-  }
+    setFavoriteList(newFavoriteList);
+  };
 
   return (
     <FavoriteContext.Provider
@@ -25,5 +24,5 @@ export const FavoriteProvider = ({ children }) => {
     >
       {children}
     </FavoriteContext.Provider>
-  )
-}
+  );
+};

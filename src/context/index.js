@@ -1,19 +1,21 @@
-import { FavoriteProvider } from "./FavoriteList"
-import { GamesProvider } from "./GameList/gameList"
-import { UserProvider } from "./User"
-import { LobbyProvider } from "./OpenLobby"
+import { FavoriteProvider } from "./FavoriteList";
+import { GamesProvider } from "./GameList/gameList";
+import { UserProvider } from "./User";
+import { LobbyProvider } from "./OpenLobby";
+import { CurrentLobbyProvider } from "./currentLobby";
 
 const Providers = ({ children }) => {
   return (
-    <LobbyProvider>
-      <UserProvider>
-        <GamesProvider>
-          <FavoriteProvider>{children}</FavoriteProvider>
-        </GamesProvider>
-      </UserProvider>  
-    </LobbyProvider>
+    <CurrentLobbyProvider>
+      <LobbyProvider>
+        <UserProvider>
+          <GamesProvider>
+            <FavoriteProvider>{children}</FavoriteProvider>
+          </GamesProvider>
+        </UserProvider>
+      </LobbyProvider>
+    </CurrentLobbyProvider>
+  );
+};
 
-  )
-}
-
-export default Providers
+export default Providers;

@@ -1,13 +1,13 @@
-import styled, { createGlobalStyle } from "styled-components"
+import styled, { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
 
 
 
-::-webkit-scrollbar {
+ ::-webkit-scrollbar {
     width: 10px;
 }
-        
+         
 ::-webkit-scrollbar-thumb {
     background: white; 
     border-radius: 10px;
@@ -16,6 +16,7 @@ const GlobalStyle = createGlobalStyle`
 ::-webkit-scrollbar-thumb:hover {
     background:#570A57; 
 }
+
 
 :root {
   --background-color: #14031E;
@@ -54,9 +55,10 @@ input {
   cursor: text;
   border: none;
 }
-`
+`;
 
 export const ProgressBar = styled.progress`
+
     height: 13px;
     background-color: #DFC640;
     border: 1.5px solid var(--background-color);
@@ -79,3 +81,4 @@ export const ProgressBar = styled.progress`
 `
 
 export default GlobalStyle
+

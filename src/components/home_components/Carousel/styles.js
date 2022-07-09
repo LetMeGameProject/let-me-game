@@ -19,6 +19,23 @@ const StyledCarousel = styled.section`
     justify-content: center;
     align-items: center;
   }
+
+  @media (max-width: 710px) {
+    .swiper {
+      max-width:412px;
+    }
+     
+  }
+
+  @media (max-width: 420px){
+    .swiper {
+      max-width:330px;
+    }
+    .swiper-slide{
+      height:190px;
+    }
+  }
+
 `
 
 export default StyledCarousel
