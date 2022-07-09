@@ -19,22 +19,23 @@ const { user } = useContext(UserContext);
     setOpenModalUser(false);
     setOpenModalEditUser(true);
   };
+  
+    const style = {
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
+        width: "90%",
+        maxWidth: 400,
+        bgcolor: 'var(--primary-white)',
+        boxShadow: 24,
+        borderRadius: "6px",
+        display: "flex", 
+        flexDirection: "column", 
+        justifyContent: "center", 
+        alignItems: "center"
+    };
 
-  const style = {
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    width: "90%",
-    maxWidth: 400,
-    bgcolor: "#570A57",
-    boxShadow: 24,
-    borderRadius: "6px",
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
-  };
 
   return (
     <Modal

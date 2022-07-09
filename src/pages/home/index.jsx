@@ -4,19 +4,25 @@ import SearchInput from "../../components/home_components/searchInput"
 import StyledMain from "./styles"
 import Header from "../../components/header"
 import { Toaster } from "react-hot-toast"
+import ModalInbox from "../../components/header/modal_inbox"
+import { useState } from "react"
 
 
 const Home = () => {
+  
+
+
   return (
     <>
       <Toaster />
-      <Header />
+      <Header/>
       <StyledMain>
         <section>
           <Carousel />
           <SearchInput />
+          <ModalInbox/>
           <GameList />
-        </section>
+        </section> 
       </StyledMain>
     </>
   )
