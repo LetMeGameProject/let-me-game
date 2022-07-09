@@ -11,12 +11,9 @@ import { ProgressBar } from "../../../style/globalStyle";
 import { useContext } from "react";
 import { UserContext } from "../../../context/User";
 
-export default function ShowUser({
-  openModalUser,
-  setOpenModalUser,
-  setOpenModalEditUser,
-}) {
-  const { user } = useContext(UserContext);
+const ShowUser = ({openModalUser, setOpenModalUser, setOpenModalEditUser}) =>{
+
+const { user } = useContext(UserContext);
 
   const openModalEdit = () => {
     setOpenModalUser(false);
@@ -85,29 +82,38 @@ export default function ShowUser({
                 <p>{user.bio}</p>
               </div>
             </div>
+                    <div className="bio-user">
+                        <div className="bio-title">
+                            <h4>Bio</h4>
+                        </div>
+                        <div className="bio-text">
+                            <p>{user.bio}</p>
+                        </div>
+                    </div>
 
-            <div className="plataform-user">
-              <div className="plataform-title">
-                <h4>Plataformas</h4>
-              </div>
-              {user.plataforms.length > 0 ? (
-                <div className="plataforms">
-                  {user.plataforms[0]?.steam !== "" && <FaSteam size={20} />}
-                  {user.plataforms[1]?.epic !== "" && <SiEpicgames size={20} />}
-                  {user.plataforms[2]?.psn !== "" && (
-                    <FaPlaystation size={20} />
-                  )}
-                  {user.plataforms[3]?.xbox !== "" && <FaXbox size={20} />}
-                </div>
-              ) : (
-                <div className="no-plataforms">
-                  <p>Nenhuma plataforma cadastrada</p>
-                </div>
-              )}
-            </div>
-          </DivStyled>
-        </Box>
-      </Fade>
-    </Modal>
-  );
+                    <div className="plataform-user">
+                        <div className="plataform-title">
+                            <h4>Plataformas</h4>
+                        </div>
+                        {user.plataforms.length > 0  ?
+                        (
+                            <div className="plataforms">
+                                {user.plataforms[0]?.steam !== "" && <FaSteam size={20}/>} 
+                                {user.plataforms[1]?.epic !== "" &&  <SiEpicgames size={20}/>}
+                                {user.plataforms[2]?.psn !== "" &&  <FaPlaystation size={20}/>}
+                                {user.plataforms[3]?.xbox !== "" && <FaXbox size={20}/>}
+                            </div>
+                        ) : (
+                            <div className="no-plataforms"><p>Nenhuma plataforma cadastrada</p></div>
+                        )
+                        }
+                        
+                    </div>
+                </DivStyled>
+            </Box>
+            </Fade>
+        </Modal>
+    );
 }
+
+export default ShowUser
