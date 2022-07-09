@@ -1,21 +1,23 @@
-import React from "react"
+import React from "react";
 
-import { useContext } from "react"
-import { FavoriteContext } from "../../../context/FavoriteList"
+import { useContext } from "react";
+import { FavoriteContext } from "../../../context/FavoriteList";
 
-import { Swiper, SwiperSlide } from "swiper/react"
+import { Swiper, SwiperSlide } from "swiper/react";
 
-import "swiper/css"
-import "swiper/css/effect-coverflow"
-import "swiper/css/navigation"
+import "swiper/css";
+import "swiper/css/effect-coverflow";
+import "swiper/css/navigation";
 
-import { EffectCoverflow, Pagination, Navigation } from "swiper"
+import { EffectCoverflow, Pagination, Navigation } from "swiper";
 
-import StyledCarousel from "./styles"
-import CarouselCard from "./CarouselCard/CarouselCard"
+import StyledCarousel from "./styles";
+import CarouselCard from "./CarouselCard/CarouselCard";
 
+import { CurrentLobbyContext } from "../../../context/currentLobby";
 const Carousel = () => {
-  const { favoriteList, removeFavorite } = useContext(FavoriteContext)
+  const { favoriteList, removeFavorite } = useContext(FavoriteContext);
+  const { getGameUsersCount } = useContext(CurrentLobbyContext);
 
   return (
     <StyledCarousel>
@@ -40,15 +42,20 @@ const Carousel = () => {
         className="mySwiper"
       >
         {favoriteList?.map((game, index) => {
+          const userCount = getGameUsersCount(game.id);
           return (
             <SwiperSlide key={index}>
-              <CarouselCard game={game} removeFavorite={removeFavorite} />
+              <CarouselCard
+                game={game}
+                userCount={userCount}
+                removeFavorite={removeFavorite}
+              />
             </SwiperSlide>
-          )
+          );
         })}
       </Swiper>
     </StyledCarousel>
-  )
-}
+  );
+};
 
-export default Carousel
+export default Carousel;

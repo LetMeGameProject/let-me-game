@@ -1,34 +1,35 @@
-import { useContext } from "react"
-import { IoIosStarOutline, IoIosStar } from "react-icons/io"
-import { FavoriteContext } from "../../../context/FavoriteList"
-import Button from "./styles"
+import { useContext } from "react";
+import { IoIosStarOutline, IoIosStar } from "react-icons/io";
+import { FavoriteContext } from "../../../context/FavoriteList";
+import Button from "./styles";
 
 const CardsButton = ({ game, favorite = false }) => {
-  
-  const { addFavorite, removeFavorite } = useContext(FavoriteContext)
+  const { addFavorite, removeFavorite } = useContext(FavoriteContext);
 
   return (
     <>
       {favorite ? (
         <Button
+          addFavorite
           onFavorite
           onClick={() => {
-            removeFavorite(game.id)
+            removeFavorite(game.id);
           }}
         >
           <IoIosStar className="IoIosStar" />
         </Button>
       ) : (
         <Button
+          removeFavorite
           onClick={() => {
-            addFavorite(game)
+            addFavorite(game);
           }}
         >
           <IoIosStarOutline />
         </Button>
       )}
     </>
-  )
-}
+  );
+};
 
-export default CardsButton
+export default CardsButton;

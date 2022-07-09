@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled from "styled-components";
 
 export const StyledLi = styled.li`
   width: 350px;
@@ -14,6 +14,7 @@ export const StyledLi = styled.li`
 
     div {
       filter: brightness(0.3);
+      transition: 0.2s;
     }
 
     h3 {
@@ -21,15 +22,44 @@ export const StyledLi = styled.li`
     }
     button {
       display: block;
-
-      :hover {
-        color: gold;
-        transition: 0.2s;
-      }
     }
     ul {
       display: block;
     }
+
+    .iconLobby {
+      display: block;
+      :hover {
+        color: var(--accent-color);
+        transition: 0.2s;
+      }
+    }
+
+    h4 {
+      display: block;
+    }
+  }
+
+  .iconLobby {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    display: none;
+    color: var(--primary-white);
+    font-size: 32px;
+    z-index: 1;
+  }
+
+  h4 {
+    display: none;
+    position: absolute;
+    top: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+    color: var(--secondary-white);
+    font-size: 16px;
+    font-weight: 600;
   }
 
   h3 {
@@ -57,7 +87,7 @@ export const StyledLi = styled.li`
       font-size: 12px;
     }
   }
-`
+`;
 
 export const Background = styled.div`
   position: relative;
@@ -69,4 +99,4 @@ export const Background = styled.div`
 
   display: flex;
   align-items: flex-end;
-`
+`;

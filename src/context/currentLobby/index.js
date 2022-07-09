@@ -4,7 +4,9 @@ export const CurrentLobbyContext = createContext();
 
 export const CurrentLobbyProvider = ({ children }) => {
   const [currentLobbyList, setCurrentLobbyList] = useState([]);
-  const [currentGame, setCurrentGame] = useState({});
+  const [currentGame, setCurrentGame] = useState(
+    JSON.parse(localStorage.getItem("@CURRENT_GAME")) || {}
+  );
 
   useEffect(() => {
     const token = localStorage.getItem("@tokenLMG");

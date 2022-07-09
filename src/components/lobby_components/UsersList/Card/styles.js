@@ -29,11 +29,13 @@ const ThemeCard = styled.div`
     width: 55%;
   }
   .user_info > h3 {
-    font-size: 19px;
+    width: 100%;
+    font-size: 18px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
-  /* button {
-    cursor: pointer;
-  } */
+
   .user_info > h4 {
     margin: 7px 0px 2px 0px;
     font-size: 14px;
@@ -104,7 +106,6 @@ const ThemeCard = styled.div`
   }
   .feedbacks > ul > li > span {
     font-weight: 600;
-    /* margin-bottom: 4px; */
     color: white;
   }
   .feedbacks > ul > li > p {
@@ -118,6 +119,24 @@ const ThemeCard = styled.div`
     width: 100%;
     background-color: white;
     height: 2px;
+  }
+
+  .no_feedbacks {
+    border-radius: 10px;
+    border: 2px solid black;
+    width: 100%;
+    height: 195px;
+    display: flex;
+    justify-content: center;
+    background-color: var(--background-color);
+    padding: 20px;
+  }
+  .no_feedbacks > p {
+    margin-top: 10px;
+    font-size: 19px;
+    font-weight: 400;
+    letter-spacing: 0.3px;
+    color: white;
   }
 `;
 

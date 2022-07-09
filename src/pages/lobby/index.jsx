@@ -3,11 +3,9 @@ import UsersList from "../../components/lobby_components/UsersList";
 import ContainerLobby from "./styles";
 import UsersInput from "../../components/lobby_components/UsersInput";
 import { LobbyContext } from "../../context/OpenLobby";
-import { CurrentLobbyContext } from "../../context/currentLobby";
 
 const Lobby = () => {
   const { background, name } = useContext(LobbyContext);
-  const { currentLobbyList, currentGame } = useContext(CurrentLobbyContext);
 
   return (
     <>
