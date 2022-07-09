@@ -3,9 +3,11 @@ import { UserContext } from '../../../context/User';
 import { createRef, useContext } from 'react';
 import Talk from 'talkjs' ;
 import { ID_TALKJS } from '../../../services/talkjs';
-import { Button, StyledDiv } from './styles';
+import { Button, DivModal, StyledDiv } from './styles';
 import { purple } from "@mui/material/colors";
 import { useState } from "react";
+import { PacmanLoader } from "react-spinners";
+
 
 const ModalInbox = ()=>{
 
@@ -43,9 +45,9 @@ const ModalInbox = ()=>{
         <>
         
         <Button onClick={()=> inbox()}><TbMessage size={35} color={purple}/></Button>
-        <StyledDiv modal={open ? true : false}>
-            {open && <button onClick={()=> closeInbox()}>Fechar</button>}
-            <div ref={containerChat}></div>
+        <StyledDiv modal={open ? true : false} onClick={()=> closeInbox()}>
+            {open && <PacmanLoader color="#FFFF" cssOverride={{position: "fixed",top: "50%", left: "50%", }}/>}
+            <DivModal ref={containerChat} modal={open ? true : false}></DivModal>
         </StyledDiv>
         
        </>
