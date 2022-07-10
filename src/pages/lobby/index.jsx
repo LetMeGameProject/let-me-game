@@ -3,23 +3,18 @@ import UsersList from "../../components/lobby_components/UsersList"
 import ContainerLobby from "./styles"
 import UsersInput from "../../components/lobby_components/UsersInput"
 import { LobbyContext } from "../../context/OpenLobby"
-import ChatParaTeste from "../../components/lobby_components/UsersList/feedback/chatTest"
 import Played from "../../components/lobby_components/UsersList/feedback/feedbackModal/Played"
 import Feedback from "../../components/lobby_components/UsersList/feedback/feedbackModal/Feedback"
+import Header from "../../components/header"
+import ModalInbox from "../../components/modal_inbox"
 
 const Lobby = () => {
-  const { background, name, setOpenModalChat } = useContext(LobbyContext)
+  const { background, name } = useContext(LobbyContext)
 
   return (
     <>
-      {/* MODAIS */}
-      {/* BUTTON PARA ABRIR O PRIMEIRO MODAL <button onClick={() => setOpenModalChat(true)}>
-        Open Feature Antoniel
-      </button> */}
-      <ChatParaTeste />
-      <Played />
-      <Feedback />
-      {/* MODAIS */}
+      <Header />
+      <ModalInbox />
       <ContainerLobby>
         <div className="image-container">
           <img src={background} alt="" />

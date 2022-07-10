@@ -1,10 +1,11 @@
 import styled from "styled-components"
 
 const StyledInput = styled.div`
-  width: 260px;
+
+  width: 320px;
   height: 48px;
   background-color: white;
-  padding: 10px 10px 10px 20px;
+  padding: 10px;
   border-radius: 50px;
   display: flex;
   align-items: center;

@@ -16,7 +16,7 @@ import toast from 'react-hot-toast';
 import { TextField } from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
-export default function EditUser({openModalEditUser, setOpenModalEditUser}){
+const EditUser = ({openModalEditUser, setOpenModalEditUser}) =>{
 
     const { user, setUser } = useContext(UserContext)
 
@@ -27,7 +27,7 @@ export default function EditUser({openModalEditUser, setOpenModalEditUser}){
         transform: 'translate(-50%, -50%)',
         width: "90%",
         maxWidth: 400,
-        bgcolor: '#570A57',
+        bgcolor: 'var(--primary-white)',
         boxShadow: 24,
         borderRadius: "6px",
         display: "flex", 
@@ -39,10 +39,10 @@ export default function EditUser({openModalEditUser, setOpenModalEditUser}){
     const theme = createTheme({
         palette: {
           primary: {
-            main: '#ffffff',
+            main: '#14031E',
           },
           secondary: {
-            main: '#11cb5f',
+            main: '#ffffff',
           },
         },
       });
@@ -106,14 +106,14 @@ export default function EditUser({openModalEditUser, setOpenModalEditUser}){
                             <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: "center" }}>
                             <TextField defaultValue={user.photoUrl} size="small" label="Foto de perfil" variant="standard" 
                             inputProps={{style: {height: 15, backgroundColor: "var(--background-color)", borderRadius: 4, color: "white", fontSize: 12, padding: 10}}}
-                            InputLabelProps={{style: {color: 'white', fontSize: 18}}}
+                            InputLabelProps={{style: {color: '#14031E', fontSize: 18, fontWeight: 'bold'}}}
                             {...register("photoUrl")} />
                             </Box>
                       
                             <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: "center" }}>
                             <TextField defaultValue={user.bio} size="small"  multiline  maxRows={4} label="Bio" variant="standard" 
                             inputProps={{style: {height: 55, backgroundColor: "var(--background-color)", borderRadius: 4, color: "white", fontSize: 12, padding: 10}}}
-                            InputLabelProps={{style: {color: 'white', fontSize: 18}}}
+                            InputLabelProps={{style: {color: '#14031E', fontSize: 18, fontWeight: 'bold'}}}
                             {...register("bio")}
                             />
                             </Box>
@@ -125,8 +125,7 @@ export default function EditUser({openModalEditUser, setOpenModalEditUser}){
                             <FaSteam size={20}/>
                             <TextField defaultValue={user.plataforms[0]?.steam} placeholder="Link para sua conta Steam"  size="small" variant="standard" 
                             inputProps={{style: { width: 180, maxWidth: 400,height: 10, backgroundColor: "var(--primary-white)", borderRadius: 4, color: "black", fontSize: 12, padding: 10}}}
-                            InputLabelProps={{style: {color: 'white', fontSize: 18}}}
-                            {...register("plataforms[0].steam")}
+                            {...register("plataforms[0].steam")} color="secondary"
                             />
                         </Box>
 
@@ -134,17 +133,15 @@ export default function EditUser({openModalEditUser, setOpenModalEditUser}){
                             <SiEpicgames size={20}/>
                             <TextField defaultValue={user.plataforms[1]?.epic} placeholder="Link para sua conta Epic"  size="small" variant="standard"
                             inputProps={{style: {width: 180, maxWidth: 400, height: 10, backgroundColor: "var(--primary-white)", borderRadius: 4, color: "black", fontSize: 12, padding: 10}}}
-                            InputLabelProps={{style: {color: 'white', fontSize: 18}}}
-                            {...register("plataforms[1].epic")}
+                            {...register("plataforms[1].epic")} color="secondary"
                             />
                         </Box>
-
+ 
                         <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: "center", marginTop: -5 }}>
                             <FaPlaystation size={20}/>
                             <TextField defaultValue={user.plataforms[2]?.psn} placeholder="Link para sua conta PSN" size="small" variant="standard" 
                             inputProps={{style: {width: 180, maxWidth: 400, height: 10, backgroundColor: "var(--primary-white)", borderRadius: 4, color: "black", fontSize: 12, padding: 10}}}
-                            InputLabelProps={{style: {color: 'white', fontSize: 18}}}
-                            {...register("plataforms[2].psn")}
+                            {...register("plataforms[2].psn")} color="secondary"
                             />
                         </Box>
 
@@ -152,8 +149,7 @@ export default function EditUser({openModalEditUser, setOpenModalEditUser}){
                             <FaXbox size={20}/>
                             <TextField defaultValue={user.plataforms[3]?.xbox} placeholder="Link para sua conta Xbox"  size="small" variant="standard" 
                             inputProps={{style: {width: 180, maxWidth: 400, height: 10, backgroundColor: "var(--primary-white)", borderRadius: 4, color: "black", fontSize: 12, padding: 10}}}
-                            InputLabelProps={{style: {color: 'white', fontSize: 18}}}
-                            {...register("plataforms[3].xbox")}
+                            {...register("plataforms[3].xbox")} color="secondary"
                             />
                         </Box>
                     </ThemeProvider>
@@ -169,3 +165,5 @@ export default function EditUser({openModalEditUser, setOpenModalEditUser}){
         </Modal>
     )
 }
+
+export default EditUser

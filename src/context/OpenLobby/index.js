@@ -1,35 +1,33 @@
-import { createContext, useState } from "react"
-import { useHistory } from "react-router-dom"
 
-export const LobbyContext = createContext()
+import { createContext, useState } from "react";
+import { useHistory } from "react-router-dom";
+import { useContext } from "react";
+import { CurrentLobbyContext } from "../currentLobby";
+
+export const LobbyContext = createContext();
 
 export const LobbyProvider = ({ children }) => {
-  // TESTE MODAL CHAT
-  const [openModalChat, setOpenModalChat] = useState(false)
-  // TESTE MODAL CHAT
 
-  // Played?
   const [openModalPlayed, setOpenModalPlayed] = useState(false)
-  // Played?
-
-  // REVIEW
   const [openModalFeedback, setOpenModalFeedback] = useState(false)
-  // REVIEW
-
+  
   const [background, setBackground] = useState("")
-
+  
   const [gameName, setGameName] = useState("")
-
+  const { setCurrentGame } = useContext(CurrentLobbyContext)
+  
   const history = useHistory()
 
   const openLobby = (game) => {
     const { name, background_image } = game
-
+    setCurrentGame(game)
+    localStorage.setItem("@CURRENT_GAME", JSON.stringify(game))
     setBackground(background_image)
     setGameName(name)
-
     history.push(`/lobby/${name}`)
-  }
+  };
+
+  const history = useHistory()
 
   return (
     <LobbyContext.Provider
@@ -49,3 +47,4 @@ export const LobbyProvider = ({ children }) => {
     </LobbyContext.Provider>
   )
 }
+

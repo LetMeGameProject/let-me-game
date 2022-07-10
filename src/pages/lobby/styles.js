@@ -8,11 +8,12 @@ const ContainerLobby = styled.div`
   }
 
   img {
+    margin-top: 80px;
     width: 100%;
     height: 100%;
     object-fit: cover;
   }
-
+  
   .container {
     mask-image: linear-gradient(to top, transparent 0%, black 100%);
     margin-top: -45%;
@@ -28,4 +29,3 @@ const ContainerLobby = styled.div`
 `
 export default ContainerLobby
 
-// <div style={{width:"100%", height:"250px", backgroundColor:"red", WebkitMaskImage:"linear-gradient(to top, transparent 25%, black 100%)"

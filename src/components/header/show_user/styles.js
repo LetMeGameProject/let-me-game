@@ -9,6 +9,7 @@ export const DivStyled = styled.div`
     width: 90%;
     color: white;
     font-family: 'Inter', sans-serif;
+    
     .header-modal{
         width:100%;
         top: 20px;
@@ -18,6 +19,7 @@ export const DivStyled = styled.div`
         justify-content: flex-end;
         align-items: center;
         position: absolute;
+        color: var(--background-color);
     }
 
     .user-info{
@@ -27,6 +29,7 @@ export const DivStyled = styled.div`
         align-items: center;
         gap: 20px;
         margin-top: 20px;
+        color: var(--background-color);
         .user-img{
             width: 70px;
             img{
@@ -34,7 +37,7 @@ export const DivStyled = styled.div`
                 height: 70px;
                 object-fit: cover;
                 border-radius: 100%;
-                border: 2.5px solid white;
+                border: 2.5px solid var(--background-color);
             }
         }
 
