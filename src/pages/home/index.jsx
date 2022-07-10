@@ -6,7 +6,6 @@ import Header from "../../components/header"
 import { Toaster } from "react-hot-toast"
 import ModalInbox from "../../components/modal_inbox"
 
-
 const Home = () => {
   
 

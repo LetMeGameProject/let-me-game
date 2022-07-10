@@ -3,6 +3,8 @@ import UsersList from "../../components/lobby_components/UsersList"
 import ContainerLobby from "./styles"
 import UsersInput from "../../components/lobby_components/UsersInput"
 import { LobbyContext } from "../../context/OpenLobby"
+import Played from "../../components/lobby_components/UsersList/feedback/feedbackModal/Played"
+import Feedback from "../../components/lobby_components/UsersList/feedback/feedbackModal/Feedback"
 import Header from "../../components/header"
 import ModalInbox from "../../components/modal_inbox"
 

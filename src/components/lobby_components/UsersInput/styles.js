@@ -1,6 +1,7 @@
-import styled from "styled-components";
+import styled from "styled-components"
 
 const StyledInput = styled.div`
+
   width: 320px;
   height: 48px;
   background-color: white;
@@ -10,14 +11,21 @@ const StyledInput = styled.div`
   align-items: center;
   justify-content: space-between;
 
-  div {
-    width: 35px;
-    height: 35px;
-    background-color: var(--accent-color);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50px;
+  input {
+    width: 100%;
   }
-`;
-export default StyledInput;
+
+  .searchIcon {
+    color: var(--background-white);
+    height: 36px;
+    font-size: 36px;
+    line-height: 24px;
+
+    :hover {
+      color: var(--accent-color);
+      transition: 0.3s;
+      cursor: pointer;
+    }
+  }
+`
+export default StyledInput

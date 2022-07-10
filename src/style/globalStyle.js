@@ -55,7 +55,12 @@ input {
   cursor: text;
   border: none;
 }
-`;
+
+textarea:focus, input:focus {
+    box-shadow: 0 0 0 0;
+    outline: 0;
+}
+`
 
 export const ProgressBar = styled.progress`
 
