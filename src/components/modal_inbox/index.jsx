@@ -17,6 +17,7 @@ const ModalInbox = ()=>{
     const containerChat = createRef()
 
     const [open, setOpen] = useState(false)
+    const [loading, setLoading] = useState(false)
 
     const inbox = () =>{
         Talk.ready.then(()=>{
@@ -33,6 +34,10 @@ const ModalInbox = ()=>{
             const inbox = session.createInbox()
             inbox.mount(containerChat.current)
             setOpen(true)
+            setLoading(true)
+            setTimeout(() => {
+                setLoading(false)
+            }, 1000);
         })
     }
 
@@ -41,12 +46,19 @@ const ModalInbox = ()=>{
         document.querySelector("iframe").remove()
     }
 
+       
+        
+
+    
+
+    
+ 
     return(
         <>
         
         <Button onClick={()=> inbox()}><TbMessage size={35} color={purple}/></Button>
         <StyledDiv modal={open ? true : false} onClick={()=> closeInbox()}>
-            {open && <PacmanLoader color="#FFFF" cssOverride={{position: "fixed",top: "50%", left: "50%", }}/>}
+            {open && <PacmanLoader color="#FFFF" cssOverride={{position: "fixed",top: "50%", left: "50%", display: loading ? "block" : "none"}}/>}
             <DivModal ref={containerChat} modal={open ? true : false}></DivModal>
         </StyledDiv>
         

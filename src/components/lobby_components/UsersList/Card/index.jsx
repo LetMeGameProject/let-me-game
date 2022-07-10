@@ -16,6 +16,7 @@ const UserCard = ({ card }) => {
   const containerChat = createRef()
   
   const [open, setOpen] = useState(false)
+  const [loading, setLoading] = useState(false)
 
   const { user } = useContext(UserContext)
 
@@ -55,6 +56,10 @@ const UserCard = ({ card }) => {
         inbox.mount(containerChat.current)
 
         setOpen(true)
+        setLoading(true)
+        setTimeout(() => {
+          setLoading(false)
+        }, 1000);
     })
   }
 
@@ -66,7 +71,7 @@ const UserCard = ({ card }) => {
   return (
     <>
     <StyledDiv modal={open ? true : false} onClick={()=> closeInbox()}>
-            {open && <PacmanLoader color="transparent" cssOverride={{position: "fixed",top: "50%", left: "50%", }}/>}
+            {open && <PacmanLoader color="#fff" cssOverride={{position: "fixed",top: "50%", left: "50%", display: loading ? "block" : "none" }}/>}
             <DivModal ref={containerChat} modal={open ? true : false}></DivModal>
     </StyledDiv>
     <ThemeCard>
