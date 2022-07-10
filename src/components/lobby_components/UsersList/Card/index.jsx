@@ -66,7 +66,7 @@ const UserCard = ({ card }) => {
   return (
     <>
     <StyledDiv modal={open ? true : false} onClick={()=> closeInbox()}>
-            {open && <PacmanLoader color="#FFFF" cssOverride={{position: "fixed",top: "50%", left: "50%", }}/>}
+            {open && <PacmanLoader color="transparent" cssOverride={{position: "fixed",top: "50%", left: "50%", }}/>}
             <DivModal ref={containerChat} modal={open ? true : false}></DivModal>
     </StyledDiv>
     <ThemeCard>

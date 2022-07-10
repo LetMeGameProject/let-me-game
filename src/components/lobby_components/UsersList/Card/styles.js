@@ -163,7 +163,8 @@ export const StyledDiv = styled.div`
 export const DivModal = styled.div `
     width:  ${({modal})=> modal ? "90%" : "0%"};
     max-width: ${({modal})=> modal ? "500px" : "0px"};
-    height: ${({modal})=> modal ? "450px" : "0"};
+    height: ${({modal})=> modal ? "500px" : "0"};
+    min-height: ${({modal})=> modal ? "300px" : "0px"};
     display: flex;
     flex-direction: column;
     justify-content: center;
