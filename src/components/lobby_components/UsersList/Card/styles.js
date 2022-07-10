@@ -140,25 +140,40 @@ const ThemeCard = styled.div`
   }
 `;
 
-export const ProgressBar = styled.progress`
-  width: 95%;
-  height: 11px;
-  background-color: #dfc640;
-  border-radius: 4px;
-  &::-webkit-progress-bar {
-    background-color: var(--background-color);
-    border-bottom-right-radius: 4px;
-    border-top-right-radius: 4px;
-    border-bottom-left-radius: 4px;
-    border-top-left-radius: 4px;
-  }
+export const Button = styled.button`
+    width: 55px;
+    height: 55px;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1001;
+    border-radius: 100%;
+    background-color: var(--primary-white);
+`
 
-  &::-webkit-progress-value {
-    background-color: #dfc640;
-    border-bottom-left-radius: 2px;
-    border-top-left-radius: 2px;
-    border-bottom-right-radius: 2px;
-    border-top-right-radius: 2px;
-  }
-`;
+
+export const StyledDiv = styled.div`
+    width: ${({modal})=> modal ? "100vw" : "0"};
+    height: ${({modal})=> modal ? "100vh" : "0"};
+    position: ${({modal})=> modal ? "fixed" : "unset"};
+    z-index: 1001;
+    background-color:${({modal})=> modal ? "rgba(0,0,0,0.60)" : "rgba(0,0,0,0.0)"};
+
+`
+export const DivModal = styled.div `
+    width:  ${({modal})=> modal ? "90%" : "0%"};
+    max-width: ${({modal})=> modal ? "500px" : "0px"};
+    height: ${({modal})=> modal ? "450px" : "0"};
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: ${({modal})=> modal ? "fixed" : "unset"};
+    gap: 20px;
+    top: 50%;
+    left: 50%;
+    z-index: ${({modal})=> modal ? "1001" : "0"};
+    transform: translate(-50%, -50%);
+    
+`
 export default ThemeCard;
