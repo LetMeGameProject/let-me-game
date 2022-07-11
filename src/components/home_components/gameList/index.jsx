@@ -1,14 +1,27 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { RingLoader } from "react-spinners";
 import { MdOutlineExpandMore } from "react-icons/md";
 import { GamesContext } from "../../../context/GameList/gameList";
 import { CurrentLobbyContext } from "../../../context/currentLobby";
 import GameCard from "../gameCard";
 import { StyledDiv, StyledUl } from "./styles";
+import { internalApi } from "../../../services/internalAPI";
 
 const GameList = () => {
   const { gameList, loading, loadMore } = useContext(GamesContext);
-  const { getGameUsersCount } = useContext(CurrentLobbyContext);
+  const { getGameUsersCount, setCurrentLobbyList } =
+    useContext(CurrentLobbyContext);
+  useEffect(() => {
+    const token = localStorage.getItem("@tokenLMG");
+    internalApi
+      .get("online_users_list", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => res.data)
+      .then((res) => setCurrentLobbyList(res));
+  }, []);
 
   return (
     <>
