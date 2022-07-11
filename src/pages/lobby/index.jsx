@@ -1,4 +1,4 @@
-import React, { useContext } from "react"
+import React, { useContext, useEffect } from "react"
 import UsersList from "../../components/lobby_components/UsersList"
 import ContainerLobby from "./styles"
 import UsersInput from "../../components/lobby_components/UsersInput"
@@ -9,7 +9,13 @@ import Header from "../../components/header"
 import ModalInbox from "../../components/modal_inbox"
 
 const Lobby = () => {
-  const { background, name } = useContext(LobbyContext)
+  const { background, setBackground, name } = useContext(LobbyContext)
+
+  const game = JSON.parse(localStorage.getItem("@CURRENT_GAME"))  
+
+  useEffect(()=>{
+    setBackground(game.background_image)
+  })
 
   return (
     <>
