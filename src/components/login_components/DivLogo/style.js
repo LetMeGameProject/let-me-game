@@ -11,6 +11,7 @@ export const Div = styled.div`
   img {
     height: 220px;
     width: 220px;
+    filter: drop-shadow(0 0 0.5rem white);
   }
 
   @media (max-width: 800px) {
