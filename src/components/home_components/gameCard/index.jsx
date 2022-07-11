@@ -10,7 +10,6 @@ const GameCard = ({ game, userCount }) => {
   const { name, background_image, genres } = game;
   const genresGame = genres.slice(0, 2);
   const { openLobby } = useContext(LobbyContext);
-  // console.log(favoriteList, "favoriteListJI0SAJISAJISA");
   return (
     <StyledLi>
       <GiExitDoor className="iconLobby" onClick={() => openLobby(game)} />

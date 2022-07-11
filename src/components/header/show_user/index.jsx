@@ -1,32 +1,35 @@
-import Backdrop from "@mui/material/Backdrop"
-import Box from "@mui/material/Box"
-import Modal from "@mui/material/Modal"
-import Fade from "@mui/material/Fade"
-import { DivStyled } from "./styles"
-import { AiFillEdit } from "react-icons/ai"
-import { FaSteam } from "react-icons/fa"
-import { SiEpicgames } from "react-icons/si"
-import { FaPlaystation, FaXbox } from "react-icons/fa"
-import { ProgressBar } from "../../../style/globalStyle"
-import { useContext } from "react"
-import { UserContext } from "../../../context/User"
+import Backdrop from "@mui/material/Backdrop";
+import Box from "@mui/material/Box";
+import Modal from "@mui/material/Modal";
+import Fade from "@mui/material/Fade";
+import { DivStyled } from "./styles";
+import { AiFillEdit } from "react-icons/ai";
+import { FaSteam } from "react-icons/fa";
+import { SiEpicgames } from "react-icons/si";
+import { FaPlaystation, FaXbox } from "react-icons/fa";
+import { ProgressBar } from "../../../style/globalStyle";
+import { useContext } from "react";
+import { UserContext } from "../../../context/User";
 
 const ShowUser = ({
   openModalUser,
   setOpenModalUser,
   setOpenModalEditUser,
 }) => {
-  const { user } = useContext(UserContext)
-  console.log(user)
+  const { user } = useContext(UserContext);
   const filterPlatform = user.plataforms.filter(
     (elem) => Object.values(elem)[0] !== ""
-  )
-  console.log(filterPlatform, "Teste")
+  );
+
+  let objectPlataforms = {};
+  filterPlatform.map(
+    (elem) => (objectPlataforms = { ...elem, ...objectPlataforms })
+  );
 
   const openModalEdit = () => {
-    setOpenModalUser(false)
-    setOpenModalEditUser(true)
-  }
+    setOpenModalUser(false);
+    setOpenModalEditUser(true);
+  };
 
   const style = {
     position: "absolute",
@@ -42,7 +45,7 @@ const ShowUser = ({
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
-  }
+  };
 
   return (
     <Modal
@@ -99,16 +102,48 @@ const ShowUser = ({
               {filterPlatform.length > 0 ? (
                 <div className="plataforms">
                   {filterPlatform.find((elem) => elem.steam) && (
-                    <FaSteam size={20} />
+                    <a
+                      href={objectPlataforms.steam}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <FaSteam
+                        size={20}
+                        style={{ color: "white" }}
+                        className="btn-plataform"
+                      />
+                    </a>
                   )}
                   {filterPlatform.find((elem) => elem.epic) && (
-                    <SiEpicgames size={20} />
+                    <a
+                      href={objectPlataforms.epic}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <SiEpicgames
+                        size={20}
+                        style={{ color: "white" }}
+                        className="btn-plataform"
+                      />
+                    </a>
                   )}
                   {filterPlatform.find((elem) => elem.psn) && (
-                    <FaPlaystation size={20} />
+                    <a
+                      href={objectPlataforms.psn}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <FaPlaystation style={{ color: "white" }} size={20} />
+                    </a>
                   )}
                   {filterPlatform.find((elem) => elem.xbox) && (
-                    <FaXbox size={20} />
+                    <a
+                      href={objectPlataforms.xbox}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <FaXbox style={{ color: "white" }} size={20} />
+                    </a>
                   )}
                 </div>
               ) : (
@@ -121,7 +156,7 @@ const ShowUser = ({
         </Box>
       </Fade>
     </Modal>
-  )
-}
+  );
+};
 
-export default ShowUser
+export default ShowUser;
