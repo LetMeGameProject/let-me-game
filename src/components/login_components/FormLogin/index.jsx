@@ -22,18 +22,26 @@ export const DivForm = () => {
 
   const onSubmit = (data) => {
     const request = internalApi.post("login", data)
-    toast.promise(request, {
-      loading: "Carregando",
-      success: (data) => {
-        localStorage.setItem("@tokenLMG", data.data.accessToken)
-        localStorage.setItem("@id", data.data.user.id)
-        setTimeout(()=>{
-          history.push("/home")
-        }, 1500)
-        return `Bem-vindo ${data.data.user.username}`
+    toast.promise(
+      request,
+      {
+        loading: "Carregando",
+        success: (data) => {
+          localStorage.setItem("@tokenLMG", data.data.accessToken)
+          localStorage.setItem("@id", data.data.user.id)
+          setTimeout(() => {
+            history.push("/home")
+          }, 1700)
+          return `Bem-vindo ${data.data.user.username}`
+        },
+        error: (err) => "Usuário ou senha incorretos",
       },
-      error: (err) => "Usuário ou senha incorretos",
-    })
+      {
+        success: {
+          duration: 700,
+        },
+      }
+    )
   }
 
   return (
