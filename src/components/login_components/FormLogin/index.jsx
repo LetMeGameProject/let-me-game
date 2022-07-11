@@ -1,12 +1,15 @@
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import toast, { Toaster } from "react-hot-toast";
 import { Link, useHistory } from "react-router-dom";
 import * as yup from "yup";
 import { internalApi } from "../../../services/internalAPI";
 import { Div } from "./style";
+import { LoggedUserContext } from "../../../context/LoggedUser";
 
 export const DivForm = () => {
+  const { setLoggedUser } = useContext(LoggedUserContext);
   const history = useHistory();
 
   const formSchema = yup.object().shape({
@@ -27,6 +30,7 @@ export const DivForm = () => {
       success: (data) => {
         localStorage.setItem("@tokenLMG", data.data.accessToken);
         localStorage.setItem("@id", data.data.user.id);
+        setLoggedUser(true);
         history.push("/home");
         return `Bem-vindo ${data.data.user.username}`;
       },

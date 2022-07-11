@@ -1,17 +1,18 @@
-import React, { useContext } from "react"
-import UsersList from "../../components/lobby_components/UsersList"
-import ContainerLobby from "./styles"
-import UsersInput from "../../components/lobby_components/UsersInput"
-import { LobbyContext } from "../../context/OpenLobby"
-import Played from "../../components/lobby_components/UsersList/feedback/feedbackModal/Played"
-import Feedback from "../../components/lobby_components/UsersList/feedback/feedbackModal/Feedback"
-import Header from "../../components/header"
-import ModalInbox from "../../components/modal_inbox"
+import React, { useContext } from "react";
+import UsersList from "../../components/lobby_components/UsersList";
+import ContainerLobby from "./styles";
+import UsersInput from "../../components/lobby_components/UsersInput";
+import { LobbyContext } from "../../context/OpenLobby";
+import Header from "../../components/header";
+import ModalInbox from "../../components/modal_inbox";
+import { LoggedUserContext } from "../../context/LoggedUser";
+import { Redirect } from "react-router-dom";
 
 const Lobby = () => {
-  const { background, name } = useContext(LobbyContext)
+  const { background, name } = useContext(LobbyContext);
+  const { loggedUser } = useContext(LoggedUserContext);
 
-  return (
+  return loggedUser ? (
     <>
       <Header />
       <ModalInbox />
@@ -26,7 +27,9 @@ const Lobby = () => {
         </div>
       </ContainerLobby>
     </>
-  )
-}
+  ) : (
+    <Redirect to="/" />
+  );
+};
 
-export default Lobby
+export default Lobby;
