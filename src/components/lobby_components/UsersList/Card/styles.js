@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from "styled-components"
 
 const ThemeCard = styled.div`
   width: 100%;
@@ -138,43 +138,41 @@ const ThemeCard = styled.div`
     letter-spacing: 0.3px;
     color: white;
   }
-`;
+`
 
 export const Button = styled.button`
-    width: 55px;
-    height: 55px;
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 1001;
-    border-radius: 100%;
-    background-color: var(--primary-white);
+  width: 55px;
+  height: 55px;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1001;
+  border-radius: 100%;
+  background-color: var(--primary-white);
 `
-
 
 export const StyledDiv = styled.div`
-    width: ${({modal})=> modal ? "100vw" : "0"};
-    height: ${({modal})=> modal ? "100vh" : "0"};
-    position: ${({modal})=> modal ? "fixed" : "unset"};
-    z-index: 1001;
-    background-color:${({modal})=> modal ? "rgba(0,0,0,0.60)" : "rgba(0,0,0,0.0)"};
-
+  width: ${({ modal }) => (modal ? "100vw" : "0")};
+  height: ${({ modal }) => (modal ? "100vh" : "0")};
+  position: ${({ modal }) => (modal ? "fixed" : "unset")};
+  z-index: 1001;
+  background-color: ${({ modal }) =>
+    modal ? "rgba(0,0,0,0.60)" : "rgba(0,0,0,0.0)"};
 `
-export const DivModal = styled.div `
-    width:  ${({modal})=> modal ? "90%" : "0%"};
-    max-width: ${({modal})=> modal ? "500px" : "0px"};
-    height: ${({modal})=> modal ? "500px" : "0"};
-    min-height: ${({modal})=> modal ? "300px" : "0px"};
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    position: ${({modal})=> modal ? "fixed" : "unset"};
-    gap: 20px;
-    top: 50%;
-    left: 50%;
-    z-index: ${({modal})=> modal ? "1001" : "0"};
-    transform: translate(-50%, -50%);
-    
+export const DivModal = styled.div`
+  width: ${({ modal }) => (modal ? "90%" : "0%")};
+  max-width: ${({ modal }) => (modal ? "500px" : "0px")};
+  height: ${({ modal }) => (modal ? "500px" : "0")};
+  min-height: ${({ modal }) => (modal ? "300px" : "0px")};
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: ${({ modal }) => (modal ? "fixed" : "unset")};
+  gap: 20px;
+  top: 50%;
+  left: 50%;
+  z-index: ${({ modal }) => (modal ? "1001" : "0")};
+  transform: translate(-50%, -50%);
 `
-export default ThemeCard;
+export default ThemeCard

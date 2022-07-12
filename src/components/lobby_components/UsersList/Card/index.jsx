@@ -1,30 +1,30 @@
-import React, { useContext, createRef, useState } from "react";
-import ThemeCard from "./styles";
-import { FaSteam } from "react-icons/fa";
-import { SiEpicgames } from "react-icons/si";
-import { FaPlaystation, FaXbox } from "react-icons/fa";
-import { TbMessage2 } from "react-icons/tb";
-import Talk from "talkjs";
-import { DivModal, StyledDiv } from "./styles";
-import { PacmanLoader } from "react-spinners";
-import { UserContext } from "../../../../context/User";
-import { ID_TALKJS } from "../../../../services/talkjs";
-import { ProgressBar } from "../../../../style/globalStyle";
+import React, { useContext, createRef, useState } from "react"
+import ThemeCard from "./styles"
+import { FaSteam } from "react-icons/fa"
+import { SiEpicgames } from "react-icons/si"
+import { FaPlaystation, FaXbox } from "react-icons/fa"
+import { TbMessage2 } from "react-icons/tb"
+import Talk from "talkjs"
+import { DivModal, StyledDiv } from "./styles"
+import { PacmanLoader } from "react-spinners"
+import { UserContext } from "../../../../context/User"
+import { ID_TALKJS } from "../../../../services/talkjs"
+import { ProgressBar } from "../../../../style/globalStyle"
 
 const UserCard = ({ card }) => {
-  const containerChat = createRef();
-  const [open, setOpen] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const { user } = useContext(UserContext);
+  const containerChat = createRef()
+  const [open, setOpen] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const { user } = useContext(UserContext)
 
   const plataforms = card.plataforms.filter(
     (elem) => Object.values(elem)[0] !== ""
-  );
-  let objectPlataforms = {};
+  )
+  let objectPlataforms = {}
   plataforms.map(
     (elem) => (objectPlataforms = { ...elem, ...objectPlataforms })
-  );
-
+  )
+  // cartao da userList
   const inbox = () => {
     Talk.ready.then(() => {
       const userModified = {
@@ -32,46 +32,51 @@ const UserCard = ({ card }) => {
         name: user.username,
         email: user.email,
         photoUrl: user.photoUrl,
-      };
+      }
 
       const otherModified = {
         id: card.id,
         name: card.username,
         email: card.email,
         photoUrl: card.photoUrl,
-      };
-      const me = new Talk.User(userModified);
-      const other = new Talk.User(otherModified);
+      }
+      const me = new Talk.User(userModified)
+      const other = new Talk.User(otherModified)
 
       window.talkSession = new Talk.Session({
         appId: ID_TALKJS,
         me,
-      });
+      })
 
       const conversation = window.talkSession.getOrCreateConversation(
         Talk.oneOnOneId(me, other)
-      );
+      )
 
-      conversation.setParticipant(me);
-      conversation.setParticipant(other);
+      conversation.setParticipant(me)
+      conversation.setParticipant(other)
 
-      const inbox = window.talkSession.createInbox();
+      const inbox = window.talkSession.createInbox()
 
-      inbox.select(conversation);
-      inbox.mount(containerChat.current);
+      inbox.select(conversation)
+      inbox.mount(containerChat.current)
 
-      setOpen(true);
-      setLoading(true);
+      setOpen(true)
+      setLoading(true)
       setTimeout(() => {
-        setLoading(false);
-      }, 1000);
-    });
-  };
+        setLoading(false)
+        const divNoticeBar = document.querySelector(".NoticeBar")
+        divNoticeBar.style.display = "none"
+        //const div = document.querySelector(".left-button")
+        //console.log(div)
+      }, 3000)
+    })
+  }
 
   const closeInbox = () => {
-    setOpen(false);
-    document.querySelector("iframe").remove();
-  };
+    setOpen(false)
+    document.querySelector("iframe").remove()
+    // Abrir modal de feedback
+  }
 
   return (
     <>
@@ -162,7 +167,7 @@ const UserCard = ({ card }) => {
                       <p>{feedback.feedback_message}</p>
                       <hr />
                     </li>
-                  );
+                  )
                 })}
               </ul>
             </>
@@ -174,7 +179,7 @@ const UserCard = ({ card }) => {
         </div>
       </ThemeCard>
     </>
-  );
-};
+  )
+}
 
-export default UserCard;
+export default UserCard

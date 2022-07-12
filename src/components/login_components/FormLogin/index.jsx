@@ -1,48 +1,50 @@
-import { yupResolver } from "@hookform/resolvers/yup";
-import { useContext } from "react";
-import { useForm } from "react-hook-form";
-import toast, { Toaster } from "react-hot-toast";
-import { Link, useHistory } from "react-router-dom";
-import * as yup from "yup";
-import { internalApi } from "../../../services/internalAPI";
-import { Div } from "./style";
-import { LoggedUserContext } from "../../../context/LoggedUser";
+import { yupResolver } from "@hookform/resolvers/yup"
+import { useContext } from "react"
+import { useForm } from "react-hook-form"
+import toast, { Toaster } from "react-hot-toast"
+import { Link, useHistory } from "react-router-dom"
+import * as yup from "yup"
+import { internalApi } from "../../../services/internalAPI"
+import { Div } from "./style"
+import { LoggedUserContext } from "../../../context/LoggedUser"
 
 export const DivForm = () => {
-  const { setLoggedUser } = useContext(LoggedUserContext);
-  const history = useHistory();
+  const { setLoggedUser } = useContext(LoggedUserContext)
+  const history = useHistory()
 
   const formSchema = yup.object().shape({
     email: yup.string().required("Email obrigatório").email("Email inválido"),
     password: yup.string().required("Senha obrigatória"),
-  });
+  })
 
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({ resolver: yupResolver(formSchema) });
+  } = useForm({ resolver: yupResolver(formSchema) })
 
   const onSubmit = (data) => {
-
-    const request = internalApi.post("login", data);
-    toast.promise(request, {
-      loading: "Carregando",
-      success: (data) => {
-        localStorage.setItem("@tokenLMG", data.data.accessToken);
-        localStorage.setItem("@id", data.data.user.id);
-        setLoggedUser(true);
-        history.push("/home");
-        return `Bem-vindo ${data.data.user.username}`;
+    const request = internalApi.post("login", data)
+    toast.promise(
+      request,
+      {
+        loading: "Carregando",
+        success: (data) => {
+          localStorage.setItem("@tokenLMG", data.data.accessToken)
+          localStorage.setItem("@id", data.data.user.id)
+          setLoggedUser(true)
+          history.push("/home")
+          return `Bem-vindo ${data.data.user.username}`
+        },
+        error: (err) => "Usuário ou senha incorretos",
       },
-      error: (err) => "Usuário ou senha incorretos",
-    }, {
-    success: {
+      {
+        success: {
           duration: 700,
-         };
-      };
-    );
-  };
+        },
+      }
+    )
+  }
 
   return (
     <Div>
@@ -78,5 +80,5 @@ export const DivForm = () => {
       </form>
       <Toaster />
     </Div>
-  );
-};
+  )
+}

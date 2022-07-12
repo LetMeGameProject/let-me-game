@@ -1,22 +1,21 @@
-import React, { useContext } from "react";
-import UsersList from "../../components/lobby_components/UsersList";
-import ContainerLobby from "./styles";
-import UsersInput from "../../components/lobby_components/UsersInput";
-import { LobbyContext } from "../../context/OpenLobby";
-import Header from "../../components/header";
-import ModalInbox from "../../components/modal_inbox";
-import { LoggedUserContext } from "../../context/LoggedUser";
-import { Redirect } from "react-router-dom";
-  
+import React, { useContext, useEffect } from "react"
+import UsersList from "../../components/lobby_components/UsersList"
+import ContainerLobby from "./styles"
+import UsersInput from "../../components/lobby_components/UsersInput"
+import { LobbyContext } from "../../context/OpenLobby"
+import Header from "../../components/header"
+import ModalInbox from "../../components/modal_inbox"
+import { LoggedUserContext } from "../../context/LoggedUser"
+import { Redirect } from "react-router-dom"
+
 const Lobby = () => {
   const { background, setBackground, name } = useContext(LobbyContext)
-  const { loggedUser } = useContext(LoggedUserContext);
-  const game = JSON.parse(localStorage.getItem("@CURRENT_GAME"))  
+  const { loggedUser } = useContext(LoggedUserContext)
+  const game = JSON.parse(localStorage.getItem("@CURRENT_GAME"))
 
-  useEffect(()=>{
+  useEffect(() => {
     setBackground(game.background_image)
   })
-
 
   return loggedUser ? (
     <>
@@ -35,7 +34,7 @@ const Lobby = () => {
     </>
   ) : (
     <Redirect to="/" />
-  );
-};
+  )
+}
 
-export default Lobby;
+export default Lobby
