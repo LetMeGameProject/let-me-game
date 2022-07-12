@@ -6,14 +6,9 @@ import Providers from "./context/index";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <React.StrictMode>
     <BrowserRouter>
       <Providers>
         <App />
       </Providers>
     </BrowserRouter>
-  </React.StrictMode>
 );
-
-// If you want to start measuring performance in your app, pass a function
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
