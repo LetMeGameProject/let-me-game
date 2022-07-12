@@ -12,7 +12,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useContext } from 'react';
 import { UserContext } from '../../../context/User';
 import { internalApi } from '../../../services/internalAPI';
-import toast from 'react-hot-toast';
+import toast, { Toaster } from 'react-hot-toast';
 import { TextField } from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
@@ -87,6 +87,7 @@ const EditUser = ({openModalEditUser, setOpenModalEditUser}) =>{
     }
 
     return(
+        <>
         <Modal
             aria-labelledby="transition-modal-title"
             aria-describedby="transition-modal-description"
@@ -163,6 +164,7 @@ const EditUser = ({openModalEditUser, setOpenModalEditUser}) =>{
             </Box>
             </Fade>
         </Modal>
+        </>
     )
 }
 
