@@ -31,6 +31,7 @@ export const LobbyProvider = ({ children }) => {
         background,
         gameName,
         openLobby,
+        setBackground,
         openModalPlayed,
         setOpenModalPlayed,
         openModalFeedback,

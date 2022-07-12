@@ -24,6 +24,7 @@ export const DivForm = () => {
   } = useForm({ resolver: yupResolver(formSchema) });
 
   const onSubmit = (data) => {
+
     const request = internalApi.post("login", data);
     toast.promise(request, {
       loading: "Carregando",
@@ -35,7 +36,12 @@ export const DivForm = () => {
         return `Bem-vindo ${data.data.user.username}`;
       },
       error: (err) => "Usuário ou senha incorretos",
-    });
+    }, {
+    success: {
+          duration: 700,
+         };
+      };
+    );
   };
 
   return (

@@ -7,10 +7,16 @@ import Header from "../../components/header";
 import ModalInbox from "../../components/modal_inbox";
 import { LoggedUserContext } from "../../context/LoggedUser";
 import { Redirect } from "react-router-dom";
-
+  
 const Lobby = () => {
-  const { background, name } = useContext(LobbyContext);
+  const { background, setBackground, name } = useContext(LobbyContext)
   const { loggedUser } = useContext(LoggedUserContext);
+  const game = JSON.parse(localStorage.getItem("@CURRENT_GAME"))  
+
+  useEffect(()=>{
+    setBackground(game.background_image)
+  })
+
 
   return loggedUser ? (
     <>

@@ -33,6 +33,7 @@ export const CurrentLobbyProvider = ({ children }) => {
         getGameUsersCount,
         currentGame,
         setCurrentGame,
+        setCurrentLobbyList,
       }}
     >
       {children}
