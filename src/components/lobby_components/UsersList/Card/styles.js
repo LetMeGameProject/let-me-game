@@ -179,10 +179,11 @@ export const Button = styled.button`
 `
 
 export const StyledDiv = styled.div`
-  width: ${({ modal }) => (modal ? "100vw" : "0")};
+  width: ${({ modal }) => (modal ? "100%" : "0")};
   height: ${({ modal }) => (modal ? "100vh" : "0")};
   position: ${({ modal }) => (modal ? "fixed" : "unset")};
   z-index: 1001;
+  top: 0%;
   background-color: ${({ modal }) =>
     modal ? "rgba(0,0,0,0.60)" : "rgba(0,0,0,0.0)"};
 `
