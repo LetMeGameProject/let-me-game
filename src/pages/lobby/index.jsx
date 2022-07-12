@@ -11,13 +11,13 @@ import UserStatus from "../../components/lobby_components/user_status";
 import { Toaster } from "react-hot-toast";
 
 const Lobby = () => {
-  const { background, setBackground, name } = useContext(LobbyContext);
-  const { loggedUser } = useContext(LoggedUserContext);
-  const game = JSON.parse(localStorage.getItem("@CURRENT_GAME"));
+  const { background, setBackground, name } = useContext(LobbyContext)
+  const { loggedUser } = useContext(LoggedUserContext)
+  const game = JSON.parse(localStorage.getItem("@CURRENT_GAME"))
 
   useEffect(() => {
-    setBackground(game.background_image);
-  });
+    setBackground(game.background_image)
+  })
 
   return loggedUser ? (
     <>
@@ -46,7 +46,7 @@ const Lobby = () => {
     </>
   ) : (
     <Redirect to="/" />
-  );
-};
+  )
+}
 
-export default Lobby;
+export default Lobby

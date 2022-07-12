@@ -57,6 +57,7 @@ const Header = ()=> {
     return(
         <StyledHeader>
             <Content>
+                
                 <div className="div-logo" onClick={ ()=>redirectHome()}>
                     <img src={Logo} alt="Circulo roxo com controle roxo e botões brancos, aparecendo da esquerda para a direita centralizado até a metade do circulo"/>
                 </div>
@@ -64,10 +65,9 @@ const Header = ()=> {
                 <div className="div-img-user">
                     <Hamburger toggled={isOpen} toggle={setOpen}  duration={0.4}/>
                 </div>
+
             </Content>
-            
-            
-                
+              
             {isOpen && 
             <motion.div
             initial={{ opacity: 0 }}
@@ -76,9 +76,9 @@ const Header = ()=> {
                 <SideBar setOpen={setOpen} setOpenModalUser={setOpenModalUser}/>
             </motion.div>}
             {openModalUser && <ShowUser openModalUser={openModalUser} setOpenModalUser={setOpenModalUser} setOpenModalEditUser={setOpenModalEditUser}/>}
-            {openModalEditUser && <EditUser openModalEditUser={openModalEditUser} setOpenModalEditUser={setOpenModalEditUser}/>}   
+            {openModalEditUser && <EditUser openModalEditUser={openModalEditUser} setOpenModalEditUser={setOpenModalEditUser}/>}
+
         </StyledHeader>
-        
     )
 }
 

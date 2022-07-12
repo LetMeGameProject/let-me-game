@@ -17,7 +17,6 @@ const CarouselCard = ({ game, userCount }) => {
           <GiExitDoor
             className="iconLobby"
             onClick={() => openLobby(game)}
-            // onClick={() => redirectToLobbyPage()}
           />
           <h4>{`${userCount} jogadores online`}</h4>
           <CardsButton favorite game={game} />
