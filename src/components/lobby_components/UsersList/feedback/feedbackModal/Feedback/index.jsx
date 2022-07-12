@@ -1,10 +1,10 @@
-import Backdrop from "@mui/material/Backdrop"
-import Modal from "@mui/material/Modal"
-import Fade from "@mui/material/Fade"
-import { AiFillLike, AiFillDislike } from "react-icons/ai"
+import Backdrop from "@mui/material/Backdrop";
+import Modal from "@mui/material/Modal";
+import Fade from "@mui/material/Fade";
+import { AiFillLike, AiFillDislike } from "react-icons/ai";
 
-import { useContext, useState } from "react"
-import { LobbyContext } from "../../../../../../context/OpenLobby"
+import { useContext, useState } from "react";
+import { LobbyContext } from "../../../../../../context/OpenLobby";
 import {
   FeedbackBox,
   Review,
@@ -13,12 +13,12 @@ import {
   StyledDiv,
   StyledP,
   TextBox,
-} from "./styles"
+} from "./styles";
 
 const Feedback = () => {
-  const { openModalFeedback, setOpenModalFeedback } = useContext(LobbyContext)
+  const { openModalFeedback, setOpenModalFeedback } = useContext(LobbyContext);
 
-  const [choose, setChoose] = useState(null)
+  const [choose, setChoose] = useState(null);
 
   return (
     <StyledDiv>
@@ -57,7 +57,7 @@ const Feedback = () => {
 
             <StyledButton
               onClick={() => {
-                setOpenModalFeedback(false)
+                setOpenModalFeedback(false);
               }}
             >
               Enviar
@@ -66,7 +66,7 @@ const Feedback = () => {
         </Fade>
       </Modal>
     </StyledDiv>
-  )
-}
+  );
+};
 
-export default Feedback
+export default Feedback;

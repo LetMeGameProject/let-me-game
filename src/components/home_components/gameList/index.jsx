@@ -9,7 +9,7 @@ import { internalApi } from "../../../services/internalAPI";
 
 const GameList = () => {
   const { gameList, loading, loadMore } = useContext(GamesContext);
-  const { getGameUsersCount, setCurrentLobbyList } =
+  const { getGameUsersCount, setCurrentLobbyList, currentLobbyList } =
     useContext(CurrentLobbyContext);
   useEffect(() => {
     const token = localStorage.getItem("@tokenLMG");

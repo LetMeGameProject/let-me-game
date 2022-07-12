@@ -1,10 +1,10 @@
-import styled from "styled-components"
+import styled from "styled-components";
 
 export const StyledDiv = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-evenly;
-`
+`;
 export const StyledButton = styled.button`
   background-color: var(--background-color);
   color: var(--primary-white);
@@ -27,7 +27,7 @@ export const StyledButton = styled.button`
     border: 2px solid var(--foreground-color);
     transition: 0.3s;
   }
-`
+`;
 
 export const StyledP = styled.p`
   font-size: 24px;
@@ -38,4 +38,4 @@ export const StyledP = styled.p`
   font-family: "Inter", sans-serif;
   text-align: center;
   letter-spacing: 1px;
-`
+`;
