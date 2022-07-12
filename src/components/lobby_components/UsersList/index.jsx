@@ -7,8 +7,7 @@ import { internalApi } from "../../../services/internalAPI";
 const UsersList = () => {
   const { currentLobbyList, currentGame, setCurrentLobbyList } =
     useContext(CurrentLobbyContext);
-  const { inputKey, setInputKey } = useContext(CurrentLobbyContext);
-  // console.log(inputKey, "INOUYT");
+  const { inputKey } = useContext(CurrentLobbyContext);
   useEffect(() => {
     const token = localStorage.getItem("@tokenLMG");
     internalApi
@@ -20,7 +19,19 @@ const UsersList = () => {
       .then((res) => setCurrentLobbyList(res.data));
   }, []);
 
-  // let key = "joh";
+  // console.log("ola");
+  // currentLobbyList, setCurrentLobbyList
+  //gerando um loop moderado pra sempre ir atualziando a lista
+  // setInterval(() => {
+  //   const token = localStorage.getItem("@tokenLMG");
+  //   internalApi
+  //     .get(`online_users_list/`, {
+  //       headers: {
+  //         Authorization: `Bearer ${token}`,
+  //       },
+  //     })
+  //     .then((res) => setCurrentLobbyList(res.data));
+  // }, 10000);
   return (
     <ThemeUserList>
       {currentLobbyList
@@ -29,8 +40,14 @@ const UsersList = () => {
             return elem;
           }
         })
+        .sort((a, b) => b.reputation - a.reputation)
         .map((elem, index) => {
-          if (elem.username.toLowerCase().includes(inputKey.toLowerCase())) {
+          if (
+            elem.username
+              .toLowerCase()
+              .includes(inputKey.toLowerCase().trim()) ||
+            elem.country.toLowerCase().includes(inputKey.toLowerCase().trim())
+          ) {
             return <UserCard key={index} card={elem} />;
           }
         })}

@@ -1,14 +1,14 @@
-import Backdrop from "@mui/material/Backdrop"
-import Box from "@mui/material/Box"
-import Modal from "@mui/material/Modal"
-import Fade from "@mui/material/Fade"
-import { useContext } from "react"
-import { LobbyContext } from "../../../../../../context/OpenLobby"
-import { StyledDiv, StyledButton, StyledP } from "./styles"
+import Backdrop from "@mui/material/Backdrop";
+import Box from "@mui/material/Box";
+import Modal from "@mui/material/Modal";
+import Fade from "@mui/material/Fade";
+import { useContext } from "react";
+import { LobbyContext } from "../../../../../../context/OpenLobby";
+import { StyledDiv, StyledButton, StyledP } from "./styles";
 
 const Played = () => {
   const { setOpenModalPlayed, openModalPlayed, setOpenModalFeedback } =
-    useContext(LobbyContext)
+    useContext(LobbyContext);
 
   const style = {
     position: "absolute",
@@ -25,7 +25,7 @@ const Played = () => {
     flexDirection: "column",
     justifyContent: "space-evenly",
     alignItems: "center",
-  }
+  };
 
   return (
     <>
@@ -48,15 +48,15 @@ const Played = () => {
             <StyledDiv>
               <StyledButton
                 onClick={() => {
-                  setOpenModalPlayed(false)
+                  setOpenModalPlayed(false);
                 }}
               >
                 Não
               </StyledButton>
               <StyledButton
                 onClick={() => {
-                  setOpenModalFeedback(true)
-                  setOpenModalPlayed(false)
+                  setOpenModalFeedback(true);
+                  setOpenModalPlayed(false);
                 }}
               >
                 Sim
@@ -66,7 +66,7 @@ const Played = () => {
         </Fade>
       </Modal>
     </>
-  )
-}
+  );
+};
 
-export default Played
+export default Played;
