@@ -24,7 +24,6 @@ const UserCard = ({ card }) => {
   plataforms.map(
     (elem) => (objectPlataforms = { ...elem, ...objectPlataforms })
   );
-  // cartao da userList
   const inbox = () => {
     Talk.ready.then(() => {
       const userModified = {
@@ -93,18 +92,24 @@ const UserCard = ({ card }) => {
       <ThemeCard>
         <div className="header_header">
           <div className="user_img">
-            <img src={card.photoUrl} alt={card.username} />
+            <img src={card.photoUrl} alt="img" />
           </div>
           <div className="user_info">
-            <h3>{card.username}</h3>
+            <h3>
+              {!(card.id === user.id)
+                ? card.username
+                : `${card.username} (você)`}
+            </h3>
             <h4>{card.country}</h4>
             <h5>Reputação</h5>
             <ProgressBar value={card.reputation} max="100" />
           </div>
           <div className="press_to_talk">
-            <button className=".btn-talk" onClick={() => inbox()}>
-              <TbMessage2 size={40} style={{ background: "transparent" }} />
-            </button>
+            {!(card.id === user.id) && (
+              <button className=".btn-talk" onClick={() => inbox()}>
+                <TbMessage2 size={40} style={{ background: "transparent" }} />
+              </button>
+            )}
           </div>
         </div>
 

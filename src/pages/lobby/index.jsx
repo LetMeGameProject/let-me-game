@@ -7,8 +7,8 @@ import Header from "../../components/header";
 import ModalInbox from "../../components/modal_inbox";
 import { LoggedUserContext } from "../../context/LoggedUser";
 import { Redirect } from "react-router-dom";
-import UserStatus from "../../components/lobby_components/user_status"
-import { Toaster } from "react-hot-toast"
+import UserStatus from "../../components/lobby_components/user_status";
+import { Toaster } from "react-hot-toast";
 
 const Lobby = () => {
   const { background, setBackground, name } = useContext(LobbyContext);

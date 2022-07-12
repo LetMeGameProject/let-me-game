@@ -1,15 +1,16 @@
-import { createContext, useEffect, useState } from "react"
-import { internalApi } from "../../services/internalAPI"
-export const CurrentLobbyContext = createContext()
+import { createContext, useEffect, useState } from "react";
+import { internalApi } from "../../services/internalAPI";
+export const CurrentLobbyContext = createContext();
 
 export const CurrentLobbyProvider = ({ children }) => {
-  const [currentLobbyList, setCurrentLobbyList] = useState([])
+  const [currentLobbyList, setCurrentLobbyList] = useState([]);
   const [currentGame, setCurrentGame] = useState(
     JSON.parse(localStorage.getItem("@CURRENT_GAME")) || {}
-  )
+  );
+  const [inputKey, setInputKey] = useState("");
 
   useEffect(() => {
-    const token = localStorage.getItem("@tokenLMG")
+    const token = localStorage.getItem("@tokenLMG");
     internalApi
       .get("online_users_list", {
         headers: {
@@ -17,14 +18,14 @@ export const CurrentLobbyProvider = ({ children }) => {
         },
       })
       .then((res) => res.data)
-      .then((res) => setCurrentLobbyList(res))
-  }, [])
+      .then((res) => setCurrentLobbyList(res));
+  }, []);
   function getGameUsersCount(gameID) {
     const resultado = currentLobbyList.reduce((a, b) => {
-      if (b.current_game.game_id === gameID) a++
-      return a
-    }, 0)
-    return resultado
+      if (b.current_game.game_id === gameID) a++;
+      return a;
+    }, 0);
+    return resultado;
   }
   return (
     <CurrentLobbyContext.Provider
@@ -34,10 +35,11 @@ export const CurrentLobbyProvider = ({ children }) => {
         getGameUsersCount,
         currentGame,
         setCurrentGame,
-        setCurrentLobbyList,
+        inputKey,
+        setInputKey,
       }}
     >
       {children}
     </CurrentLobbyContext.Provider>
-  )
-}
+  );
+};
