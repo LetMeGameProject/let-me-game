@@ -46,6 +46,7 @@ export const DivForm = () => {
       loading: "Carregando",
       success: (data) => {
         history.push("/")
+        return "Cadastro efetuado com sucesso!"
       },
       error: (err) => `Email já existente`,
     })

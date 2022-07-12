@@ -11,7 +11,7 @@ export const Div = styled.div`
 
   form {
     height: 90%;
-    width: 60%;
+    width: 350px;
     background: #dedede;
 
     display: flex;
@@ -97,14 +97,7 @@ export const Div = styled.div`
       color: #b000f1;
     }
   }
-
   @media (max-width: 800px) {
     width: 100vw;
-  }
-
-  @media (max-width: 550px) {
-    form {
-      width: 80%;
-    }
   }
 `;
