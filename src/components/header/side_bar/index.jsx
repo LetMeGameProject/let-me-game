@@ -34,10 +34,7 @@ const SideBar = ({ setOpen, setOpenModalUser }) => {
       <Content>
         <div className="user">
           <div className="user-img">
-            <img
-              src={user.photoUrl}
-              alt="imagem de perfil definida pelo usuário"
-            />
+            <img src={user.photoUrl} alt="img" />
           </div>
           <div className="user-info">
             <h4>{user.username}</h4>
