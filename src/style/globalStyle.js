@@ -64,9 +64,10 @@ textarea:focus, input:focus {
 
 export const ProgressBar = styled.progress`
   height: 13px;
-  background-color: #dfc640;
+  background-color: var(--background-color);
   border: 1.5px solid var(--background-color);
   border-radius: 4px;
+  ::-moz-progress-bar { background:#dfc640; }
   &::-webkit-progress-bar {
     background-color: var(--background-color);
     border-bottom-right-radius: 4px;
