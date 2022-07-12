@@ -72,7 +72,7 @@ const ShowUser = ({
 
             <div className="user-info">
               <div className="user-img">
-                <img src={user.photoUrl} alt="imagem de perfil do usuário" />
+                <img src={user.photoUrl} alt="img" />
               </div>
 
               <div className="user">
