@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from "styled-components"
 
 const ThemeUserList = styled.div`
   width: 100%;
@@ -6,6 +6,5 @@ const ThemeUserList = styled.div`
   flex-wrap: wrap;
   gap: 2rem;
   justify-content: center;
-  align-items: left;
-`;
-export default ThemeUserList;
+`
+export default ThemeUserList

@@ -1,4 +1,4 @@
-import styled, { createGlobalStyle } from "styled-components";
+import styled, { createGlobalStyle } from "styled-components"
 
 const GlobalStyle = createGlobalStyle`
 
@@ -63,27 +63,25 @@ textarea:focus, input:focus {
 `
 
 export const ProgressBar = styled.progress`
+  height: 13px;
+  background-color: #dfc640;
+  border: 1.5px solid var(--background-color);
+  border-radius: 4px;
+  &::-webkit-progress-bar {
+    background-color: var(--background-color);
+    border-bottom-right-radius: 4px;
+    border-top-right-radius: 4px;
+    border-bottom-left-radius: 4px;
+    border-top-left-radius: 4px;
+  }
 
-    height: 13px;
-    background-color: #DFC640;
-    border: 1.5px solid var(--background-color);
-    border-radius: 4px;
-    &::-webkit-progress-bar {
-        background-color: var(--background-color);
-        border-bottom-right-radius: 4px;
-        border-top-right-radius: 4px;
-        border-bottom-left-radius: 4px;
-        border-top-left-radius: 4px;
-    }
-
-    &::-webkit-progress-value {
-        background-color: #DFC640;
-        border-bottom-left-radius: 2px;
-        border-top-left-radius: 2px;
-        border-bottom-right-radius: 2px;
-        border-top-right-radius: 2px;
-    }
+  &::-webkit-progress-value {
+    background-color: #dfc640;
+    border-bottom-left-radius: 2px;
+    border-top-left-radius: 2px;
+    border-bottom-right-radius: 2px;
+    border-top-right-radius: 2px;
+  }
 `
 
 export default GlobalStyle
-
