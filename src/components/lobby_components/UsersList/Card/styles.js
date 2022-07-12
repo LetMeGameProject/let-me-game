@@ -2,12 +2,13 @@ import styled from "styled-components"
 
 const ThemeCard = styled.div`
   width: 100%;
-  max-width: 320px;
+  max-width: 300px;
   padding: 25px;
   height: 430px;
   background-color: var(--secondary-white);
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   border-radius: 10px;
   .header_header {
     display: flex;
@@ -25,8 +26,28 @@ const ThemeCard = styled.div`
     border: 2px solid var(--background-color);
   }
   .user_info {
+    margin: 5px 0;
     padding-left: 8px;
     width: 55%;
+    position: relative;
+
+    .youDiv {
+      width: 60px;
+      height: 25px;
+      text-align: center;
+      background-color: var(--secondary-white);
+      position: absolute;
+      top: -45px;
+      left: -87.5px;
+
+      border-top-left-radius: 6px;
+      border-top-right-radius: 6px;
+      .yourCard {
+        color: var(--foreground-color);
+        font-size: 14px;
+        font-weight: 800;
+      }
+    }
   }
   .user_info > h3 {
     width: 100%;
@@ -55,7 +76,7 @@ const ThemeCard = styled.div`
     width: 100%;
     height: 4px;
     background-color: var(--background-color);
-    margin-bottom: 25px;
+    margin-bottom: 10px;
   }
 
   .plataforms {
@@ -73,6 +94,12 @@ const ThemeCard = styled.div`
       color: var(--background-color);
       cursor: pointer;
     }
+  }
+
+  .no_plataforms {
+    width: 100%;
+    font-size: 14px;
+    text-align: center;
   }
 
   .feedbacks {
@@ -125,7 +152,7 @@ const ThemeCard = styled.div`
     border-radius: 10px;
     border: 2px solid black;
     width: 100%;
-    height: 195px;
+    height: 300px;
     display: flex;
     justify-content: center;
     background-color: var(--background-color);
