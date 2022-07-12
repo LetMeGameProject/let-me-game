@@ -45,14 +45,14 @@ const UserStatus = () =>{
                     }
                 })
                 .then((res)=>{
-                    currentLobbyList.forEach((userLobby)=> {
+
+                    currentLobbyList.find((userLobby) => {
                         if(userLobby.id === res.data.id){
-                            userLobby.current_game = {...res.data.current_game}
-                            setUser(userLobby)
-                        }else if(userLobby.id === res.data.id){
+                            setUser(res.data)
                             setCurrentLobbyList([...currentLobbyList, res.data])
                         }
                     })
+
                     toast.success('Status atualizado', {id: t.id,})
                     setTimeout(()=>{
                         toast.dismiss(t.id)
@@ -77,7 +77,9 @@ const UserStatus = () =>{
                     }
                 })
                 .then((res) => {
+                    setUser(res.data)
                     setCurrentLobbyList([...currentLobbyList, res.data])
+
                     toast.success('Status atualizado', {id: t.id,})
                     setTimeout(()=>{
                         toast.dismiss(t.id)

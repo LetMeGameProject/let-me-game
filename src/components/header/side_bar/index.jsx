@@ -5,7 +5,6 @@ import { ProgressBar } from "../../../style/globalStyle"
 import { useContext } from "react"
 import { UserContext } from "../../../context/User"
 import { toast } from "react-hot-toast"
-import { useHistory } from "react-router-dom"
 import { LoggedUserContext } from "../../../context/LoggedUser"
 import { TbDeviceGamepad2 } from "react-icons/tb"
 import { internalApi } from "../../../services/internalAPI"
@@ -14,13 +13,7 @@ import { CurrentLobbyContext } from "../../../context/currentLobby"
 const SideBar = ({ setOpen, setOpenModalUser }) => {
   const { user, setUser } = useContext(UserContext)
   const { setLoggedUser } = useContext(LoggedUserContext)
-  const { currentLobbyList, setCurrentLobbyList } =
-    useContext(CurrentLobbyContext)
-  const history = useHistory()
-
-  const userFiltered = currentLobbyList.find(
-    (userLobby) => userLobby.id === user.id
-  )
+  const { setCurrentLobbyList } = useContext(CurrentLobbyContext)
 
   const openModalEdit = () => {
     setOpenModalUser(true)
@@ -92,7 +85,7 @@ const SideBar = ({ setOpen, setOpenModalUser }) => {
               <TbDeviceGamepad2 size={20} />
               <h5> Jogo atual</h5>
             </div>
-            <span>{userFiltered.current_game?.game_name}</span>
+            <span>{user.current_game?.game_name}</span>
             <button onClick={() => removeGame()}>Remover</button>
           </div>
         )}
