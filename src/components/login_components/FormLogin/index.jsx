@@ -32,7 +32,9 @@ export const DivForm = () => {
         success: (data) => {
           localStorage.setItem("@tokenLMG", data.data.accessToken)
           localStorage.setItem("@id", data.data.user.id)
-          setLoggedUser(true)
+          setTimeout(() => {
+            setLoggedUser(true)
+          }, 1700)
           history.push("/home")
           return `Bem-vindo ${data.data.user.username}`
         },
