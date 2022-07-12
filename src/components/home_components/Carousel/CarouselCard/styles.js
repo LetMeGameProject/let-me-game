@@ -5,7 +5,7 @@ const StyledCarrouselCard = styled.section`
   height: 100%;
   &:hover {
     .container-card {
-      transition: 0.3s;
+      transition: 0.4s;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -39,6 +39,7 @@ const StyledCarrouselCard = styled.section`
     height: 100%;
     display: none;
     position: fixed;
+
     :hover {
       background: rgba(0, 0, 0, 0.5);
     }
@@ -50,6 +51,8 @@ const StyledCarrouselCard = styled.section`
     color: white;
     font-weight: bold;
     font-size: 14px;
+    text-shadow: 1px 1px 1px var(--foreground-color);
+    margin-bottom:10px;
   }
 
   .container-button {
