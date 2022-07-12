@@ -1,25 +1,25 @@
-import Backdrop from "@mui/material/Backdrop";
-import Box from "@mui/material/Box";
-import Modal from "@mui/material/Modal";
-import Fade from "@mui/material/Fade";
-import { FormStyled } from "./styles";
-import { FaSteam } from "react-icons/fa";
-import { SiEpicgames } from "react-icons/si";
-import { FaPlaystation, FaXbox } from "react-icons/fa";
-import { useForm } from "react-hook-form";
-import * as yup from "yup";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { useContext } from "react";
-import { UserContext } from "../../../context/User";
-import { internalApi } from "../../../services/internalAPI";
-import toast from "react-hot-toast";
-import { TextField } from "@mui/material";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { CurrentLobbyContext } from "../../../context/currentLobby";
+import Backdrop from "@mui/material/Backdrop"
+import Box from "@mui/material/Box"
+import Modal from "@mui/material/Modal"
+import Fade from "@mui/material/Fade"
+import { FormStyled } from "./styles"
+import { FaSteam } from "react-icons/fa"
+import { SiEpicgames } from "react-icons/si"
+import { FaPlaystation, FaXbox } from "react-icons/fa"
+import { useForm } from "react-hook-form"
+import * as yup from "yup"
+import { yupResolver } from "@hookform/resolvers/yup"
+import { useContext } from "react"
+import { UserContext } from "../../../context/User"
+import { internalApi } from "../../../services/internalAPI"
+import toast from "react-hot-toast"
+import { TextField } from "@mui/material"
+import { createTheme, ThemeProvider } from "@mui/material/styles"
+import { CurrentLobbyContext } from "../../../context/currentLobby"
 
 const EditUser = ({ openModalEditUser, setOpenModalEditUser }) => {
-  const { user, setUser } = useContext(UserContext);
-  const { setCurrentLobbyList } = useContext(CurrentLobbyContext);
+  const { user, setUser } = useContext(UserContext)
+  const { setCurrentLobbyList } = useContext(CurrentLobbyContext)
 
   const styleModal = {
     position: "absolute",
@@ -35,7 +35,7 @@ const EditUser = ({ openModalEditUser, setOpenModalEditUser }) => {
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
-  };
+  }
 
   const theme = createTheme({
     palette: {
@@ -46,7 +46,7 @@ const EditUser = ({ openModalEditUser, setOpenModalEditUser }) => {
         main: "#ffffff",
       },
     },
-  });
+  })
 
   const schema = yup.object().shape({
     photoUrl: yup.string().url(),
@@ -57,11 +57,11 @@ const EditUser = ({ openModalEditUser, setOpenModalEditUser }) => {
       psn: yup.string().url(),
       xbox: yup.string().url(),
     }),
-  });
+  })
 
   const { register, handleSubmit } = useForm({
     schema: yupResolver(schema),
-  });
+  })
 
   const onSubmit = (data) => {
     const response = internalApi.patch(
@@ -72,25 +72,25 @@ const EditUser = ({ openModalEditUser, setOpenModalEditUser }) => {
           Authorization: `Bearer ${localStorage.getItem("@tokenLMG")}`,
         },
       }
-    );
+    )
 
     toast.promise(response, {
       loading: "Atualizando Perfil...",
       success: (response) => {
-        setUser(response.data);
+        setUser(response.data)
         setTimeout(() => {
-          setOpenModalEditUser(false);
-        }, 1500);
-        return "Perfil atualizado com sucesso";
+          setOpenModalEditUser(false)
+        }, 1500)
+        return "Perfil atualizado com sucesso"
       },
       error: "Poxa, não conseguimos atualizar!",
-    });
+    })
 
-    handleUpdateUser(data);
-  };
+    handleUpdateUser(data)
+  }
 
   async function handleUpdateUser(updatedUser) {
-    const token = localStorage.getItem("@tokenLMG");
+    const token = localStorage.getItem("@tokenLMG")
 
     const onlineList = await internalApi
       .get("online_users_list", {
@@ -98,21 +98,21 @@ const EditUser = ({ openModalEditUser, setOpenModalEditUser }) => {
           Authorization: `Bearer ${token}`,
         },
       })
-      .then((res) => res.data);
+      .then((res) => res.data)
 
     if (onlineList.find((elem) => elem.id === user.id)) {
       internalApi.patch(`online_users_list/${user.id}`, updatedUser, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
-      });
+      })
       internalApi
         .get(`online_users_list/`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         })
-        .then((res) => setCurrentLobbyList(res.data));
+        .then((res) => setCurrentLobbyList(res.data))
     }
   }
 
@@ -341,7 +341,7 @@ const EditUser = ({ openModalEditUser, setOpenModalEditUser }) => {
         </Box>
       </Fade>
     </Modal>
-  );
-};
+  )
+}
 
-export default EditUser;
+export default EditUser

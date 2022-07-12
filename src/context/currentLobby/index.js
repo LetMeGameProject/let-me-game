@@ -29,6 +29,7 @@ export const CurrentLobbyProvider = ({ children }) => {
   return (
     <CurrentLobbyContext.Provider
       value={{
+        setCurrentLobbyList,
         currentLobbyList,
         getGameUsersCount,
         currentGame,

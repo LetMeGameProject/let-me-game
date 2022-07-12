@@ -22,7 +22,7 @@ export const Content = styled.div`
     align-items: center;
     height: 400px;
     right: 0px;
-    gap: 30px;
+    gap: 20px;
     width: 60%;
     max-width: 400px;
     background-color: var(--secondary-white);
@@ -56,12 +56,10 @@ export const Content = styled.div`
         }
 
         .user-info{
-            
             flex-direction: column;
             display: flex;
             gap: 8px;
             justify-content: center;
-            
 
             ${medias.map(media => css`
             @media(min-width: ${media.break}px){
@@ -72,7 +70,44 @@ export const Content = styled.div`
 
     }
 
-    .user-edit, .user-message, .user-logout{
+    .user-status{
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        width: 70%;
+        height: 70px;
+        gap: 7px;
+        border-bottom: 3px solid var(--background-color);
+        div{
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 70%;
+            height: 50px;
+            gap: 10px;
+        } 
+        span{
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-style: italic;
+            font-size: 14px;
+        }
+        button{
+            margin-bottom: 20px;
+            background-color: var(--background-color);
+            color: #ffff;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 11px;
+        }   
+    }
+
+    .user-edit, .user-logout{
         cursor: pointer;
         display: flex;
         justify-content: center;
