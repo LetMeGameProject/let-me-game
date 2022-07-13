@@ -1,7 +1,5 @@
 <p align="center"><img width=30% src="https://images2.imgbox.com/53/67/4E6GsS49_o.png"/>
 </p>
-<p align="center"><img width=20% src="https://www.lomadee.com/programas/BR/8450/logo_185x140.png"/>
-</p>
 <p align="center"><img src="https://img.shields.io/badge/javascript-98%25-yellow">
 <img src="https://img.shields.io/badge/languages-3-red">
 <img src="https://img.shields.io/badge/colaborators-5-green">
