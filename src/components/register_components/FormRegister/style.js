@@ -7,28 +7,27 @@ export const Div = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: Arial, Helvetica, sans-serif;
 
   form {
-    height: 90%;
-    width: 350px;
+    width: 90%;
+    max-width: 350px;
     background: #dedede;
 
     display: flex;
     flex-direction: column;
     align-items: center;
-    row-gap: 15px;
+    padding: 20px;
+    gap: 10px;
     border-radius: 4px;
 
     h1 {
-      padding-top: 20px;
       font-size: 18px;
       color: #570a57;
     }
 
     p {
       font-weight: bold;
-      font-size: 16px;
+      font-size: 13px;
     }
 
     a {
@@ -43,9 +42,9 @@ export const Div = styled.div`
       width: 85%;
       height: 40px;
 
-      font-size: 18px;
+      font-size: 16px;
       color: white;
-      font-weight: 500;
+      font-weight: bold;
       background: linear-gradient(to right, #5200d5, #b000f1, #ce00fb);
       border-radius: 7px;
 
@@ -61,24 +60,22 @@ export const Div = styled.div`
     width: 85%;
     display: flex;
     flex-direction: column;
-    row-gap: 5px;
   }
 
   .div__input {
     width: 100%;
     height: 70px;
-
     display: flex;
     flex-direction: column;
-    row-gap: 2px;
+    justify-content: center;
 
     span {
       color: #2f2d2d;
-      font-size: 16px;
+      font-size: 15px;
     }
 
     input {
-      padding: 15px 20px;
+      padding: 10px 20px;
       border: none;
       border-radius: 8px;
 
@@ -90,11 +87,11 @@ export const Div = styled.div`
 
   .label {
     display: flex;
-    column-gap: 5px;
     align-items: center;
-
+    gap: 5px;
     h6 {
       color: #b000f1;
+      align-self: center;
     }
   }
   @media (max-width: 800px) {

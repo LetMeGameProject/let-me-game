@@ -7,11 +7,11 @@ export const Div = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: Arial, Helvetica, sans-serif;
 
   form {
-    height: 60%;
-    width: 350px;
+    height: 40%;
+    width: 90%;
+    max-width: 350px;
     background: #dedede;
 
     display: flex;
@@ -44,7 +44,7 @@ export const Div = styled.div`
 
       font-size: 18px;
       color: white;
-      font-weight: 500;
+      font-weight: bold;
       background: linear-gradient(to right, #5200d5, #b000f1, #ce00fb);
       border-radius: 7px;
 
@@ -60,24 +60,22 @@ export const Div = styled.div`
     width: 85%;
     display: flex;
     flex-direction: column;
-    row-gap: 20px;
   }
 
   .div__input {
     width: 100%;
     height: 70px;
-
     display: flex;
     flex-direction: column;
-    row-gap: 2px;
+    justify-content: center;
 
     span {
       color: #2f2d2d;
-      font-size: 16px;
+      font-size: 15px;
     }
 
     input {
-      padding: 15px 20px;
+      padding: 10px 20px;
       border: none;
       border-radius: 8px;
 
@@ -89,9 +87,8 @@ export const Div = styled.div`
 
   .label {
     display: flex;
-    column-gap: 5px;
     align-items: center;
-
+    gap: 5px;
     h6 {
       color: #b000f1;
     }

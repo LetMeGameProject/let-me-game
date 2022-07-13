@@ -11,15 +11,17 @@ export const DivForm = () => {
   const history = useHistory()
 
   const formSchema = yup.object().shape({
-    username: yup.string().required("Nick-name obrigatório"),
+    username: yup.string().required("Nickname obrigatório"),
     email: yup.string().required("Email obrigatório").email("Email inválido"),
     bio: yup.string().required("Bio obrigatória"),
     country: yup.string().required("País obrigatório"),
-    photoUrl: yup.string().required("Url obrigatória"),
+    photoUrl: yup.string().required("Link obrigatória"),
     password: yup
       .string()
       .required("Senha obrigatória")
       .min(8, "Sua senha deve conter no mínimo 8 caracteres"),
+    confirmPassword: yup.string()
+    .oneOf([yup.ref('password'), null], 'Senhas não são iguais')
   })
 
   const {
@@ -55,11 +57,11 @@ export const DivForm = () => {
   return (
     <Div>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <h1>REGISTRE-SE</h1>
+        <h1>Crie uma conta</h1>
         <div className="div__inputs">
           <div className="div__input">
             <div className="label">
-              <span>Nick-name</span>
+              <span>Nickname</span>
               {errors && <h6>{errors.username?.message}</h6>}
             </div>
             <input placeholder="Seu nome" {...register("username")} />
@@ -90,7 +92,7 @@ export const DivForm = () => {
               <span>Foto</span>
               {errors && <h6>{errors.photoUrl?.message}</h6>}
             </div>
-            <input placeholder="Url da sua foto" {...register("photoUrl")} />
+            <input placeholder="Link da sua foto" {...register("photoUrl")} />
           </div>
           <div className="div__input">
             <div className="label">
@@ -101,6 +103,17 @@ export const DivForm = () => {
               type="password"
               placeholder="Sua Senha"
               {...register("password")}
+            />
+          </div>
+          <div className="div__input">
+            <div className="label">
+              <span>Confirmar senha</span>
+              {errors && <h6>{errors.confirmPassword?.message}</h6>}
+            </div>
+            <input
+              type="password"
+              placeholder="Confirme sua senha"
+              {...register("confirmPassword")}
             />
           </div>
         </div>
