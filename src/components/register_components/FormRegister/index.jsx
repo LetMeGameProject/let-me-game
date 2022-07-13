@@ -1,34 +1,38 @@
-import { yupResolver } from "@hookform/resolvers/yup"
-import { useForm } from "react-hook-form"
-import toast, { Toaster } from "react-hot-toast"
-import { Link, useHistory } from "react-router-dom"
-import * as yup from "yup"
-import { internalApi } from "../../../services/internalAPI"
-import { Div } from "./style"
-import { v4 as uuidv4 } from "uuid"
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useForm } from "react-hook-form";
+import toast, { Toaster } from "react-hot-toast";
+import { Link, useHistory } from "react-router-dom";
+import * as yup from "yup";
+import { internalApi } from "../../../services/internalAPI";
+import { Div } from "./style";
+import { v4 as uuidv4 } from "uuid";
 
 export const DivForm = () => {
-  const history = useHistory()
+  const history = useHistory();
 
   const formSchema = yup.object().shape({
     username: yup.string().required("Nickname obrigatório"),
     email: yup.string().required("Email obrigatório").email("Email inválido"),
     bio: yup.string().required("Bio obrigatória"),
     country: yup.string().required("País obrigatório"),
-    photoUrl: yup.string().required("Link obrigatória"),
+    photoUrl: yup
+      .string()
+      .required("Link obrigatória")
+      .max(2040, "Tamanho Máximo Excedido"),
     password: yup
       .string()
       .required("Senha obrigatória")
       .min(8, "Sua senha deve conter no mínimo 8 caracteres"),
-    confirmPassword: yup.string()
-    .oneOf([yup.ref('password'), null], 'Senhas não são iguais')
-  })
+    confirmPassword: yup
+      .string()
+      .oneOf([yup.ref("password"), null], "Senhas não são iguais"),
+  });
 
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({ resolver: yupResolver(formSchema) })
+  } = useForm({ resolver: yupResolver(formSchema) });
 
   const onSubmit = (data) => {
     const restOfData = {
@@ -40,19 +44,19 @@ export const DivForm = () => {
       last_feedbacks: [],
       plataforms: [],
       favorite_games: [],
-    }
-    const completeData = { ...data, ...restOfData }
-    const request = internalApi.post("register", completeData)
+    };
+    const completeData = { ...data, ...restOfData };
+    const request = internalApi.post("register", completeData);
 
     toast.promise(request, {
       loading: "Carregando",
       success: (data) => {
-        history.push("/")
-        return "Cadastro efetuado com sucesso!"
+        history.push("/");
+        return "Cadastro efetuado com sucesso!";
       },
       error: (err) => `Email já existente`,
-    })
-  }
+    });
+  };
 
   return (
     <Div>
@@ -124,5 +128,5 @@ export const DivForm = () => {
         <Toaster />
       </form>
     </Div>
-  )
-}
+  );
+};

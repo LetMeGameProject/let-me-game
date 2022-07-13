@@ -63,6 +63,7 @@ export const FavoriteProvider = ({ children }) => {
         favoriteList,
         addFavorite,
         removeFavorite,
+        setFavoriteList,
       }}
     >
       {children}
