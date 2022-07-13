@@ -18,7 +18,8 @@ const Header = ()=> {
     const [isOpen, setOpen] = useState(false)
     const [openModalUser, setOpenModalUser] = useState(false);
     const [openModalEditUser, setOpenModalEditUser] = useState(false);
-    
+    const [showModalSuccess , setShowModalSuccess] = useState(false)
+
     const history = useHistory()
     const { setUser } = useContext(UserContext)
 
@@ -58,6 +59,7 @@ const Header = ()=> {
     return(
         <>
         {openModalEditUser && <Toaster />}
+        {showModalSuccess && <Toaster />}
         <StyledHeader>
             <Content>
                 
@@ -76,7 +78,7 @@ const Header = ()=> {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             style={{zIndex: 1}}>
-                <SideBar setOpen={setOpen} setOpenModalUser={setOpenModalUser}/>
+                <SideBar setOpen={setOpen} setOpenModalUser={setOpenModalUser} setShowModalSuccess={setShowModalSuccess}/>
             </motion.div>}
             {openModalUser && <ShowUser openModalUser={openModalUser} setOpenModalUser={setOpenModalUser} setOpenModalEditUser={setOpenModalEditUser}/>}
             {openModalEditUser && <EditUser openModalEditUser={openModalEditUser} setOpenModalEditUser={setOpenModalEditUser}/>}

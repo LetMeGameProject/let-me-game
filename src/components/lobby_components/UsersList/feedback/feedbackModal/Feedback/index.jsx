@@ -6,9 +6,11 @@ import * as yup from "yup"
 import React from "react"
 import { Formik, Field, Form } from "formik"
 import { v4 as uuidv4 } from "uuid"
+import { useContext } from "react"
+import { toast } from "react-hot-toast"
+
 import { UserContext } from "../../../../../../context/User"
 import { internalApi } from "../../../../../../services/internalAPI"
-import { useContext } from "react"
 import { LobbyContext } from "../../../../../../context/OpenLobby"
 import { CurrentLobbyContext } from "../../../../../../context/currentLobby"
 import {
@@ -67,7 +69,13 @@ const Feedback = () => {
           Authorization: `Bearer ${token}`,
         },
       })
-      .then((res) => setCurrentLobbyList(res.data))
+      .then((res) => {
+        setCurrentLobbyList(res.data)
+        toast.success('Feedback enviado')
+        setTimeout(()=>{
+            toast.dismiss()
+        }, 1500)  
+      });
   }
   return (
     <StyledDiv>
