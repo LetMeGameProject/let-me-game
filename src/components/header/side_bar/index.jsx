@@ -22,8 +22,7 @@ const SideBar = ({ setOpen, setOpenModalUser }) => {
 
   const logout = () => {
     setOpen(false)
-    localStorage.removeItem("@id")
-    localStorage.removeItem("@tokenLMG")
+    localStorage.clear()
     setLoggedUser(false)
     setTimeout(() => {
       toast.success("Deslogado com sucesso!")
