@@ -2,18 +2,21 @@ import { Content } from "./styles"
 import { FiUser } from "react-icons/fi"
 import { BiLogOut } from "react-icons/bi"
 import { ProgressBar } from "../../../style/globalStyle"
-import { useContext } from "react"
+import { useContext} from "react"
 import { UserContext } from "../../../context/User"
-import { toast } from "react-hot-toast"
+import { toast} from "react-hot-toast"
 import { LoggedUserContext } from "../../../context/LoggedUser"
 import { TbDeviceGamepad2 } from "react-icons/tb"
 import { internalApi } from "../../../services/internalAPI"
 import { CurrentLobbyContext } from "../../../context/currentLobby"
+import { useLocation } from "react-router-dom"
 
-const SideBar = ({ setOpen, setOpenModalUser }) => {
+const SideBar = ({ setOpen, setOpenModalUser, setShowModalSuccess }) => {
+
   const { user, setUser } = useContext(UserContext)
   const { setLoggedUser } = useContext(LoggedUserContext)
   const { setCurrentLobbyList } = useContext(CurrentLobbyContext)
+  const location = useLocation()
 
   const openModalEdit = () => {
     setOpenModalUser(true)
@@ -58,10 +61,15 @@ const SideBar = ({ setOpen, setOpenModalUser }) => {
           })
           .then((res) => {
             setCurrentLobbyList([...res.data])
+            if(location.pathname === "/home"){
+              setShowModalSuccess(true)
+            }
             toast.success('Status removido')
             setTimeout(()=>{
                 toast.dismiss()
+                setShowModalSuccess(false)
             }, 1500)
+            
           })
       })
   }
