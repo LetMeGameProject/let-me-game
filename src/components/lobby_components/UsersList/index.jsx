@@ -19,19 +19,6 @@ const UsersList = () => {
       .then((res) => setCurrentLobbyList(res.data));
   }, []);
 
-  // console.log("ola");
-  // currentLobbyList, setCurrentLobbyList
-  //gerando um loop moderado pra sempre ir atualziando a lista
-  // setInterval(() => {
-  //   const token = localStorage.getItem("@tokenLMG");
-  //   internalApi
-  //     .get(`online_users_list/`, {
-  //       headers: {
-  //         Authorization: `Bearer ${token}`,
-  //       },
-  //     })
-  //     .then((res) => setCurrentLobbyList(res.data));
-  // }, 10000);
   return (
     <ThemeUserList>
       {currentLobbyList

@@ -1,13 +1,16 @@
-import Backdrop from "@mui/material/Backdrop"
-import Modal from "@mui/material/Modal"
-import Fade from "@mui/material/Fade"
-import { AiFillLike, AiFillDislike } from "react-icons/ai"
-import * as yup from "yup"
-import React from "react"
-import { Formik, Field, Form } from "formik"
-
-import { useContext } from "react"
-import { LobbyContext } from "../../../../../../context/OpenLobby"
+import Backdrop from "@mui/material/Backdrop";
+import Modal from "@mui/material/Modal";
+import Fade from "@mui/material/Fade";
+import { AiFillLike, AiFillDislike } from "react-icons/ai";
+import * as yup from "yup";
+import React from "react";
+import { Formik, Field, Form } from "formik";
+import { v4 as uuidv4 } from "uuid";
+import { UserContext } from "../../../../../../context/User";
+import { internalApi } from "../../../../../../services/internalAPI";
+import { useContext } from "react";
+import { LobbyContext } from "../../../../../../context/OpenLobby";
+import { CurrentLobbyContext } from "../../../../../../context/currentLobby";
 import {
   FeedbackBox,
   Review,
@@ -16,17 +19,56 @@ import {
   StyledDiv,
   StyledP,
   TextBox,
-} from "./styles"
+} from "./styles";
 
 const Feedback = () => {
-  const { openModalFeedback, setOpenModalFeedback } = useContext(LobbyContext)
+  const { openModalFeedback, setOpenModalFeedback } = useContext(LobbyContext);
+  const { user } = useContext(UserContext);
+  const { curUser, setCurrentLobbyList } = useContext(CurrentLobbyContext);
   const formSchema = yup.object().shape({
-    feedback_message: yup
-      .string()
-      .required("Cade o comentário 06? 20 ano de curso!"),
-    feedback_rating: yup.boolean().required("Escolhe um ae!"),
-  })
+    feedback_message: yup.string().required("Campo obrigatório"),
+    feedback_rating: yup.boolean().required("Escolha uma opção"),
+  });
+  async function sendFeedbackToApi(feedback) {
+    const token = localStorage.getItem("@tokenLMG");
+    let updatedUser = await internalApi
+      .get(`online_users_list/${curUser.id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => {
+        return res.data;
+      });
+    updatedUser.last_feedbacks.push(feedback);
+    let currentRating = updatedUser.last_feedbacks.reduce(
+      (a, b) => a + b.feedback_rating,
+      100
+    );
+    if (currentRating > 100) currentRating = 100;
+    if (currentRating < 0) currentRating = 0;
 
+    updatedUser = { ...updatedUser, reputation: currentRating };
+
+    internalApi.patch(`users/${curUser.id}`, updatedUser, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    internalApi.patch(`online_users_list/${curUser.id}`, updatedUser, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    internalApi
+      .get(`online_users_list/`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => setCurrentLobbyList(res.data));
+  }
   return (
     <StyledDiv>
       <Modal
@@ -43,7 +85,8 @@ const Feedback = () => {
         <Fade in={openModalFeedback}>
           <FeedbackBox>
             <StyledP>
-              Como foi sua experiência jogando com <strong>Antoniel</strong>?
+              Como foi sua experiência jogando com{" "}
+              <strong>{curUser.username}</strong>?
             </StyledP>
             <div>
               <Formik
@@ -53,18 +96,18 @@ const Feedback = () => {
                 }}
                 validationSchema={formSchema}
                 onSubmit={(values) => {
-                  setOpenModalFeedback(false)
+                  setOpenModalFeedback(false);
 
                   let obj = {
-                    feedback_Id: "",
+                    feedback_Id: uuidv4(),
                     feedback_message: values.feedback_message,
                     feedback_status:
                       values.feedback_rating === "true" ? true : false,
                     feedback_rating:
                       values.feedback_rating === "true" ? 10 : -10,
-                    feedback_owner_username: "",
-                  }
-                  console.log(obj)
+                    feedback_owner_username: user.username,
+                  };
+                  sendFeedbackToApi(obj);
                 }}
               >
                 {({ errors, touched }) => (
@@ -121,7 +164,7 @@ const Feedback = () => {
         </Fade>
       </Modal>
     </StyledDiv>
-  )
-}
+  );
+};
 
-export default Feedback
+export default Feedback;

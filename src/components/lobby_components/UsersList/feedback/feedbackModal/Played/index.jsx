@@ -1,15 +1,16 @@
-import Backdrop from "@mui/material/Backdrop"
-import Box from "@mui/material/Box"
-import Modal from "@mui/material/Modal"
-import Fade from "@mui/material/Fade"
-import { useContext } from "react"
-import { LobbyContext } from "../../../../../../context/OpenLobby"
-import { StyledDiv, StyledButton, StyledP } from "./styles"
+import Backdrop from "@mui/material/Backdrop";
+import Box from "@mui/material/Box";
+import Modal from "@mui/material/Modal";
+import Fade from "@mui/material/Fade";
+import { useContext } from "react";
+import { LobbyContext } from "../../../../../../context/OpenLobby";
+import { StyledDiv, StyledButton, StyledP } from "./styles";
+import { CurrentLobbyContext } from "../../../../../../context/currentLobby";
 
 const Played = () => {
   const { setOpenModalPlayed, openModalPlayed, setOpenModalFeedback } =
-    useContext(LobbyContext)
-
+    useContext(LobbyContext);
+  const { curUser, setCurUser } = useContext(CurrentLobbyContext);
   const style = {
     position: "absolute",
     top: "50%",
@@ -25,7 +26,7 @@ const Played = () => {
     flexDirection: "column",
     justifyContent: "space-evenly",
     alignItems: "center",
-  }
+  };
 
   return (
     <>
@@ -43,20 +44,20 @@ const Played = () => {
         <Fade in={openModalPlayed}>
           <Box sx={style}>
             <StyledP>
-              Você jogou com o(a) <strong>Antoniel</strong>?
+              Você jogou com o(a) <strong>{curUser.username}</strong>?
             </StyledP>
             <StyledDiv>
               <StyledButton
                 onClick={() => {
-                  setOpenModalFeedback(true)
-                  setOpenModalPlayed(false)
+                  setOpenModalFeedback(true);
+                  setOpenModalPlayed(false);
                 }}
               >
                 Sim
               </StyledButton>
               <StyledButton
                 onClick={() => {
-                  setOpenModalPlayed(false)
+                  setOpenModalPlayed(false);
                 }}
               >
                 Não
@@ -66,7 +67,7 @@ const Played = () => {
         </Fade>
       </Modal>
     </>
-  )
-}
+  );
+};
 
-export default Played
+export default Played;

@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled from "styled-components";
 
 const ThemeCard = styled.div`
   width: 100%;
@@ -112,6 +112,7 @@ const ThemeCard = styled.div`
   .feedbacks > h4 {
     font-size: 18px;
     margin-bottom: 3px;
+    text-align: center;
   }
   .feedbacks > ul {
     border-radius: 10px;
@@ -126,7 +127,7 @@ const ThemeCard = styled.div`
   .feedbacks > ul > li {
     width: 100%;
     height: auto;
-    padding: 3px 5px;
+    padding: 10px;
     display: flex;
     flex-direction: column;
     gap: 4px;
@@ -165,7 +166,7 @@ const ThemeCard = styled.div`
     letter-spacing: 0.3px;
     color: white;
   }
-`
+`;
 
 export const Button = styled.button`
   width: 55px;
@@ -176,7 +177,7 @@ export const Button = styled.button`
   z-index: 1001;
   border-radius: 100%;
   background-color: var(--primary-white);
-`
+`;
 
 export const StyledDiv = styled.div`
   width: ${({ modal }) => (modal ? "100%" : "0")};
@@ -186,7 +187,7 @@ export const StyledDiv = styled.div`
   top: 0%;
   background-color: ${({ modal }) =>
     modal ? "rgba(0,0,0,0.60)" : "rgba(0,0,0,0.0)"};
-`
+`;
 export const DivModal = styled.div`
   width: ${({ modal }) => (modal ? "90%" : "0%")};
   max-width: ${({ modal }) => (modal ? "500px" : "0px")};
@@ -202,5 +203,5 @@ export const DivModal = styled.div`
   left: 50%;
   z-index: ${({ modal }) => (modal ? "1001" : "0")};
   transform: translate(-50%, -50%);
-`
-export default ThemeCard
+`;
+export default ThemeCard;
