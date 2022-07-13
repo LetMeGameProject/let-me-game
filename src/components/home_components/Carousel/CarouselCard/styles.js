@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from "styled-components"
 
 const StyledCarrouselCard = styled.section`
   width: 100%;
@@ -52,7 +52,7 @@ const StyledCarrouselCard = styled.section`
     font-weight: bold;
     font-size: 14px;
     text-shadow: 1px 1px 1px var(--foreground-color);
-    margin-bottom:10px;
+    margin-bottom: 10px;
   }
 
   .container-button {
@@ -76,6 +76,10 @@ const StyledCarrouselCard = styled.section`
       color: var(--accent-color);
       transition: 0.3s;
     }
+
+    @media (max-width: 420px) {
+      font-size: 40px;
+    }
   }
 
   h4 {
@@ -85,8 +89,14 @@ const StyledCarrouselCard = styled.section`
     left: 5px;
     z-index: 1;
     color: var(--secondary-white);
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 600;
+
+    @media (max-width: 716px) {
+      font-size: 12px;
+      top: 5px;
+      width: 40px;
+    }
   }
-`;
-export default StyledCarrouselCard;
+`
+export default StyledCarrouselCard
