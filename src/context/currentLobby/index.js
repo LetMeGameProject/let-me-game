@@ -8,7 +8,7 @@ export const CurrentLobbyProvider = ({ children }) => {
     JSON.parse(localStorage.getItem("@CURRENT_GAME")) || {}
   );
   const [inputKey, setInputKey] = useState("");
-
+  const [curUser, setCurUser] = useState("");
   useEffect(() => {
     const token = localStorage.getItem("@tokenLMG");
     internalApi
@@ -37,6 +37,8 @@ export const CurrentLobbyProvider = ({ children }) => {
         setCurrentGame,
         inputKey,
         setInputKey,
+        curUser,
+        setCurUser,
       }}
     >
       {children}
