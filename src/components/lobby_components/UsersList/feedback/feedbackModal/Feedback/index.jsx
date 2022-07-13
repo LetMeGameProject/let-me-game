@@ -20,6 +20,7 @@ import {
   StyledP,
   TextBox,
 } from "./styles";
+import { toast } from "react-hot-toast"
 
 const Feedback = () => {
   const { openModalFeedback, setOpenModalFeedback } = useContext(LobbyContext);
@@ -67,7 +68,13 @@ const Feedback = () => {
           Authorization: `Bearer ${token}`,
         },
       })
-      .then((res) => setCurrentLobbyList(res.data));
+      .then((res) => {
+        setCurrentLobbyList(res.data)
+        toast.success('Feedback enviado')
+        setTimeout(()=>{
+            toast.dismiss()
+        }, 1500)  
+      });
   }
   return (
     <StyledDiv>
