@@ -165,7 +165,7 @@ const UserCard = ({ card }) => {
             <>
               <h4>Últimos Feedbacks</h4>
               <ul>
-                {card.last_feedbacks.reverse().map((feedback) => {
+                {card.last_feedbacks.map((feedback) => {
                   return (
                     <li key={feedback.feedback_Id}>
                       <span>{feedback.feedback_owner_username} </span>
@@ -177,7 +177,10 @@ const UserCard = ({ card }) => {
               </ul>
             </>
           ) : (
-            <div className="no_feedbacks">
+            <div
+              className="no_feedbacks"
+              style={{ height: "171px", marginTop: "21px" }}
+            >
               <p>Este Jogador ainda não possui feedbacks da comunidade.</p>
             </div>
           )}
