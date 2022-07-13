@@ -1,39 +1,24 @@
-import React, { useContext, useEffect } from "react";
-import UsersList from "../../components/lobby_components/UsersList";
-import ContainerLobby from "./styles";
-import UsersInput from "../../components/lobby_components/UsersInput";
-import { LobbyContext } from "../../context/OpenLobby";
-import Header from "../../components/header";
-import ModalInbox from "../../components/modal_inbox";
-import { LoggedUserContext } from "../../context/LoggedUser";
-import { Redirect } from "react-router-dom";
-import UserStatus from "../../components/lobby_components/user_status";
-import { Toaster } from "react-hot-toast";
-import Played from "../../components/lobby_components/UsersList/feedback/feedbackModal/Played";
-import Feedback from "../../components/lobby_components/UsersList/feedback/feedbackModal/Feedback";
-import { internalApi } from "../../services/internalAPI";
-import { CurrentLobbyContext } from "../../context/currentLobby";
+import React, { useContext, useEffect } from "react"
+import UsersList from "../../components/lobby_components/UsersList"
+import ContainerLobby from "./styles"
+import UsersInput from "../../components/lobby_components/UsersInput"
+import { LobbyContext } from "../../context/OpenLobby"
+import Header from "../../components/header"
+import ModalInbox from "../../components/modal_inbox"
+import { LoggedUserContext } from "../../context/LoggedUser"
+import { Redirect } from "react-router-dom"
+import UserStatus from "../../components/lobby_components/user_status"
+import { Toaster } from "react-hot-toast"
 
 const Lobby = () => {
-  const { setCurrentLobbyList } = useContext(CurrentLobbyContext);
-  const { background, setBackground } = useContext(LobbyContext);
-  const { loggedUser } = useContext(LoggedUserContext);
-  const game = JSON.parse(localStorage.getItem("@CURRENT_GAME"));
-  useEffect(() => {
-    setBackground(game.background_image);
-  }, []);
+  const { background, setBackground, name } = useContext(LobbyContext)
+  const { loggedUser } = useContext(LoggedUserContext)
+  const game = JSON.parse(localStorage.getItem("@CURRENT_GAME"))
 
-  // setInterval(() => {
-  //   const token = localStorage.getItem("@tokenLMG");
-  //   internalApi
-  //     .get(`online_users_list/`, {
-  //       headers: {
-  //         Authorization: `Bearer ${token}`,
-  //       },
-  //     })
-  //     .then((res) => setCurrentLobbyList(res.data));
-  // }, 10000);
-  // console.log("ola antoniel");
+  useEffect(() => {
+    setBackground(game.background_image)
+  })
+
   return loggedUser ? (
     <>
       <Header />
@@ -48,8 +33,6 @@ const Lobby = () => {
       />
       <UserStatus />
       <ModalInbox />
-      <Played />
-      <Feedback />
       <ContainerLobby>
         <div className="image-container">
           <img src={background} alt="background_game_image" />
@@ -62,7 +45,7 @@ const Lobby = () => {
     </>
   ) : (
     <Redirect to="/" />
-  );
-};
+  )
+}
 
-export default Lobby;
+export default Lobby

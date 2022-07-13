@@ -24,10 +24,11 @@ const SideBar = ({ setOpen, setOpenModalUser }) => {
     setOpen(false)
     localStorage.removeItem("@id")
     localStorage.removeItem("@tokenLMG")
+    setLoggedUser(false)
     setTimeout(() => {
-      setLoggedUser(false)
-    }, 800)
-    toast.success("Deslogado com sucesso!")
+      toast.success("Deslogado com sucesso!")
+    }, 700)
+    
   }
 
   const removeGame = () => {
