@@ -2,7 +2,7 @@ import { Content, StyledHeader} from "./styles";
 import Logo from "../../assets/images/logo_LetMeGame.svg"
 import SideBar from "./side_bar";
 import { Squash as Hamburger } from 'hamburger-react'
-import { useContext, useEffect, useState } from 'react'
+import { useContext, useEffect, useRef, useState } from 'react'
 import { motion } from "framer-motion";
 import ShowUser from "./show_user";
 import EditUser from "./edit_user";
@@ -38,19 +38,19 @@ const Header = ()=> {
             })
     }, [])
 
+    let menuRef = useRef()
 
     useEffect(()=>{
 
-        const closeSideBar =(e)=>{
-            if(e.path[0].className !== "hamburger-react" && e.path[0].className !=="div-img-user"){
+        let handler = (event)=>{
+            if(!menuRef.current.contains(event.target)){
                 setOpen(false)
-            }
-        }
+            }}
+        
+        document.body.addEventListener("click", handler)
 
-        document.body.addEventListener("click", closeSideBar)
-
-        return ()=>{
-            document.body.removeEventListener("click", closeSideBar)
+        return()=>{
+            document.body.removeEventListener("click", handler)
         }
 
     },[])
@@ -65,7 +65,7 @@ const Header = ()=> {
                     <img src={Logo} alt="Circulo roxo com controle roxo e botões brancos, aparecendo da esquerda para a direita centralizado até a metade do circulo"/>
                 </div>
 
-                <div className="div-img-user">
+                <div className="div-img-user" ref={menuRef}>
                     <Hamburger toggled={isOpen} toggle={setOpen}  duration={0.4}/>
                 </div>
 
