@@ -7,6 +7,7 @@ export const StyledDiv = styled.div`
 `
 
 export const FeedbackBox = styled.div`
+  font-family: "Inter", sans-serif;
   background-color: var(--secondary-white);
 
   position: absolute;
@@ -71,6 +72,13 @@ export const StyledButton = styled.button`
     bottom: 15px;
     transform: translateX(-50%);
   }
+
+  @media (max-height: 480px) {
+    width: 60px;
+    height: 30px;
+    font-size: 12px;
+    padding: 0px;
+  }
 `
 
 export const StyledP = styled.p`
@@ -103,16 +111,32 @@ export const TextBox = styled.div`
     @media (max-width: 767px) {
       width: 100%;
       height: 80%;
+      margin-bottom: 15px;
     }
   }
 
   @media (max-width: 767px) {
     margin-top: -25px;
   }
+
+  label {
+    position: relative;
+    span {
+      font-size: 14px;
+      width: 163px;
+      position: absolute;
+      color: red;
+      top: 178px;
+      left: 0px;
+
+      @media (min-width: 339px) {
+        top: 156px;
+      }
+    }
+  }
 `
 
 export const ReviewBox = styled.div`
-  font-family: "Inter", sans-serif;
   display: flex;
   justify-content: space-between;
   width: 80%;
@@ -131,9 +155,14 @@ export const ReviewBox = styled.div`
       margin: 0;
       width: 100%;
     }
+
+    @media (max-height: 480px) {
+      margin-bottom: 25px;
+    }
   }
 `
 export const Review = styled.div`
+  position: relative;
   display: flex;
   align-items: flex-end;
   gap: 15px;
@@ -151,8 +180,26 @@ export const Review = styled.div`
   }
 
   @media (max-width: 767px) {
+    margin-top: 15px;
+
     width: 100%;
     display: flex;
     justify-content: center;
+  }
+
+  span {
+    font-size: 14px;
+    width: 164px;
+    color: red;
+    position: absolute;
+    top: 60px;
+    right: 45%;
+    transform: translateX(50%);
+
+    @media (max-width: 767px) {
+      top: 30px;
+      right: 45%;
+      transform: translateX(50%);
+    }
   }
 `
