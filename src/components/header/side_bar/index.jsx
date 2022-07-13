@@ -59,6 +59,10 @@ const SideBar = ({ setOpen, setOpenModalUser }) => {
           })
           .then((res) => {
             setCurrentLobbyList([...res.data])
+            toast.success('Status removido')
+            setTimeout(()=>{
+                toast.dismiss()
+            }, 1500)
           })
       })
   }
