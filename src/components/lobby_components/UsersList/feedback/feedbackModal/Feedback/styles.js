@@ -15,7 +15,7 @@ export const FeedbackBox = styled.div`
   transform: translate(-50%, -50%);
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: flex-start;
 
   width: 80%;
@@ -84,7 +84,7 @@ export const StyledP = styled.p`
 `
 
 export const TextBox = styled.div`
-  p {
+  label {
     font-family: "Inter", sans-serif;
     font-size: 18px;
 
@@ -114,6 +114,8 @@ export const TextBox = styled.div`
 export const ReviewBox = styled.div`
   font-family: "Inter", sans-serif;
   display: flex;
+  justify-content: space-between;
+  width: 80%;
 
   p {
     width: 60%;
@@ -138,7 +140,7 @@ export const Review = styled.div`
 
   .dislike,
   .like {
-    font-size: 54px;
+    font-size: 32px;
     fill: var(--background-color);
 
     :hover {
@@ -149,8 +151,6 @@ export const Review = styled.div`
   }
 
   @media (max-width: 767px) {
-    margin: 20px 0 0 0;
-
     width: 100%;
     display: flex;
     justify-content: center;

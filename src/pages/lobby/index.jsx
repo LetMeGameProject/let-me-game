@@ -9,6 +9,8 @@ import { LoggedUserContext } from "../../context/LoggedUser"
 import { Redirect } from "react-router-dom"
 import UserStatus from "../../components/lobby_components/user_status"
 import { Toaster } from "react-hot-toast"
+import Feedback from "../../components/lobby_components/UsersList/feedback/feedbackModal/Feedback"
+import Played from "../../components/lobby_components/UsersList/feedback/feedbackModal/Played"
 
 const Lobby = () => {
   const { background, setBackground, name } = useContext(LobbyContext)
@@ -33,6 +35,8 @@ const Lobby = () => {
       />
       <UserStatus />
       <ModalInbox />
+      <Played />
+      <Feedback />
       <ContainerLobby>
         <div className="image-container">
           <img src={background} alt="background_game_image" />
