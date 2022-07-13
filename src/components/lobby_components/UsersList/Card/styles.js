@@ -181,7 +181,7 @@ export const Button = styled.button`
 export const StyledDiv = styled.div`
   width: ${({ modal }) => (modal ? "100%" : "0")};
   height: ${({ modal }) => (modal ? "100vh" : "0")};
-  position: ${({ modal }) => (modal ? "fixed" : "unset")};
+  position: fixed;
   z-index: 1001;
   top: 0%;
   background-color: ${({ modal }) =>

@@ -9,6 +9,7 @@ import EditUser from "./edit_user";
 import { UserContext } from "../../context/User";
 import { internalApi } from "../../services/internalAPI";
 import { useHistory } from "react-router-dom";
+import { Toaster } from "react-hot-toast";
 
 
 
@@ -55,6 +56,8 @@ const Header = ()=> {
     },[])
 
     return(
+        <>
+        {openModalEditUser && <Toaster />}
         <StyledHeader>
             <Content>
                 
@@ -79,6 +82,7 @@ const Header = ()=> {
             {openModalEditUser && <EditUser openModalEditUser={openModalEditUser} setOpenModalEditUser={setOpenModalEditUser}/>}
 
         </StyledHeader>
+        </>
     )
 }
 
