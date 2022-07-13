@@ -117,8 +117,9 @@ const ThemeCard = styled.div`
   .feedbacks > ul {
     border-radius: 10px;
     display: flex;
-    flex-direction: column-reverse;
-    justify-content: flex-end;
+    flex-direction: column;
+    /* flex-direction: column-reverse;
+    justify-content: flex-end; */
     gap: 10px;
     width: 100%;
     height: 100%;

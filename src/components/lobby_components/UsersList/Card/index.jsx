@@ -28,6 +28,7 @@ const UserCard = ({ card }) => {
   plataforms.map(
     (elem) => (objectPlataforms = { ...elem, ...objectPlataforms })
   );
+
   const inbox = () => {
     Talk.ready.then(() => {
       setCurUser(card);
@@ -165,9 +166,9 @@ const UserCard = ({ card }) => {
             <>
               <h4>Últimos Feedbacks</h4>
               <ul>
-                {card.last_feedbacks.map((feedback) => {
+                {[...card.last_feedbacks].reverse().map((feedback, index) => {
                   return (
-                    <li key={feedback.feedback_Id}>
+                    <li key={index}>
                       <span>{feedback.feedback_owner_username} </span>
                       <p>{feedback.feedback_message}</p>
                       <hr />
