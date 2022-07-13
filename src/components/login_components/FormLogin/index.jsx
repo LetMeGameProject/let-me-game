@@ -35,15 +35,9 @@ export const DivForm = () => {
           setTimeout(() => {
             setLoggedUser(true)
           }, 1700)
-          history.push("/home")
           return `Bem-vindo ${data.data.user.username}`
         },
         error: (err) => "Usuário ou senha incorretos",
-      },
-      {
-        success: {
-          duration: 700,
-        },
       }
     )
   }
