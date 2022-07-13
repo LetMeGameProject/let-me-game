@@ -34,6 +34,7 @@ export const DivForm = () => {
           localStorage.setItem("@id", data.data.user.id)
           setTimeout(() => {
             setLoggedUser(true)
+            history.push("/home")
           }, 1700)
           return `Bem-vindo ${data.data.user.username}`
         },

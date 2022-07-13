@@ -13,7 +13,7 @@ import Feedback from "../../components/lobby_components/UsersList/feedback/feedb
 import Played from "../../components/lobby_components/UsersList/feedback/feedbackModal/Played"
 
 const Lobby = () => {
-  const { background, setBackground, name } = useContext(LobbyContext)
+  const { background, setBackground } = useContext(LobbyContext)
   const { loggedUser } = useContext(LoggedUserContext)
   const game = JSON.parse(localStorage.getItem("@CURRENT_GAME"))
 
