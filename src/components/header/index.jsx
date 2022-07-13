@@ -8,7 +8,7 @@ import ShowUser from "./show_user";
 import EditUser from "./edit_user";
 import { UserContext } from "../../context/User";
 import { internalApi } from "../../services/internalAPI";
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
 
 
@@ -19,6 +19,8 @@ const Header = ()=> {
     const [openModalUser, setOpenModalUser] = useState(false);
     const [openModalEditUser, setOpenModalEditUser] = useState(false);
     const [showModalSuccess , setShowModalSuccess] = useState(false)
+
+    const location = useLocation()
 
     const history = useHistory()
     const { setUser } = useContext(UserContext)
@@ -58,8 +60,7 @@ const Header = ()=> {
 
     return(
         <>
-        {openModalEditUser && <Toaster />}
-        {showModalSuccess && <Toaster />}
+        {location.pathname === "/home" && <Toaster />}
         <StyledHeader>
             <Content>
                 
@@ -80,8 +81,8 @@ const Header = ()=> {
             style={{zIndex: 1}}>
                 <SideBar setOpen={setOpen} setOpenModalUser={setOpenModalUser} setShowModalSuccess={setShowModalSuccess}/>
             </motion.div>}
-            {openModalUser && <ShowUser openModalUser={openModalUser} setOpenModalUser={setOpenModalUser} setOpenModalEditUser={setOpenModalEditUser}/>}
-            {openModalEditUser && <EditUser openModalEditUser={openModalEditUser} setOpenModalEditUser={setOpenModalEditUser}/>}
+            {openModalUser && <ShowUser openModalUser={openModalUser} setOpenModalUser={setOpenModalUser} setOpenModalEditUser={setOpenModalEditUser} />}
+            {openModalEditUser && <EditUser openModalEditUser={openModalEditUser} setOpenModalEditUser={setOpenModalEditUser} />}
 
         </StyledHeader>
         </>

@@ -26,11 +26,9 @@ const Lobby = () => {
       <Header />
       <Toaster
         toastOptions={{
-          success: {
             style: {
               marginTop: 100,
             },
-          },
         }}
       />
       <UserStatus />
