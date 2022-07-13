@@ -21,8 +21,10 @@ import {
 const Feedback = () => {
   const { openModalFeedback, setOpenModalFeedback } = useContext(LobbyContext)
   const formSchema = yup.object().shape({
-    comment: yup.string().required("Cade o comentário 06? 20 ano de curso!"),
-    review: yup.string().required("Escolhe um ae!"),
+    feedback_message: yup
+      .string()
+      .required("Cade o comentário 06? 20 ano de curso!"),
+    feedback_rating: yup.boolean().required("Escolhe um ae!"),
   })
 
   return (
@@ -41,24 +43,32 @@ const Feedback = () => {
         <Fade in={openModalFeedback}>
           <FeedbackBox>
             <StyledP>
-              {/* state do usuario do card clicado */}
               Como foi sua experiência jogando com <strong>Antoniel</strong>?
             </StyledP>
             <div>
               <Formik
                 initialValues={{
-                  comment: "",
-                  review: "",
-                  // objeto.data que a API ira receber
+                  feedback_message: "",
+                  feedback_rating: "",
                 }}
                 validationSchema={formSchema}
                 onSubmit={(values) => {
-                  console.log(values)
-                  // enviar dados para a API
+                  setOpenModalFeedback(false)
+
+                  let obj = {
+                    feedback_Id: "",
+                    feedback_message: values.feedback_message,
+                    feedback_status:
+                      values.feedback_rating === "true" ? true : false,
+                    feedback_rating:
+                      values.feedback_rating === "true" ? 10 : -10,
+                    feedback_owner_username: "",
+                  }
+                  console.log(obj)
                 }}
               >
                 {({ errors, touched }) => (
-                  <Form>
+                  <Form action="">
                     <TextBox>
                       <label htmlFor="comment">
                         Descreva em poucas palavras:
@@ -67,12 +77,12 @@ const Feedback = () => {
                         rows="6"
                         cols="70"
                         as="textarea"
-                        id="comment"
-                        name="comment"
+                        id="feedback_message"
+                        name="feedback_message"
                       />
                     </TextBox>
-                    {errors.comment && touched.comment ? (
-                      <span>{errors.comment}</span>
+                    {errors.feedback_message && touched.feedback_message ? (
+                      <span>{errors.feedback_message}</span>
                     ) : null}
                     <ReviewBox>
                       <p>
@@ -81,27 +91,28 @@ const Feedback = () => {
                       </p>
                       <Review role="group" aria-labelledby="my-radio-group">
                         <label>
-                          <Field type="radio" name="review" value="true" />
+                          <Field
+                            type="radio"
+                            name="feedback_rating"
+                            value="true"
+                          />
                           <AiFillLike className="like" />
                         </label>
                         <label>
-                          <Field type="radio" name="review" value="false" />
+                          <Field
+                            type="radio"
+                            name="feedback_rating"
+                            value="false"
+                          />
                           <AiFillDislike className="dislike" />
                         </label>
                       </Review>
-                      {errors.review && touched.review ? (
-                        <span>{errors.review}</span>
+                      {errors.feedback_rating && touched.feedback_rating ? (
+                        <span>{errors.feedback_rating}</span>
                       ) : null}
                     </ReviewBox>
 
-                    <StyledButton
-                      // Condicao para que o onClick nao chame a funcao
-                      // se o yupResolver estiver com errors.
-                      type="submit"
-                      onClick={() => !errors && setOpenModalFeedback(false)}
-                    >
-                      Enviar
-                    </StyledButton>
+                    <StyledButton type="submit">Enviar</StyledButton>
                   </Form>
                 )}
               </Formik>
