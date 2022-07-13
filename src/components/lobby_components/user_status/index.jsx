@@ -61,30 +61,31 @@ const UserStatus = () =>{
             })
 
             .catch(() =>{
-                user.current_game = {...game.current_game}
-
                 internalApi.patch(`users/${id}`, game, 
                 {
                     headers:{
                         'Authorization': `Bearer ${localStorage.getItem("@tokenLMG")}`
                     }
                 })
+                    .then((res)=>{
+                        internalApi.post(`online_users_list`, res.data, 
+                        {
+                            headers:{
+                                'Authorization': `Bearer ${localStorage.getItem("@tokenLMG")}`
+                            }
+                        })
+                        .then((res) => {
+                            setUser(res.data)
+                            setCurrentLobbyList([...currentLobbyList, res.data])
 
-                internalApi.post(`online_users_list`, user, 
-                {
-                    headers:{
-                        'Authorization': `Bearer ${localStorage.getItem("@tokenLMG")}`
-                    }
-                })
-                .then((res) => {
-                    setUser(res.data)
-                    setCurrentLobbyList([...currentLobbyList, res.data])
+                            toast.success('Status atualizado', {id: t.id,})
+                            setTimeout(()=>{
+                                toast.dismiss(t.id)
+                            }, 1500)
+                        })
+                    })
 
-                    toast.success('Status atualizado', {id: t.id,})
-                    setTimeout(()=>{
-                        toast.dismiss(t.id)
-                    }, 1500)
-                })
+                
             })
     }
 
